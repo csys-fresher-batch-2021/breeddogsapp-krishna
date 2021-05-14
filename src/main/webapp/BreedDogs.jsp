@@ -1,9 +1,9 @@
-<%@page import="in.raja.service.DogDetails"%>
 <%@page import="java.util.List"%>
 <%@page import="in.raja.service.Dogs"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDate"%>
+<%@page import="in.raja.model.DogDetails"%>
 
 <html>
 <head>
