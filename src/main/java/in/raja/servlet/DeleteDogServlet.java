@@ -22,14 +22,9 @@ public class DeleteDogServlet extends HttpServlet {
 		System.out.println("Deleted feature");
 		
 		
-		String donorName=request.getParameter("donorName");
-		out.println(donorName);
+		String dogName=request.getParameter("dogName");
+		out.println(dogName);
 		out.println("feature");
-		/**String donorBlood=request.getParameter("bloodGroup");
-		Long donorNumber=Long.parseLong(request.getParameter("mobileNumber"));
-		Integer donorAge=Integer.parseInt(request.getParameter("age"));
-		DonorManager.addDonor(donorBlood,donorName,donorNumber,donorAge);
-		response.sendRedirect("donordetails.jsp");**/
-
+	
 }
 }
