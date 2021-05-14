@@ -20,17 +20,11 @@ public class DogDetails {
 	}
 	
 	
-	/*
-	 * public void setName(int dogno) { this.dogno = dogno; }
-	 * 
-	 */
+	
 	public String getDogName() {
 		return dogname;
 	}
 
-	/*
-	 * public void setDogName(String dogname) { this.dogname = dogname; }
-	 */
 	
 	
 
@@ -38,9 +32,6 @@ public class DogDetails {
 		return age;
 	}
 
-	/*
-	 * public void setDogAge(String age) { this.age = age; }
-	 */
 	
 	
 	
@@ -51,9 +42,6 @@ public class DogDetails {
 	
 	
 	
-	/*
-	 * public void setDogGender(String gender) { this.gender = gender; }
-	 */
 	
 	
 
@@ -61,29 +49,20 @@ public class DogDetails {
 		return place;
 	}
 
-	/*
-	 * public void setDogPlace(String place) { this.place = place; }
-	 */
+	
 	
 	
 	
 	public int getDogPrice() {
 		return price;
 	}
-	/*
-	 * public void setDogPrice(int price) { this.price = price; }
-	 */
-
+	
 	public String getDogInsurance() {
 		return insurance;
 	}
 
 	
 	
-	/*
-	 * public void setDogInsurance(String insurance) { this.insurance = insurance; }
-	 * 
-	 */
 	
 		
 	
