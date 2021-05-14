@@ -1,4 +1,4 @@
-package in.raja.service;
+package in.raja.model;
 
 
 
