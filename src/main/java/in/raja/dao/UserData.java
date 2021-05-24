@@ -7,7 +7,7 @@ import in.raja.model.UserDetails;
 
 public class UserData {
 
-	public UserData() {
+	private UserData() {
 		/**
 		 * constructor
 		 */

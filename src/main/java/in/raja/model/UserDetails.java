@@ -4,7 +4,7 @@ public class UserDetails {
 	private String username;
 	private String userMail;
 	private String password1;
-	private String password2;
+	
 
 	private long phoneNumber;
 

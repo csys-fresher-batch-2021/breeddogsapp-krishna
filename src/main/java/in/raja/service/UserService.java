@@ -4,8 +4,7 @@ import in.raja.dao.UserData;
 import in.raja.model.UserDetails;
 
 public class UserService {
-//	private String phoneNumber;
-//	long phoneNo = Long.parseLong(phoneNumber);
+
 
 	public static boolean insertUser(String userName, String mail, String password1, String phoneNumber) {
 		boolean isValid = false;
