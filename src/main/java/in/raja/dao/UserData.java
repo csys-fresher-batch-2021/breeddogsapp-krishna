@@ -13,9 +13,7 @@ public class UserData {
 		 */
 	}
 	
-	/*
-	 * Create array list to store all users
-	 */
+	
 	private static List<UserDetails> userList = new ArrayList<>();
 
 	public static void addUser(UserDetails user) {
