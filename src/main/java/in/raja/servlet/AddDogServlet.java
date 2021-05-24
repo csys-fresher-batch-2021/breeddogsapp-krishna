@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.raja.service.DogManager;
-/**
- * Servlet implementation class AddDonorServlet
- */
+
 @WebServlet("/AddDogServlet")
 public class AddDogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

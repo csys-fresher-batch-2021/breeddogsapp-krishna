@@ -17,6 +17,9 @@ public class DogDetails {
 		return dogname;
 	}
 
+	
+	
+	
 	public String getDogAge() {
 		return age;
 	}

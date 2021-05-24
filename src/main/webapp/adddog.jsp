@@ -10,7 +10,7 @@
 	<h3>Add Dogs</h3>
 	<form action="AddDogServlet">
 	
-	
+
 	<label for="dogno"></label>
 	<input type="number" name="dogno" placeholder="Enter Dog Number" required autofocus/>
 	<br/>

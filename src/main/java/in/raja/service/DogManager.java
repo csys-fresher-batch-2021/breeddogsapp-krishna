@@ -19,6 +19,9 @@ public class DogManager {
 	   {   
 		   return taskList;
 	   }
+	   
+	   
+	   
 	   public static void addDog(int dogno,String dogname, String age,String gender,String place, int price, String insurance)
 	   {   
 		   DogDetails task1 = new DogDetails(dogno,dogname,age,gender,place,price,insurance);

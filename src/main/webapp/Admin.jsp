@@ -7,6 +7,9 @@
 <title>Admin</title>
 </head>
 <body>
+
+
+
 <h3>Admin Login</h3>
 		<form action="AdminServlet" method="post">
 			<table>

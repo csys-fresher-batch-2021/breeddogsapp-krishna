@@ -13,9 +13,7 @@ public class AdminData {
 		 */
 	}
 
-	/*
-	 * Create array list to store all admins
-	 */
+	
 	private static List<AdminDetails> adminList = new ArrayList<>();
 
 	static {
@@ -28,11 +26,7 @@ public class AdminData {
 		
 	}
 
-	/**
-	 * This method is used to return admins
-	 * 
-	 * @return
-	 */
+	
 	public static List<AdminDetails> getAdmin() {
 		return adminList;
 	}

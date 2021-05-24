@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import in.raja.service.DogManager;
 
-/**
- * Servlet implementation class DeleteServlet
- */
 @WebServlet("/DeleteServlet")
 public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

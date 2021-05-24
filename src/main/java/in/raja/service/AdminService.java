@@ -19,6 +19,9 @@ public class AdminService {
 		return isValid;
 	}
 
+	
+	
+//	getAdmin name
 	public static boolean getAdminName(String phoneNumber) {
 		Object name = null;
 		long mobileNo = Long.parseLong(phoneNumber);
