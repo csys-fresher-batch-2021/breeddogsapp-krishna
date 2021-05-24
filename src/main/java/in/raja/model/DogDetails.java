@@ -20,7 +20,6 @@ public class DogDetails {
 	public String getDogAge() {
 		return age;
 	}
-
 	public String getDogGender() {
 		return gender;
 	}

@@ -18,24 +18,6 @@ public class DogManager {
 	 */
 	private static final List<DogDetails> taskList = new ArrayList<>();
 	
-	/*
-	 * static {
-	 * 
-	 * 
-	 * 
-	 * 
-	 * DogDetails task1 = new DogDetails(0,"Labrador","21days", MALE ,MADURAI ,
-	 * 12000 , "yes"); DogDetails task2 = new DogDetails(1,"Bulldog","23days",
-	 * FEMALE, MADURAI , 17000 , "no"); DogDetails task3 = new
-	 * DogDetails(2,"Labrador","31days", MALE ,CHENNAI, 12600 , "no"); DogDetails
-	 * task4 = new DogDetails(3,"GreatDane","27days", FEMALE , MADURAI, 12900 ,
-	 * "yes");
-	 * 
-	 * 
-	 * 
-	 * taskList.add(task1); taskList.add(task2); taskList.add(task3);
-	 * taskList.add(task4); }
-	 */
 
 	   public static List<DogDetails> displayDog()
 	   {   
