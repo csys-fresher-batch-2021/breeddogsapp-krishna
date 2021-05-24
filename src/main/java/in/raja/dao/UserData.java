@@ -24,7 +24,10 @@ public class UserData {
 		
 	}
 	
-   
+   /**
+    * this method is used to return all users in the list
+    * @return
+    */
     public static List<UserDetails> getUsers1() {
     	return userList;
     }

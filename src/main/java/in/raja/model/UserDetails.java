@@ -4,7 +4,6 @@ public class UserDetails {
 	private String username;
 	private String userMail;
 	private String password1;
-	
 
 	private long phoneNumber;
 
@@ -16,8 +15,6 @@ public class UserDetails {
 		this.phoneNumber = phoneNumber;
 
 	}
-
-
 
 	public String getName() {
 		return username;
@@ -38,9 +35,7 @@ public class UserDetails {
 	@Override
 	public String toString() {
 		return "UserDetails [username=" + username + ", userMail=" + userMail + ", password1=" + password1
-				+  ", phoneNumber=" + phoneNumber + "]";
+				+ ", phoneNumber=" + phoneNumber + "]";
 	}
-
-	
 
 }

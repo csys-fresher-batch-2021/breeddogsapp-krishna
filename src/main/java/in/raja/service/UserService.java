@@ -13,7 +13,7 @@ public class UserService {
 
 	public static boolean insertUser(String userName, String mail, String password1, String phoneNumber) {
 		boolean isValid = false;
-		
+
 		long mobileNo = Long.parseLong(phoneNumber);
 
 		if (phoneNumber.length() == 10 && password1.trim().length() >= 5) {
@@ -21,9 +21,7 @@ public class UserService {
 			UserData.addUser(user);
 		}
 		return isValid;
-		
-	
-	
+
 	}
 
 	public static boolean checkUser(String phoneNumber, String password1) {
