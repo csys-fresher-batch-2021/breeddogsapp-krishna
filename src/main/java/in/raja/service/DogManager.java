@@ -11,11 +11,7 @@ public class DogManager {
 		//default constructor
 	}
 	
-	/*
-	 * private static final String MADURAI ="Madurai"; private static final String
-	 * CHENNAI ="Chennai"; private static final String FEMALE ="Female"; private
-	 * static final String MALE ="Male";
-	 */
+	
 	private static final List<DogDetails> taskList = new ArrayList<>();
 	
 
