@@ -20,7 +20,6 @@ public class UserData {
 
 	public static void addUser(UserDetails user) {
 		userList.add(user);
-		System.out.println("details added"+userList);
 		
 	}
 	
