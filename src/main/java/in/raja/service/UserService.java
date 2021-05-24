@@ -5,6 +5,11 @@ import in.raja.model.UserDetails;
 
 public class UserService {
 
+	private UserService() {
+		/**
+		 * Constructor
+		 */
+	}
 
 	public static boolean insertUser(String userName, String mail, String password1, String phoneNumber) {
 		boolean isValid = false;
