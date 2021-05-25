@@ -1,6 +1,8 @@
 package in.raja.servlet;
 
 
+
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.raja.service.AdminService;
-import in.raja.validate.AdminValidate;
+
+
 
 
 
@@ -27,7 +30,7 @@ public class AdminServlet extends HttpServlet {
      */
     public AdminServlet() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
@@ -38,7 +41,7 @@ public class AdminServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String userId = request.getParameter("userId");
 			String password = request.getParameter("password");
