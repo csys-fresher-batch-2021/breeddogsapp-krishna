@@ -10,8 +10,7 @@ public class DogManager {
 	{
 		//default constructor
 	}
-	
-	
+
 	private static final List<DogDetails> taskList = new ArrayList<>();
 	
 

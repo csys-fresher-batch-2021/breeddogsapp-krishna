@@ -18,6 +18,8 @@ Email Id:<input type="email" name="userM ail"  id="userMail" placeholder="Enter 
 Password:<input type="password" name="password1"  id="password1" placeholder="EnterYourPassword"/><br/><br/> 
 ReEnterPassword:<input type="password" name="password2"  id="password2" placeholder="ReEnterPassword"/><br/><br/>  
  
+ 
+ 
 City:  
 <select name="userCountry">  
 <option>Madurai</option>  

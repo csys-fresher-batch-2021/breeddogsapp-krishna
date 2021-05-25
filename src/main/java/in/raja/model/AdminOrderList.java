@@ -4,7 +4,6 @@ public class AdminOrderList {
 	
 	
 	
-	
 	private int dogno;
 	private String address;
 	public int getDogno() {
