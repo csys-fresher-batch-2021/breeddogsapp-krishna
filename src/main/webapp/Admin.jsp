@@ -13,14 +13,17 @@
 <h3>Admin Login</h3>
 		<form action="AdminServlet" method="post">
 			<table>
+			
+                 <caption>Admin Login</caption>			
+			
 				<tr>
 
-					<caption><th scope="col">MOBILE NUMBER : </th></caption>
+					<th scope="col">MOBILE NUMBER : </th>
 					<td><input type="number" name="userId" id="userId"
 						placeholder="Enter your phone number" required></td>
 				</tr>
 				<tr>
-					<caption><th scope="col">PASSWORD : </th></caption>
+					<th scope="col">PASSWORD : </th>
 					<td><input type="password" name="password" id="password"
 						placeholder="Enter password" required></td>
 				</tr>
