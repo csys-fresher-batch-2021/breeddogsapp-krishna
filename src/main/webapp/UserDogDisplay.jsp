@@ -26,7 +26,6 @@
 				
 		</thead>
 	    <tbody>
-	    
 	    <%
 	    List<DogDetails> taskList=DogManager.displayDog();
 	    	    /*   int i=0; */
