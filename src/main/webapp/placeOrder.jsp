@@ -12,8 +12,6 @@
 <h3>PlaceOrder</h3>
  <form action="PlaceOrderServlet" method="post">
 
-
-
 <label for="dogno">DogNo : </label>
 	<input type="number" name="dogno" placeholder="Enter Dog Number   " required autofocus/>
 <br/>

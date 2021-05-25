@@ -13,7 +13,6 @@ public class UserData {
 		 */
 	}
 	
-	
 	private static List<UserDetails> userList = new ArrayList<>();
 
 	public static void addUser(UserDetails user) {

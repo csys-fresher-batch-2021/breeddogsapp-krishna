@@ -10,7 +10,6 @@
 	<main class="container-fluid">
 		<h3>Welcome To BreedDogs</h3>
 		
-	
 	</main>
 </body>
 </html>

@@ -34,5 +34,6 @@ public class UserValidate {
 		}
 		return isValid;
 
+		
 	}
 }

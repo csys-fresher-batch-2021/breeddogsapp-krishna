@@ -12,7 +12,6 @@ public class DogDetails {
 	public int getDogNo() {
 		return dogno;
 	}
-
 	public String getDogName() {
 		return dogname;
 	}

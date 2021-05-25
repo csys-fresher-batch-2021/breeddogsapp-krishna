@@ -23,7 +23,6 @@
 				<th scope="col">Dog Price</th>
 				<th scope="col">Dog Insurance</th>
 		</tr>
-				
 		</thead>
 	    <tbody>
 	    <%

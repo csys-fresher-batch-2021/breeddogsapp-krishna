@@ -12,10 +12,7 @@ public class AdminOrderListService {
 	private static AdminOrder placeOrders = new AdminOrder();
 
 
-	
-	
 
-	
 	public static boolean addOrder(int dogno,String address)
 	{
 	  boolean isAdded = false;

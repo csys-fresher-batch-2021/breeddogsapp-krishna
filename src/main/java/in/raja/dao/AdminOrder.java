@@ -13,10 +13,6 @@ public class AdminOrder {
 
 	
 	
-
-
-
-
 public static void placeOrder(AdminOrderList order) {
 		adminOrderList.add(order);
 	

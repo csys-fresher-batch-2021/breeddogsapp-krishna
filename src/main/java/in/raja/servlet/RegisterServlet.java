@@ -34,8 +34,6 @@ public class RegisterServlet extends HttpServlet {
 		boolean isValid = UserValidate.validateUser(username, userMail, password1, password2, phoneNumber);
 		
 	
-		
-
 		if (isValid) {
 
 			
