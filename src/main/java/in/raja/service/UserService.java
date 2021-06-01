@@ -99,4 +99,9 @@ public class UserService {
 		return name;
 	}
 
+	public static boolean checkUser(String phonenumber, String passWord) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
