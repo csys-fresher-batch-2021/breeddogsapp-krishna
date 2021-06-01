@@ -35,7 +35,7 @@ public class UserDogServlet extends HttpServlet {
 		String place=request.getParameter("place");
 		Integer price=Integer.parseInt(request.getParameter("price"));
 		String insurance=request.getParameter("insurance");
-		DogManager.addDog(dogno,dogname,age,gender,place,price,insurance);
+//		DogManager.addDog(dogno,dogname,age,gender,place,price,insurance);
 		response.sendRedirect("UserDogDisplay.jsp");
 	}
 

@@ -47,6 +47,10 @@ public class DogDetails {
 
 	}
 
+	public DogDetails(Integer dogNo2) {
+		this.dogno = dogno;
+
+	}
 	@Override
 	public String toString() {
 		return "DogDetails [dogno=" + dogno + ", dogname=" + dogname + ", age=" + age + ", gender=" + gender

@@ -1,4 +1,4 @@
-package in.raja.dao;
+package in.raja.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,13 +7,14 @@ import in.raja.model.UserDetails;
 
 public class UserData {
 
-	private UserData() {
+	public UserData() {
 		/**
 		 * constructor
 		 */
 	}
 	
 	private static List<UserDetails> userList = new ArrayList<>();
+	private static List<UserDetails> productList2;
 
 	public static void addUser(UserDetails user) {
 		userList.add(user);
@@ -25,6 +26,6 @@ public class UserData {
     * @return
     */
     public static List<UserDetails> getUsers1() {
-    	return userList;
+    	return productList2;
     }
 }
