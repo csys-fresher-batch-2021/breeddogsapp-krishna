@@ -7,10 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.raja.exception.DAOException;
 import in.raja.model.AdminOrderList;
 import in.raja.model.DogDetails;
-import in.raja.model.UserDetails;
 import in.raja.util.ConnectionUtil;
 
 public class ProductDAO {
@@ -32,21 +30,18 @@ public class ProductDAO {
 		
 		 Connection connection = null;
 		 PreparedStatement pst = null;
-		 ResultSet rs = null;	
 		
 		try {
 
 
 			connection = ConnectionUtil.CreateConnection();
 			
-			System.out.println(connection);
 			
 			String sql ="INSERT INTO breed_dogs(dog_age, dog_name, dog_no, dog_gender, dog_place, dog_price, dog_insurance ) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 			
 			pst = connection.prepareStatement(sql);
 			
-			System.out.println(products);
 
 			
 			pst.setString(1, products.getDogAge());
@@ -61,9 +56,7 @@ public class ProductDAO {
 			pst.executeUpdate();
 
 			// insert,update and delete
-			System.out.println(products);
-
-			System.out.println(products);
+			
 
 		} 
 		catch (SQLException e) {
@@ -178,28 +171,7 @@ public class ProductDAO {
 
 
 
-//
-//	public Patient search(String searchName) {
-//		Patient patient = null;
-//		String sql = "select  * FROM breed_dogs where dog_no = ?;";
-//		try {
-//			connection = ConnectionUtil.CreateConnection();
-//			pst = connection.prepareStatement(sql);
-//			rs = pst.executeQuery();
-//			while (rs.next()) {
-//				int patientAge = rs.getInt("patientAge");
-//				
-//				patient = new Patient(patientName, patientAge, patientGender, reason);
-//			}
-//		} catch (SQLException e) {
-//			
-//			e.printStackTrace();
-//		} finally {
-//			
-//			ConnectionUtil.closeConnection(rs, pst, connection);
-//		}
-//		return productList;
-//	}
+
 
 	
 	
@@ -229,7 +201,6 @@ public class ProductDAO {
 			while (rs.next()) {
 				 orderDogNo = rs.getInt("dog_no");
 				 dogNoList.add(orderDogNo);
-				 System.out.println(orderDogNo);
 				
 			}
 		} catch (SQLException e) {
@@ -266,7 +237,6 @@ public static List<AdminOrderList>   getOrderDetails() {
 				 AdminOrderList adminOrderList = new AdminOrderList(orderDogNo, orderMobileNo, orderAddress);
 				 
 				 orderList.add(adminOrderList);
-				 System.out.println(orderList);
 				
 				
 			}

@@ -11,7 +11,6 @@ import in.raja.service.UserRegister;
  * Servlet implementation class UserLoginServlet
  */
 
-import in.raja.validate.UserValidate;
 
 
 

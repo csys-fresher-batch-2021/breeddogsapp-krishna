@@ -1,6 +1,5 @@
 package in.raja.validate;
 
-import in.raja.model.UserDetails;
 import in.raja.service.UserService;
 
 public class UserValidate {
@@ -11,10 +10,9 @@ public class UserValidate {
 		 */
 	}
 
-	public static boolean validateUser(String username, String userMail, String password1, String password2,
+	public static boolean validateUser( String password1, String password2,
 			String phoneNumber) {
 		boolean isValid = false;
-		long mobileNo = Long.parseLong(phoneNumber);
 
 		if (password1.equals(password2) && phoneNumber.length() == 10 && password1.trim().length() >= 5) {
 		

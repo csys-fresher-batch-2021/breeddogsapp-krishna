@@ -21,7 +21,6 @@ public class AddDogServlet extends HttpServlet {
 		
 		
 		Integer dogno=Integer.parseInt(request.getParameter("dogno"));
-		System.out.println(dogno);
 		String dogname=request.getParameter("dogname");
 		String age=request.getParameter("age");
 		String gender=request.getParameter("gender");
@@ -35,7 +34,6 @@ public class AddDogServlet extends HttpServlet {
 		
 		DogDetails product = new DogDetails(dogno,dogname,age,gender,place,price,insurance);
 		
-		System.out.println(product);
 
 		
 		DogManager addProduct = new DogManager();

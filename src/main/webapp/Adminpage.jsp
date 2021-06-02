@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>AdminPage</title>
@@ -40,21 +40,4 @@
 
 
 
-
-<!-- <a class="btn btn-primary" href="Admin.jsp" role="button">AdminPage</a>
-<a class="btn btn-primary" href="AdminOrderLogin.jsp" role="button">AdminorderList</a>
-
-
-
-<body>
-
-<div class="container">
-  <h2>Button Tags</h2>
-  <a href="#" class="btn btn-info" role="button">Link Button</a>
-
-</div>
-
-</body>
-</html>
- -->
 

@@ -1,14 +1,10 @@
 package in.raja.service;
 
-import java.util.List;
 
-
-import in.raja.dao.ProductDAO;
 
 import in.raja.exception.ValidatorException;
 import in.raja.model.UserDetails;
 import in.raja.util.StringValidator;
-import in.raja.validate.userValidation;
 
 public class UserService {
 
