@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.raja.model.DogDetails;
 import in.raja.service.DogManager;
-
+/**
+ * Servlet implementation class AddDonorServlet
+ */
 @WebServlet("/AddDogServlet")
 public class AddDogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,13 +26,48 @@ public class AddDogServlet extends HttpServlet {
 		String gender=request.getParameter("gender");
 		String place=request.getParameter("place");
 		Integer price=Integer.parseInt(request.getParameter("price"));
-
-		String insurance=request.getParameter("insurance");
-		DogManager.addDog(dogno,dogname,age,gender,place,price,insurance);
-		response.sendRedirect("dogdetails.jsp");
+        String insurance=request.getParameter("insurance");
 		
+		try {
+			
+		
+		
+		DogDetails product = new DogDetails(dogno,dogname,age,gender,place,price,insurance);
+		
+
+		
+		DogManager addProduct = new DogManager();
+		
+		
+		boolean success=addProduct.addDog(product);
+		
+		
+		if (success) {
+
+			String infoMessage = "Product Added Successfully";
+			response.sendRedirect("dogdetails.jsp?infoMessage=" + infoMessage);
+		} else {
+
+			String errorMessage = "Invalid product";
+			response.sendRedirect("adddog.jsp?errorMessage=" + errorMessage);
+		}
+
+	}
+
+	catch (Exception e) {
+
+		String errorMessage = e.getMessage();
+		response.sendRedirect("adddog.jsp?errorMessage=" + errorMessage);
+	}
+
 	}
 
 
-
 }
+
+
+
+
+
+	
+

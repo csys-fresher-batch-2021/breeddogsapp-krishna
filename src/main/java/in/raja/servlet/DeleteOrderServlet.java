@@ -1,5 +1,3 @@
-
-
 package in.raja.servlet;
 
 import java.io.IOException;
@@ -12,18 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import in.raja.service.DogManager;
 
-@WebServlet("/DeleteServlet")
-public class DeleteServlet extends HttpServlet {
+
+@WebServlet("/DeleteOrderServlet")
+public class DeleteOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	@Override
+	 @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
   			 
-			   Integer dogno=Integer.parseInt(request.getParameter("dogno"));
+			   Integer dogNo=Integer.parseInt(request.getParameter("dogno"));
+			   
+			   
+
 				
-			   boolean deleted = DogManager.deleteDog(dogno);
+			   boolean deleted = DogManager.deleteOrder(dogNo);
+			   
+			   
+
 			   if(deleted){
-			      response.sendRedirect("dogdetails.jsp");
+			      response.sendRedirect("orderDetail.jsp");
 			   }
 			  
 		   }
@@ -31,7 +36,7 @@ public class DeleteServlet extends HttpServlet {
 		   {
 			   
               String error = "unable to delete";
-              response.sendRedirect("dogdetails.jsp?error=" + error);
+              response.sendRedirect("orderDetail.jsp?error=" + error);
 
 		   }
 		 

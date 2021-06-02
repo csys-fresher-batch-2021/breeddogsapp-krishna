@@ -9,15 +9,30 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+	
+	
+	
 <div style="text-align: center">
         <h1> UserLogin</h1>
+
+<% 
+	String msg=request.getParameter("message");
+if(msg !=null)
+	out.println("<font color='red'>"+msg+"</font>");
+%>
+	
+
+
         <form action="LoginServlet" method="post">
-            <label for="PhoneNumber">PhoneNumber:</label>
-            <input name="number" size="10" />
+            <label for="username">UserName:</label>
+            <input type = "text" name="username" id="username" min=3 max=9999999999 placeholder="Enter Your Name" required autofocus /> 
+
+
+
             <br><br>
             <label for="password">Password:</label>
-            <input type="password" name="password" size="8" />
-            <br>${message}
+            <input type="password" name="password"  id="password" placeholder="Enter Your PassWord" required autofocus />
+            <br>
             <br><br>           
             <button type="submit">Login</button>
         </form>

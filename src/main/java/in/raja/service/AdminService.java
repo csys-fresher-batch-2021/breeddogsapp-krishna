@@ -6,13 +6,6 @@ import in.raja.dao.AdminData;
 import in.raja.model.AdminDetails;
 
 public class AdminService {
-	
-	private AdminService() {
-	    throw new IllegalStateException("Utility class");
-	  }
-
-	
-	
 	public static boolean checkAdmin(String phoneNumber, String password) {
 		boolean isValid = false;
 		long mobileNo = Long.parseLong(phoneNumber);
@@ -25,9 +18,6 @@ public class AdminService {
 		}
 		return isValid;
 	}
-
-	
-	
 
 	public static boolean getAdminName(String phoneNumber) {
 		Object name = null;

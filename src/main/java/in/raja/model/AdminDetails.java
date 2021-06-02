@@ -15,7 +15,7 @@ public class AdminDetails {
 	
 	
 
-//	get method
+	
 
 	
 	public String getName() {

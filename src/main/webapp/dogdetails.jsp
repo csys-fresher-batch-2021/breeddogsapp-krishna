@@ -1,4 +1,6 @@
+
 <!DOCTYPE>
+<%@page import="in.raja.dao.ProductDAO"%>
 <html lang="en" xml:lang="en">
 <%@page import="java.util.List"%>
 <%@page import="in.raja.model.DogDetails"%>
@@ -7,10 +9,6 @@
 <head>
 <title>MyApp</title>
 </head>
-
-
-
-
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
@@ -33,8 +31,9 @@
 		</thead>
 	    <tbody>
 	    <%
-	    List<DogDetails> taskList=DogManager.displayDog();
+	    List<DogDetails> taskList =ProductDAO.findAll();
 	    	    /*   int i=0; */
+	    	    if(taskList!=null)
 	    	      for(DogDetails detail:taskList)
 	    	      {
 	    	      
@@ -50,7 +49,7 @@
 	    
 	    
 	     <tr>
-			    
+			  
 			    <td><%=detail.getDogNo() %></td>
 			    <td><%=detail.getDogName() %></td>
 			    <td><%=detail.getDogAge()%></td>
@@ -70,3 +69,4 @@
 </main>
 </body>
 </html>
+

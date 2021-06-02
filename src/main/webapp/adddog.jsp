@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,28 +11,28 @@
 	<h3>Add Dogs</h3>
 	<form action="AddDogServlet">
 	
-
+	
 	<label for="dogno"></label>
-	<input type="number" name="dogno" placeholder="Enter Dog Number" required autofocus/>
+	<input type="number" name="dogno" id="dogno"  min ="1" max="1000000000000" placeholder="Enter Dog Number" required autofocus/>
 	<br/>
 	<label for="dogname"></label>
-	<input type="text" name="dogname" placeholder="Enter Dog Name" required autofocus/> 
+	<input type="text" name="dogname"id="dogname"  placeholder="Enter Dog Name" required autofocus/> 
 	<br/>
 	<label for="age"></label>
-	<input type="text" name="age" placeholder="Enter Dog Age" required autofocus/>
+	<input type="text" name="age" id="age" placeholder="Enter Dog Age" required autofocus/>
 	<br/>
 	<label for="gender"></label>
-	<input type="text" name="gender" placeholder="Enter Dog Gender" required autofocus/>
+	<input type="text" name="gender" id="gender" placeholder="Enter Dog Gender" required autofocus/>
 	<br/>
 	<label for="place"></label>
-	<input type="text" name="place" placeholder="Enter Dog Place" required autofocus/>
+	<input type="text" name="place" id="place" placeholder="Enter Dog Place" required autofocus/>
 	<br/>
 	
 	<label for="price"></label>
-	<input type="number" name="price" placeholder="Enter Dog Price" required autofocus/>
+	<input type="number" name="price" id="price" min ="1" max="1000000000000" placeholder="Enter Dog Price" required autofocus/>
 	<br/>
 	<label for="insurance"></label>
-	<input type="text" name="insurance" placeholder="Enter Dog insurance" required autofocus/>
+	<input type="text" name="insurance" id="insurance"  placeholder="Enter Dog insurance" required autofocus/>
 	<br/>
 	<button  type="submit">Submit</button>
 	</form>
@@ -43,4 +44,3 @@
 
 
 
-			   

@@ -1,4 +1,5 @@
 <!DOCTYPE>
+<%@page import="in.raja.dao.ProductDAO"%>
 <html lang="en" xml:lang="en">
 <%@page import="java.util.List"%>
 <%@page import="in.raja.model.DogDetails"%>
@@ -26,13 +27,13 @@
 		</thead>
 	    <tbody>
 	    <%
-	    List<DogDetails> taskList=DogManager.displayDog();
+	    List<DogDetails> taskList =ProductDAO.findAll();
+
 	    	    /*   int i=0; */
 	    	      for(DogDetails detail:taskList)
 	    	      {
 	    	      
-	    	    	  
-	    %>
+	     %>
 	    
 	    
 	     

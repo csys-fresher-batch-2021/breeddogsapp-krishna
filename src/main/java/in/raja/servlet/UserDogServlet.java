@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.raja.service.DogManager;
 
 /**
  * Servlet implementation class UserDogServlet
@@ -28,14 +27,7 @@ public class UserDogServlet extends HttpServlet {
     
     @Override  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer dogno=Integer.parseInt(request.getParameter("dogno"));
-		String dogname=request.getParameter("dogname");
-		String age=request.getParameter("age");
-		String gender=request.getParameter("gender");
-		String place=request.getParameter("place");
-		Integer price=Integer.parseInt(request.getParameter("price"));
-		String insurance=request.getParameter("insurance");
-		DogManager.addDog(dogno,dogname,age,gender,place,price,insurance);
+		
 		response.sendRedirect("UserDogDisplay.jsp");
 	}
 

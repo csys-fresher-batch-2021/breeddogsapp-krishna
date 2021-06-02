@@ -12,16 +12,23 @@
 	<main class="container-fluid">
 <form action="RegisterServlet"  method="post">  
   
-UserName:<input type="text" name="userName" id="userName" placeholder="Enter Your Name" required/><br/><br/>  
-PhoneNumber:<input type="number" name="phoneNumber"  id="phoneNumber" placeholder="Enter Your PhNo"/><br/><br/>  
-Email Id:<input type="email" name="userM ail"  id="userMail" placeholder="Enter Your Mail"/><br/><br/>  
-Password:<input type="password" name="password1"  id="password1" placeholder="EnterYourPassword"/><br/><br/> 
-ReEnterPassword:<input type="password" name="password2"  id="password2" placeholder="ReEnterPassword"/><br/><br/>  
+
+  
+  
+    <h3>UserRegistration</h3>
+  
+  
+UserName:<input type="text" name="userName" id="userName"  placeholder="Enter Your Name" required autofocus/><br/><br/>  
+PhoneNumber:<input type="number" name="phoneNumber"  id="phoneNumber" min=1000000000 max=9999999999 placeholder="Enter Your PhNo"  required autofocus  /><br/><br/>  
+Email Id:<input type="email" name="userMail"  id="userMail" placeholder="Enter Your Mail"  required autofocus  /><br/><br/>  
+Password:<input type="password" name="password1"  id="password1" min=5 max=8 placeholder="EnterYourPassword" required autofocus    /><br/><br/> 
+ReEnterPassword:<input type="password" name="password2"  id="password2" min=5 max=8 placeholder="ReEnterPassword"  required autofocus    /><br/><br/>  
  
  
  
 City:  
-<select name="userCountry">  
+<select name="city" id ="city"  required autofocus>  
+<option>Null</option>
 <option>Madurai</option>  
 <option>Chennai</option>  
 <option>Coimbatore</option>  

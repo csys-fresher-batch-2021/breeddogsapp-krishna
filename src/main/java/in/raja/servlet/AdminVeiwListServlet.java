@@ -1,9 +1,4 @@
-
-
 package in.raja.servlet;
-
-
-
 
 import java.io.IOException;
 
@@ -16,21 +11,34 @@ import javax.servlet.http.HttpSession;
 
 import in.raja.service.AdminService;
 
+/**
+ * Servlet implementation class AdminServlet
+ */
 
 
-
-
-@WebServlet("/AdminServlet")
-public class AdminServlet extends HttpServlet {
+@WebServlet("/AdminVeiwListServlet")
+public class AdminVeiwListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
-    public AdminServlet() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AdminVeiwListServlet() {
         super();
-       
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String userId = request.getParameter("userId");
@@ -43,14 +51,17 @@ public class AdminServlet extends HttpServlet {
       				HttpSession session = request.getSession();
 		    		session.setAttribute("LOGGED_IN_USER", username);
 			    	session.setAttribute("ROLE", "ADMIN");
-					response.sendRedirect("adddog.jsp");
+			    	
+					response.sendRedirect("dogdetails.jsp");
 					
 					
 				} 
-					
 					else {
-						response.sendRedirect("Login.jsp?errorMessage=Invalid Login Credentials");
+						String message = "Invalid Login Credentials";
+
+						response.sendRedirect("Admin.jsp?message="+ message);
 					}
+					
 
 			}
 
@@ -59,5 +70,4 @@ public class AdminServlet extends HttpServlet {
 			}
 		}
 	}
-
 
