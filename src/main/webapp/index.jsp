@@ -4,6 +4,8 @@
 <html>
 <head>
 <title>MyApp</title>
+	<link rel="stylesheet" href="index.css">
+
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>

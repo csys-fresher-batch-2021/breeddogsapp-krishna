@@ -154,7 +154,10 @@ public class ProductDAO {
 				// Store all products in list
 				productList.add(product);
 
+				
 			}
+			
+			System.out.println(productList);
 
 		} catch (SQLException e) {
 			
@@ -166,6 +169,12 @@ public class ProductDAO {
 		return productList;
 	}
 
+	
+	
+	
+	
+	
+	
 
 
 
@@ -216,6 +225,11 @@ public class ProductDAO {
 	
 	}
 	
+	
+	
+	
+	
+	
 public static List<AdminOrderList>   getOrderDetails() {
 		
 		
@@ -257,6 +271,15 @@ public static List<AdminOrderList>   getOrderDetails() {
 
 
 }
+
+
+
+
+
+
+
+
+
 	
 }
 	
