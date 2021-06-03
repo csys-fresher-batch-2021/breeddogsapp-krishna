@@ -27,7 +27,6 @@ public class ProductValidation1 {
 		boolean dogprice =  numberValidator.isValidNumber(product.getDogPrice(),"Dog price is Empty");
 		boolean doginsurance = StringValidator.isValidString(product.getDogInsurance(),"Dog insurance is Empty");
 
-		System.out.println(dogno);
 		
 		if (dogno && dogplace && dogname && dogage && dogprice && doggender && doginsurance ) {
 			

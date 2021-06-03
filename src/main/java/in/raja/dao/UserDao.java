@@ -10,9 +10,6 @@ import in.raja.util.ConnectionUtil;
 
 public class UserDao {
 
-	Connection connection = null;
-	PreparedStatement pst = null;
-	ResultSet rs = null;
 
 	/**
 	 * This method is used to store user details in db
@@ -30,7 +27,7 @@ public   void save2(UserDetails registerDetails) throws SQLException
 		 try {
 				connection = ConnectionUtil.CreateConnection();
 
-				System.out.println(connection);
+			
 				
 				
 				String sql = "INSERT INTO register_user(user_username, user_emailid, user_password  ,user_phonenumber    , user_city) values (?,?,?,?,?)";
@@ -64,8 +61,20 @@ public   void save2(UserDetails registerDetails) throws SQLException
 
 	public   boolean findUser(String username, String password) {
 		boolean valid = false;
+		
+		
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
 
 		try {
+			
+			
+
+			
+			
+			
+			
 			connection = ConnectionUtil.CreateConnection();
 
 			String sql = "select user_username,user_password from register_user where user_username = ? and user_password = ?";

@@ -22,7 +22,6 @@ public class OrderDAO {
 		
 		Connection connection = null;
 		 PreparedStatement pst = null;
-		 ResultSet rs = null;	
 		
 
 		 try {
@@ -30,12 +29,10 @@ public class OrderDAO {
 
 				connection = ConnectionUtil.CreateConnection();
 				
-				System.out.println(connection);
 				String sql ="INSERT INTO placeorder_dogs(order_dogno , orderuser_phoneno , orderuser_address ) VALUES (?, ?, ?)";
 
 				pst = connection.prepareStatement(sql);
 				
-				System.out.println(UserPlaceOrder);
 
 				
 				
@@ -50,7 +47,6 @@ public class OrderDAO {
 				
 				pst.executeUpdate();
 
-				System.out.println(UserPlaceOrder);
 		       }
 		 
 		 

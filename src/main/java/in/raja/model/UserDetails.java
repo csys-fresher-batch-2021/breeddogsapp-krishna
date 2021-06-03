@@ -59,7 +59,6 @@ public class UserDetails {
 	
 
 	public String getcity() {
-		// TODO Auto-generated method stub
 		return city;
 	}
 
