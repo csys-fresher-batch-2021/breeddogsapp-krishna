@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+body{
+	 background-image: url('https://t4.ftcdn.net/jpg/03/07/28/29/240_F_307282946_dbctSHdtrRtWYHoHkUC53JkWkkhm2zJW.jpg');
+	background-size: cover;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+    background-size: 900px 300px;
+   
+	}
+	.body h3{
+    text-align:center;
+    margin-bottom: 20px;
+	background-color:rgb(53, 155, 202);
+	color:black;
+}
+	
+	

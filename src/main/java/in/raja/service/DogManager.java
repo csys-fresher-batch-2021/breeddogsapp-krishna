@@ -31,7 +31,6 @@ public class DogManager {
 	
 	
 	
-	private static final List<DogDetails> taskList1 = new ArrayList<>();
 	
 
 	   
@@ -90,7 +89,6 @@ public class DogManager {
 			{
 				if (ProductValidation1.isValidProduct(product1)) {
 					try {
-						System.out.println(product1);
 						ProductDAO.save(product1);
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -106,11 +104,9 @@ public class DogManager {
 	   
 	   
 	   public static boolean checkAvailable(int dogno) throws Exception {
-		   System.out.println(dogno);
 		    
 		    boolean isValid = false;
 		    	
-		    System.out.println(dogno);
 		    	
 		    List<Integer>  dogNoList = ProductDAO.searchDogAvailability(dogno);
 		    for(int number : dogNoList) {
@@ -142,7 +138,6 @@ public class DogManager {
 			
 			boolean isdeleted=false;
 			
-			System.out.println(dogno);
 
 			   if(numberValidator.isValidNumber(dogno,"Invalid Dogno"))
 			   {
@@ -165,7 +160,6 @@ public class DogManager {
 			
 			boolean isdeleted=false;
 			
-			System.out.println(dogno);
 
 			   if(numberValidator.isValidNumber(dogno,"Invalid Dogno"))
 			   {
@@ -180,9 +174,48 @@ public class DogManager {
 			   return isdeleted;
 		}
 		   
+	   
+	   
+	   
 		   
 		   
-		   
+	   public static List<DogDetails> searchBreedByCost(int breedType)
+		{
+
+			
+			List<DogDetails> costDetails =ProductDAO.findAll();
+			
+			costDetails.removeAll(costDetails);
+
+			if (breedType == 1)
+			{
+				for (DogDetails breed : ProductDAO.findAll())
+				{
+					if (breed.getDogPrice()<=5000 ) {
+						costDetails.add(breed);
+                      
+					}
+				}
+			}
+			else if (breedType == 2)
+			{
+				for (DogDetails breed : ProductDAO.findAll())
+					if (breed.getDogPrice() > 5000 && breed.getDogPrice() <= 10000 ) {
+						costDetails.add(breed);
+					}
+				
+			}
+					else if (breedType == 3)
+					{
+						for (DogDetails breed : ProductDAO.findAll())
+							if ( breed.getDogPrice() > 10000 ) {
+								costDetails.add(breed);
+							
+							}
+				}
+			return costDetails;
+			}
+
 		   
 		   
 		   
@@ -225,17 +258,9 @@ public class DogManager {
 
 
 
-
 	
-//	
-//	
-//	  public List<DogDetails> findAll() {
-//
-//	List<DogDetails> searchResult = ProductDAO.findAll();
-//	return searchResult;
-//}
-//
-//
+
+
 
 
 
