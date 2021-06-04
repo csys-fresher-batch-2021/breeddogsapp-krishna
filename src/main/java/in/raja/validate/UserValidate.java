@@ -1,6 +1,5 @@
 package in.raja.validate;
 
-import in.raja.dao.UserData;
 import in.raja.model.UserDetails;
 import in.raja.service.UserService;
 

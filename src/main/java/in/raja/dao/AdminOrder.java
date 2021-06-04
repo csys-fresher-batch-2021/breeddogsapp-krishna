@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.raja.model.AdminOrderList;
-import in.raja.model.UserDetails;
 
 public class AdminOrder {
 	

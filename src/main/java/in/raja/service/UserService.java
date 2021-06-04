@@ -33,7 +33,19 @@ public class UserService {
 
 	
 	
-
+	public static boolean checkUser(String phoneNumber, String password1) {
+		boolean isValid = false;
+		long mobileNo = Long.parseLong(phoneNumber);
+		for (UserDetails user : UserData.getUsers1()) {
+			if (user.getphoneNumber() == mobileNo) {
+				if (user.getpassword1().equals(password1)) {
+					isValid = true;
+				}
+				break;
+			}
+		}
+		return isValid;
+	}
 	
 
 	

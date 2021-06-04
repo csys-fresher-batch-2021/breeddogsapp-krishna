@@ -25,11 +25,7 @@
 	
 </select> 
 		 <table id="sortedDogs" class="table table-bordered">
-		
-	   
-		
 		</table> 
-  		<a href="UserDogServlet.java"></a>  
 </main>
 <script>
 function select(){

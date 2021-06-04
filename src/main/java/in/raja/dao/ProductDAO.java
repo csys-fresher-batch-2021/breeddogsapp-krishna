@@ -7,10 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.raja.exception.DAOException;
 import in.raja.model.AdminOrderList;
 import in.raja.model.DogDetails;
-import in.raja.model.UserDetails;
 import in.raja.util.ConnectionUtil;
 
 public class ProductDAO {
@@ -32,7 +30,6 @@ public class ProductDAO {
 		
 		 Connection connection = null;
 		 PreparedStatement pst = null;
-		 ResultSet rs = null;	
 		
 		try {
 

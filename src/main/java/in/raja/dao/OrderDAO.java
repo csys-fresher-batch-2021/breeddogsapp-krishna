@@ -22,7 +22,6 @@ public class OrderDAO {
 		
 		Connection connection = null;
 		 PreparedStatement pst = null;
-		 ResultSet rs = null;	
 		
 
 		 try {

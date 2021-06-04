@@ -11,9 +11,8 @@ import in.raja.dao.ProductDAO;
 import in.raja.dao.UserDao;
 import in.raja.model.DogDetails;
 import in.raja.model.UserDetails;
-import in.raja.util.numberValidator;
+import in.raja.util.NumberValidator;
 import in.raja.validate.ProductValidation1;
-import in.raja.validate.UserValidate;
 import in.raja.validate.userValidation;
 
 public class DogManager {
@@ -100,6 +99,9 @@ public class DogManager {
 		}
 
 	   
+	  
+	                                        
+	   
 	   
 	   
 	   
@@ -139,7 +141,7 @@ public class DogManager {
 			boolean isdeleted=false;
 			
 
-			   if(numberValidator.isValidNumber(dogno,"Invalid Dogno"))
+			   if(NumberValidator.isValidNumber(dogno,"Invalid Dogno"))
 			   {
 				
 				   
@@ -161,7 +163,7 @@ public class DogManager {
 			boolean isdeleted=false;
 			
 
-			   if(numberValidator.isValidNumber(dogno,"Invalid Dogno"))
+			   if(NumberValidator.isValidNumber(dogno,"Invalid Dogno"))
 			   {
 				
 				   
@@ -268,5 +270,4 @@ public class DogManager {
 	
 }
 	
-
 

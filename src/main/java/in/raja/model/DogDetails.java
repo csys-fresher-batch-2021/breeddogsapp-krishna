@@ -47,9 +47,10 @@ public class DogDetails {
 
 	}
 
-	public DogDetails(Integer dogNo2) {
-		this.dogno = dogno;
+	
 
+	public DogDetails(Integer dogNo2) {
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
