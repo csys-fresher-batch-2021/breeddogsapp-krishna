@@ -10,7 +10,7 @@ import java.util.List;
 import in.raja.exception.DAOException;
 import in.raja.model.AdminOrderList;
 import in.raja.model.DogDetails;
-import in.raja.model.forgotUser;
+import in.raja.model.ForgotUser;
 import in.raja.util.ConnectionUtil;
 
 public class ProductDAO {

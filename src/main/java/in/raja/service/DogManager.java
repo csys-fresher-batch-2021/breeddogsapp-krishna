@@ -13,7 +13,7 @@ import in.raja.exception.UtilException;
 import in.raja.exception.ValidatorException;
 import in.raja.model.DogDetails;
 import in.raja.model.UserDetails;
-import in.raja.model.forgotUser;
+import in.raja.model.ForgotUser;
 import in.raja.util.NumberValidator;
 import in.raja.util.PasswordValidator;
 import in.raja.validate.ProductValidation1;
