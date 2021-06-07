@@ -9,6 +9,9 @@ public class DogDetails {
 	private int price;
 	private String insurance;
 
+
+	
+	
 	public int getDogNo() {
 		return dogno;
 	}
@@ -35,7 +38,7 @@ public class DogDetails {
 		return insurance;
 	}
 
-	public DogDetails(int dogno, String dogname, String age, String gender, String place, int price, String insurance) {
+	public DogDetails( int dogno, String dogname, String age, String gender, String place, int price, String insurance) {
 
 		this.dogno = dogno;
 		this.dogname = dogname;
@@ -49,13 +52,13 @@ public class DogDetails {
 
 	
 
-	public DogDetails(Integer dogNo2) {
-		// TODO Auto-generated constructor stub
-	}
 	@Override
 	public String toString() {
 		return "DogDetails [dogno=" + dogno + ", dogname=" + dogname + ", age=" + age + ", gender=" + gender
 				+ ", place=" + place + ", price=" + price + ", insurance=" + insurance + "]";
+	}
+	public DogDetails(Integer dogNo2) {
+		// TODO Auto-generated constructor stub
 	}
 
 }

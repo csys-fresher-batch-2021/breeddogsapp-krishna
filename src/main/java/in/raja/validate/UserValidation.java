@@ -7,9 +7,9 @@ import in.raja.util.PasswordValidator;
 import in.raja.util.StringValidator;
 import in.raja.util.NumberValidator;
 
-public class userValidation {
+public class UserValidation {
 
-	private userValidation() {
+	private UserValidation() {
 		//Default constructor
 	}
 	

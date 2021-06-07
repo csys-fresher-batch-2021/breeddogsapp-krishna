@@ -23,6 +23,9 @@
 	
 	<option value="3">Above 10000</option>
 	
+	 	<option value="4">All Dogs</option>
+	
+	
 </select> 
 		 <table id="sortedDogs" class="table table-bordered">
 		</table> 

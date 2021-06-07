@@ -19,6 +19,8 @@ public class ProductValidation1 {
 	 */
 	public static boolean isValidProduct(DogDetails product) {
 		boolean valid = false;
+		
+		
 		boolean dogno =  NumberValidator.isValidNumber(product.getDogNo(),"Dog NO is Empty");
 		boolean dogname = checkDogName(product.getDogName());
 		boolean dogage = StringValidator.isValidString(product.getDogAge(),"Dog age is empty");

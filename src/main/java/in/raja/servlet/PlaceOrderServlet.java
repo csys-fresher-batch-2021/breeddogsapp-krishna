@@ -32,43 +32,45 @@ public class PlaceOrderServlet extends HttpServlet {
 			Integer dogno=Integer.parseInt(request.getParameter("dogno"));
 			long phoneno=Long.parseLong(request.getParameter("phoneno"));
 		    String address = request.getParameter("address");
+		    
+		    
+		   
 			
 		    AdminOrderList placeOrderDetails = new AdminOrderList(dogno, phoneno, address);
-		    
-		    
+		    		    
 
 			
 			boolean isvalid = false;
 		
 				try {
-					
+				
 					isvalid = DogManager.checkAvailable(dogno);
 					
 	               if(isvalid==true)	{
 					OrderDAO.saveOrder(placeOrderDetails);
 			
 								
-					response.sendRedirect("orderDetail.jsp");
+					 response.sendRedirect("billUser.jsp?dogno="+dogno+"&phoneno="+phoneno+"&address="+address);
 	               }
 					
 					else
 					{
-					response.sendRedirect("AdminOrderLogin.jsp");
+				response.sendRedirect("AdminOrderLogin.jsp");
 					
-					}
+			}
 					
-				} 	catch (Exception e) {
-					// TODO Auto-generated catch block
+		} 	catch (Exception e) {
 					e.printStackTrace();
-				}
-			
+			}
+	
 
 			
 			
 	
-	
-	}
+
 }
+}
+
 
 	
 			

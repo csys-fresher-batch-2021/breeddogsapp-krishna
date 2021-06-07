@@ -28,7 +28,12 @@ public class SearchByCostServlet extends HttpServlet
 		
 		try {
 			String cost = request.getParameter("cost");
+//			String dogname = request.getParameter("dogname");
+
 			int type = Integer.parseInt(cost);
+//			int type2 = Integer.parseInt(dogname);
+
+			
 			List<DogDetails> added = DogManager.searchBreedByCost(type);
 		//	HttpSession session = request.getSession();
 			//session.setAttribute("CostList",added.get(0));
@@ -38,8 +43,16 @@ public class SearchByCostServlet extends HttpServlet
 			out.println(obj);
 			out.flush();			
 			
-			
-			
+//			List<DogDetails>added2 = DogManager.searchBreedByName(type2);
+//
+//			Gson gson1 = new Gson();		
+//			String obj1 = gson1.toJson(added2);
+//			PrintWriter out1 = response.getWriter();
+//			out1.println(obj1);
+//			out1.flush();			
+//			
+//			
+//			
 				
 			
 			

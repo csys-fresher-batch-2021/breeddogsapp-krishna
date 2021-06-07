@@ -6,16 +6,17 @@ public class UserDetails {
 	private  String password1;
 	private String password2;
 	private String city;
-	private  long phoneNumber;
+	private   long phoneNumber;
 
 	public UserDetails(String username, String userMail, String password1, String password2, long phoneNumber, String city) {
 		this.username = username;
 		this.userMail = userMail;
 		this.password1 = password1;
 		this.password2 = password2;
-
-
 		this.phoneNumber = phoneNumber;
+
+
+
         this.city = city;
 		 
 		
@@ -30,6 +31,132 @@ public class UserDetails {
 
 	
 
+
+
+
+
+
+
+
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setPassword1(String password1) {
+		this.password1 = password1;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+	public void setUserMail(String userMail) {
+		this.userMail = userMail;
+	}
 
 
 
@@ -59,7 +186,6 @@ public class UserDetails {
 	
 
 	public String getcity() {
-		// TODO Auto-generated method stub
 		return city;
 	}
 

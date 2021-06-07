@@ -15,13 +15,6 @@
 <div style="text-align: center">
         <h1> UserLogin</h1>
 
-<% 
-	String msg=request.getParameter("message");
-if(msg !=null)
-	out.println("<font color='red'>"+msg+"</font>");
-%>
-	
-
 
         <form action="LoginServlet" method="post">
             <label for="username">UserName:</label>
@@ -34,8 +27,12 @@ if(msg !=null)
             <input type="password" name="password"  id="password" placeholder="Enter Your PassWord" required autofocus />
             <br>
             <br><br>           
-            <button type="submit">Login</button>
+            <button type="submit">Login</button>         
+
         </form>
+
+
+ Forgot <a href="forgotPassword.jsp"> password? </a>
     </div>
 </main>
 

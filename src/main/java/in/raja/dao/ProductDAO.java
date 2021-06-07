@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.raja.exception.DAOException;
 import in.raja.model.AdminOrderList;
 import in.raja.model.DogDetails;
+import in.raja.model.forgotUser;
 import in.raja.util.ConnectionUtil;
 
 public class ProductDAO {
@@ -45,7 +47,7 @@ public class ProductDAO {
 			
 			System.out.println(products);
 
-			
+
 			pst.setString(1, products.getDogAge());
 
 			pst.setString(2, products.getDogName());
@@ -77,6 +79,9 @@ public class ProductDAO {
 	
 	
 	
+	
+
+
 	
 	
 	
@@ -145,6 +150,7 @@ public class ProductDAO {
 			
 			
 			while (rs.next()) {
+
 				int dogno = rs.getInt("dog_no");
 				String dogname = rs.getString("dog_name");
 				String dogage = rs.getString("dog_age");
@@ -154,7 +160,7 @@ public class ProductDAO {
 				String doginsurance = rs.getString("dog_insurance");
 
 				// Store the data in model
-				DogDetails product = new DogDetails(dogno, dogname, dogage, doggender, doglocation, dogprice, doginsurance);
+				DogDetails product = new DogDetails(  dogno, dogname, dogage, doggender, doglocation, dogprice, doginsurance);
 				// Store all products in list
 				productList.add(product);
 
@@ -289,30 +295,11 @@ public static List<AdminOrderList>   getOrderDetails() {
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 		return orderList;
-
-		
-		
-		
-		
-
-
-
-}
-
-
-
-
-
-
-
-
-
-	
 }
 	
 	
 	
-	
+}
 	
 	
 

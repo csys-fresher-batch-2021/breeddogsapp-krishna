@@ -11,6 +11,9 @@
 	<form action="AddDogServlet">
 	
 	
+	
+	
+	
 	<label for="dogno"></label>
 	<input type="number" name="dogno" id="dogno"  min ="1" max="1000000000000" placeholder="Enter Dog Number" required autofocus/>
 	<br/>

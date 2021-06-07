@@ -1,5 +1,6 @@
 package in.raja.servlet;
 
+import java.awt.Image;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,9 @@ public class AddDogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	
+	   
+	   
 		Integer dogno=Integer.parseInt(request.getParameter("dogno"));
 		System.out.println(dogno);
 		String dogname=request.getParameter("dogname");
@@ -31,8 +33,6 @@ public class AddDogServlet extends HttpServlet {
 		
 		try {
 			
-		
-		
 		DogDetails product = new DogDetails(dogno,dogname,age,gender,place,price,insurance);
 		
 		System.out.println(product);
