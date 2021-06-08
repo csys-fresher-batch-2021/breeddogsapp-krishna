@@ -8,20 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import in.raja.model.forgotUser;
 import in.raja.service.DogManager;
 
 /**
  * Servlet implementation class forgotPasswordServlet
  */
-@WebServlet("/forgotPasswordServlet")
-public class forgotPasswordServlet extends HttpServlet {
+@WebServlet("/ForgotPasswordServlet")
+public class ForgotPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public forgotPasswordServlet() {
+    public ForgotPasswordServlet() {
         super();
     }
 

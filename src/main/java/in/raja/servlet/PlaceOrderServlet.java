@@ -1,7 +1,6 @@
 package in.raja.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import in.raja.dao.OrderDAO;
 import in.raja.model.AdminOrderList;
-import in.raja.model.UserDetails;
-import in.raja.service.AdminOrderListService;
 import in.raja.service.DogManager;
 
 /**
@@ -24,6 +21,7 @@ public class PlaceOrderServlet extends HttpServlet {
     
     
 
+	@Override
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{

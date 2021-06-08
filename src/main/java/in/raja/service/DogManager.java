@@ -10,12 +10,9 @@ import in.raja.dao.OrderDAO;
 import in.raja.dao.ProductDAO;
 import in.raja.dao.UserDao;
 import in.raja.exception.UtilException;
-import in.raja.exception.ValidatorException;
 import in.raja.model.DogDetails;
 import in.raja.model.UserDetails;
-import in.raja.model.forgotUser;
 import in.raja.util.NumberValidator;
-import in.raja.util.PasswordValidator;
 import in.raja.validate.ProductValidation1;
 import in.raja.validate.userValidation;
 
@@ -37,7 +34,6 @@ public class DogManager {
 		for (UserDetails registerDetails1 : registerDetails) {
 			if (userValidation.isValidUserDetail(registerDetails1)) {
 				try {
-					System.out.println(registerDetails1);
 
 					UserDao user = new UserDao();
 					user.save2(registerDetails1);
@@ -71,13 +67,7 @@ public class DogManager {
 
 	
 	
-	/*
-	 * public List<DogDetails> addStock(DogDetails... products) {
-	 * 
-	 * boolean added = false; for (DogDetails product : products) { try {
-	 * ProductDAO.save(product); } catch (SQLException e) { e.printStackTrace(); }
-	 * added = true; } return taskList; }
-	 */
+
 	public static boolean deleteDog(int dogno) throws Exception {
 
 		boolean isdeleted = false;
@@ -106,133 +96,6 @@ public class DogManager {
 		return isdeleted;
 	}
 
-	public static List<DogDetails> searchBreedByName(int type) {
-
-		List<DogDetails> availableDetails = ProductDAO.findAll();
-		availableDetails.removeAll(availableDetails);
-
-		if (type == 5) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String labrador = null;
-				if (breed.getDogName().toLowerCase() == labrador) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 6) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String pitbull = null;
-				if (breed.getDogName().toLowerCase() == pitbull) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 7) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String germanshephered = null;
-				if (breed.getDogName().toLowerCase() == germanshephered) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 8) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String pomeranian = null;
-				if (breed.getDogName().toLowerCase() == pomeranian) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 9) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String doberman = null;
-				if (breed.getDogName().toLowerCase() == doberman) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 10) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String kombai = null;
-				if (breed.getDogName().toLowerCase() == kombai) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 11) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String siberianhusky = null;
-				if (breed.getDogName().toLowerCase() == siberianhusky) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 12) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String greatdane = null;
-				if (breed.getDogName().toLowerCase() == greatdane) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 13) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String rottweiler = null;
-				if (breed.getDogName().toLowerCase() == rottweiler) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-
-		if (type == 14) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-
-				String dalmatian = null;
-				if (breed.getDogName().toLowerCase() == dalmatian) {
-					availableDetails.add(breed);
-
-				}
-
-			}
-		}
-		return availableDetails;
-
-	}
 
 	public static List<DogDetails> searchBreedByCost(int breedType) {
 
@@ -302,7 +165,6 @@ public class DogManager {
 		if (isEqual(password1, password2) &&  isExist(mobileNo)) {
 			change = UserDao.updatePassword(mobileNo, password1);
 			
-			System.out.println("has changed" + change);
 
 		} else {
 			throw new UtilException("Invalid Detailsss");
@@ -343,7 +205,7 @@ public static boolean checkAvailable(int dogno) throws Exception {
 }
 
 
-public static boolean isExist(long mobileNumber) throws Exception {
+public static boolean isExist(long mobileNumber)  {
 	boolean exist = false;
 	for (UserDetails add : UserDao.findAll()) {
 		if (add.getphoneNumber() == mobileNumber) {

@@ -1,9 +1,7 @@
 package in.raja.validate;
 
 
-import in.raja.dao.ProductDAO;
 import in.raja.model.UserDetails;
-import in.raja.util.PasswordValidator;
 import in.raja.util.StringValidator;
 import in.raja.util.NumberValidator;
 
@@ -23,7 +21,6 @@ public class userValidation {
 	 */
 	public static boolean isValidUserDetail(UserDetails userDetails) {
 		
-		System.out.println(userDetails);
 		
 		boolean valid = false;
 		boolean userpassword1 = StringValidator.isValidUsername(userDetails.getpassword1());

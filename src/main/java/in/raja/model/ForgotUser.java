@@ -1,12 +1,12 @@
 package in.raja.model;
 
-public class forgotUser {
+public class ForgotUser {
 
 	private long  phoneNumber;
 	private String password1;
 	private String password2;
 
-	public  forgotUser(long phoneNumber, String password1, String password2) {
+	public  ForgotUser(long phoneNumber, String password1, String password2) {
 		this.phoneNumber = phoneNumber;
 		this.password1 = password1;
 		this.password2 = password2;

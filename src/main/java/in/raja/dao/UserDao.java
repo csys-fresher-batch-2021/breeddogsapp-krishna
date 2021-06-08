@@ -7,18 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.raja.exception.DAOException;
 import in.raja.exception.UtilException;
-import in.raja.model.DogDetails;
 import in.raja.model.UserDetails;
 import in.raja.util.ConnectionUtil;
 
 public class UserDao {
 
-	Connection connection = null;
-	PreparedStatement pst = null;
-	ResultSet rs = null;
-
+	
 	/**
 	 * This method is used to store user details in db
 	 * 
@@ -35,7 +30,6 @@ public   void save2(UserDetails registerDetails) throws SQLException
 		 try {
 				connection = ConnectionUtil.CreateConnection();
 
-				System.out.println(connection);
 				
 				
 				String sql = "INSERT INTO register_user(user_username, user_emailid, user_password  ,user_phonenumber    , user_city) values (?,?,?,?,?)";
@@ -118,6 +112,8 @@ public static List<UserDetails> findAll() {
 
 	try {
 
+		
+		
 		// Step 1: Get the connection
 		connection = ConnectionUtil.CreateConnection();
 
@@ -146,7 +142,6 @@ public static List<UserDetails> findAll() {
 			
 		}
 		
-		System.out.println(userList);
 
 	} catch (SQLException e) {
 		
@@ -170,6 +165,12 @@ public static List<UserDetails> findAll() {
 
 
 	public   boolean findUser(String username, String password) {
+		
+		
+		 Connection connection = null;
+		 PreparedStatement pst = null;
+		 ResultSet rs = null;	
+		
 		boolean valid = false;
 
 		try {

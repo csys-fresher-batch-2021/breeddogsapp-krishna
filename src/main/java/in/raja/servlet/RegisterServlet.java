@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import in.raja.model.UserDetails;
 import in.raja.service.DogManager;
-import in.raja.service.EmailValidator;
-import in.raja.validate.UserValidate;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -43,7 +41,6 @@ public class RegisterServlet extends HttpServlet {
 		
 		
 		
-		System.out.println(registerDetails);
 
 		DogManager adduserDetails = new DogManager();
 		

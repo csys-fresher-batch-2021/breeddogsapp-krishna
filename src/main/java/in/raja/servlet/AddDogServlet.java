@@ -1,6 +1,5 @@
 package in.raja.servlet;
 
-import java.awt.Image;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -35,8 +34,6 @@ public class AddDogServlet extends HttpServlet {
 			
 		DogDetails product = new DogDetails(dogno,dogname,age,gender,place,price,insurance);
 		
-		System.out.println(product);
-
 		
 		DogManager addProduct = new DogManager();
 		
