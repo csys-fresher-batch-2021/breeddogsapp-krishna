@@ -22,7 +22,7 @@
 <label for="address">Delivery Address</label>
 	<input type="text" name="address" placeholder="Enter Delivery Address" required autofocus/>
 	<br/>
-    <button  type="submit">Confirm</button>
+  <button  type="submit">Confirm</button>
     </form>
 </body>
 </html>

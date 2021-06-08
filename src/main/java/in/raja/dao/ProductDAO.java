@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.raja.exception.DAOException;
 import in.raja.model.AdminOrderList;
 import in.raja.model.DogDetails;
+import in.raja.model.forgotUser;
 import in.raja.util.ConnectionUtil;
 
 public class ProductDAO {
@@ -36,14 +38,16 @@ public class ProductDAO {
 
 			connection = ConnectionUtil.CreateConnection();
 			
+			System.out.println(connection);
 			
 			String sql ="INSERT INTO breed_dogs(dog_age, dog_name, dog_no, dog_gender, dog_place, dog_price, dog_insurance ) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 			
 			pst = connection.prepareStatement(sql);
 			
+			System.out.println(products);
 
-			
+
 			pst.setString(1, products.getDogAge());
 
 			pst.setString(2, products.getDogName());
@@ -56,7 +60,9 @@ public class ProductDAO {
 			pst.executeUpdate();
 
 			// insert,update and delete
-			
+			System.out.println(products);
+
+			System.out.println(products);
 
 		} 
 		catch (SQLException e) {
@@ -73,6 +79,9 @@ public class ProductDAO {
 	
 	
 	
+	
+
+
 	
 	
 	
@@ -141,6 +150,7 @@ public class ProductDAO {
 			
 			
 			while (rs.next()) {
+
 				int dogno = rs.getInt("dog_no");
 				String dogname = rs.getString("dog_name");
 				String dogage = rs.getString("dog_age");
@@ -150,7 +160,7 @@ public class ProductDAO {
 				String doginsurance = rs.getString("dog_insurance");
 
 				// Store the data in model
-				DogDetails product = new DogDetails(dogno, dogname, dogage, doggender, doglocation, dogprice, doginsurance);
+				DogDetails product = new DogDetails(  dogno, dogname, dogage, doggender, doglocation, dogprice, doginsurance);
 				// Store all products in list
 				productList.add(product);
 
@@ -210,6 +220,7 @@ public class ProductDAO {
 			while (rs.next()) {
 				 orderDogNo = rs.getInt("dog_no");
 				 dogNoList.add(orderDogNo);
+				 System.out.println(orderDogNo);
 				
 			}
 		} catch (SQLException e) {
@@ -251,6 +262,7 @@ public static List<AdminOrderList>   getOrderDetails() {
 				 AdminOrderList adminOrderList = new AdminOrderList(orderDogNo, orderMobileNo, orderAddress);
 				 
 				 orderList.add(adminOrderList);
+				 System.out.println(orderList);
 				
 				
 			}
@@ -262,30 +274,11 @@ public static List<AdminOrderList>   getOrderDetails() {
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 		return orderList;
-
-		
-		
-		
-		
-
-
-
-}
-
-
-
-
-
-
-
-
-
-	
 }
 	
 	
 	
-	
+}
 	
 	
 

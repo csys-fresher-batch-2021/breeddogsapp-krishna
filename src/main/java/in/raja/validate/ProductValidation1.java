@@ -3,7 +3,7 @@ package in.raja.validate;
 import in.raja.model.DogDetails;
 import in.raja.util.StringValidator;
 
-import in.raja.util.numberValidator;
+import in.raja.util.NumberValidator;
 
 public class ProductValidation1 {
 
@@ -19,12 +19,12 @@ public class ProductValidation1 {
 	 */
 	public static boolean isValidProduct(DogDetails product) {
 		boolean valid = false;
-		boolean dogno =  numberValidator.isValidNumber(product.getDogNo(),"Dog NO is Empty");
+		boolean dogno =  NumberValidator.isValidNumber(product.getDogNo(),"Dog NO is Empty");
 		boolean dogname = checkDogName(product.getDogName());
 		boolean dogage = StringValidator.isValidString(product.getDogAge(),"Dog age is empty");
 		boolean doggender = StringValidator.isValidString(product.getDogGender(),"Dog gender is Empty");
 		boolean dogplace =StringValidator.isValidString(product.getDogPlace(),"Dog place is Empty");
-		boolean dogprice =  numberValidator.isValidNumber(product.getDogPrice(),"Dog price is Empty");
+		boolean dogprice =  NumberValidator.isValidNumber(product.getDogPrice(),"Dog price is Empty");
 		boolean doginsurance = StringValidator.isValidString(product.getDogInsurance(),"Dog insurance is Empty");
 
 		

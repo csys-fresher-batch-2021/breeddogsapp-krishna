@@ -12,26 +12,29 @@
 	<form action="AddDogServlet">
 	
 	
-	<label for="dogno"></label>
+	<label for="dogno">Dog NO :</label>
 	<input type="number" name="dogno" id="dogno"  min ="1" max="1000000000000" placeholder="Enter Dog Number" required autofocus/>
 	<br/>
-	<label for="dogname"></label>
+	<label for="dogname"> Dog Name :</label>
 	<input type="text" name="dogname"id="dogname"  placeholder="Enter Dog Name" required autofocus/> 
 	<br/>
-	<label for="age"></label>
-	<input type="text" name="age" id="age" placeholder="Enter Dog Age" required autofocus/>
+	<label for="age">Dog Age (Days) :</label>
+	
+	
+	
+	<input type="number" name="age" id="age" placeholder="Enter Dog Age"  min="1" max="400" required autofocus/>(Between 1 to 400 Days)
 	<br/>
-	<label for="gender"></label>
+	<label for="gender">Dog Gender :</label>
 	<input type="text" name="gender" id="gender" placeholder="Enter Dog Gender" required autofocus/>
 	<br/>
-	<label for="place"></label>
+	<label for="place">Location :</label>
 	<input type="text" name="place" id="place" placeholder="Enter Dog Place" required autofocus/>
 	<br/>
 	
-	<label for="price"></label>
+	<label for="price">Price :</label>
 	<input type="number" name="price" id="price" min ="1" max="1000000000000" placeholder="Enter Dog Price" required autofocus/>
 	<br/>
-	<label for="insurance"></label>
+	<label for="insurance">Insurance :</label>
 	<input type="text" name="insurance" id="insurance"  placeholder="Enter Dog insurance" required autofocus/>
 	<br/>
 	<button  type="submit">Submit</button>
@@ -40,6 +43,8 @@
 </main>
 </body>
 </html>
+
+
 
 
 

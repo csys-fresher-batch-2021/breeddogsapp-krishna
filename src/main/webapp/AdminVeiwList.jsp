@@ -23,6 +23,9 @@
 				</tr>
 			</table>
 			<button type="submit">SUBMIT</button>
+					<br /> Note: Admin credentials are hard coded <br /> * User
+			Name:9626848802<br /> * Password: k1234
+			
 		</form>
 </body>
 </html>

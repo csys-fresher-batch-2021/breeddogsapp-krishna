@@ -5,9 +5,9 @@ package in.raja.util;
 import in.raja.exception.UtilException;
 
 
-public class numberValidator {
+public class NumberValidator {
 
-	private  numberValidator(){
+	private  NumberValidator(){
 		//Default Constructor
 	}
 	/**
