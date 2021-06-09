@@ -1,4 +1,3 @@
-
 <!DOCTYPE>
 <%@page import="in.raja.dao.ProductDAO"%>
 <html lang="en" xml:lang="en">
@@ -40,10 +39,7 @@
 	    	    	  
 	    /* 	    	  i++;  */
 	    %>
-	    
-	    
-	     
-	                                      
+                               
 	    
 	                                           
 	    
@@ -69,4 +65,3 @@
 </main>
 </body>
 </html>
-

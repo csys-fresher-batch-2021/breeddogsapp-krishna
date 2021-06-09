@@ -32,6 +32,8 @@ if(msg !=null)
 			</table>
 			<button type="submit">SUBMIT</button>
 		</form>
+		<br /> Note: Admin credentials are hard coded <br /> * User
+			Name:9626848802<br /> * Password: k1234
 </body>
 </html>
 
@@ -39,5 +41,3 @@ if(msg !=null)
 
 
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>

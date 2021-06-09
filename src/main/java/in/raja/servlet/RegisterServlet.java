@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import in.raja.model.UserDetails;
 import in.raja.service.DogManager;
 
-
 /**
  * Servlet implementation class RegisterServlet
  */

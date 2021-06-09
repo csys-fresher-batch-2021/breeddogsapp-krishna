@@ -43,7 +43,7 @@ public class ProductDAO {
 			pst = connection.prepareStatement(sql);
 			
 
-			
+
 			pst.setString(1, products.getDogAge());
 
 			pst.setString(2, products.getDogName());
@@ -56,8 +56,7 @@ public class ProductDAO {
 			pst.executeUpdate();
 
 			// insert,update and delete
-			
-
+		
 		} 
 		catch (SQLException e) {
 
@@ -73,6 +72,9 @@ public class ProductDAO {
 	
 	
 	
+	
+
+
 	
 	
 	
@@ -141,6 +143,7 @@ public class ProductDAO {
 			
 			
 			while (rs.next()) {
+
 				int dogno = rs.getInt("dog_no");
 				String dogname = rs.getString("dog_name");
 				String dogage = rs.getString("dog_age");
@@ -150,14 +153,13 @@ public class ProductDAO {
 				String doginsurance = rs.getString("dog_insurance");
 
 				// Store the data in model
-				DogDetails product = new DogDetails(dogno, dogname, dogage, doggender, doglocation, dogprice, doginsurance);
+				DogDetails product = new DogDetails(  dogno, dogname, dogage, doggender, doglocation, dogprice, doginsurance);
 				// Store all products in list
 				productList.add(product);
 
 				
 			}
 			
-			System.out.println(productList);
 
 		} catch (SQLException e) {
 			
@@ -262,30 +264,11 @@ public static List<AdminOrderList>   getOrderDetails() {
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 		return orderList;
-
-		
-		
-		
-		
-
-
-
-}
-
-
-
-
-
-
-
-
-
-	
 }
 	
 	
 	
-	
+}
 	
 	
 

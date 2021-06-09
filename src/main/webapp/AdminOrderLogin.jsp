@@ -23,10 +23,11 @@
 				</tr>
 			</table>
 			<button type="submit">SUBMIT</button>
+					<br /> Note: Admin credentials are hard coded <br /> * User
+			Name:9626848802<br /> * Password: k1234
+			
 		</form>
 </body>
 </html>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 

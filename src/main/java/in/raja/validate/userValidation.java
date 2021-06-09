@@ -3,7 +3,7 @@ package in.raja.validate;
 
 import in.raja.model.UserDetails;
 import in.raja.util.StringValidator;
-import in.raja.util.numberValidator;
+import in.raja.util.NumberValidator;
 
 public class userValidation {
 
@@ -24,7 +24,7 @@ public class userValidation {
 		
 		boolean valid = false;
 		boolean userpassword1 = StringValidator.isValidUsername(userDetails.getpassword1());
-		boolean userphonenumber =numberValidator.isValidNumber(userDetails.getphoneNumber(),"userPhoneNo is Empty");
+		boolean userphonenumber =NumberValidator.isValidNumber(userDetails.getphoneNumber(),"userPhoneNo is Empty");
 		
 
 		

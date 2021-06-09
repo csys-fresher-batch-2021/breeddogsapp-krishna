@@ -1,7 +1,6 @@
 package in.raja.service;
 
 
-
 import in.raja.exception.ValidatorException;
 import in.raja.model.UserDetails;
 import in.raja.util.StringValidator;
@@ -29,7 +28,19 @@ public class UserService {
 
 	
 	
-
+	public static boolean checkUser(String phoneNumber, String password1) {
+		boolean isValid = false;
+		long mobileNo = Long.parseLong(phoneNumber);
+		for (UserDetails user : UserData.getUsers1()) {
+			if (user.getphoneNumber() == mobileNo) {
+				if (user.getpassword1().equals(password1)) {
+					isValid = true;
+				}
+				break;
+			}
+		}
+		return isValid;
+	}
 	
 
 	
@@ -93,11 +104,6 @@ public class UserService {
 			}
 		}
 		return name;
-	}
-
-	public static boolean checkUser(String phonenumber, String passWord) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }
