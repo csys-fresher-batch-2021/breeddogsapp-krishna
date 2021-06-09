@@ -31,9 +31,12 @@ public class LoginServlet extends HttpServlet {
 		if (isValid) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", username);
+			session.setAttribute("ROLE", "user");
+
+			
 			response.sendRedirect("placeOrder.jsp");
 		} else {
-			response.sendRedirect("Index.jsp?errorMessage=Invalid Login Credentials");
+			response.sendRedirect("Login.jsp?errorMessage=Invalid Login Credentials");
 		}
 	}
 }

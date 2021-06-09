@@ -44,9 +44,10 @@ public class AdminServlet extends HttpServlet {
 					boolean username = AdminService.checkAdmin(userId, password);
 					if(username) {
       				HttpSession session = request.getSession();
-		    		session.setAttribute("LOGGED_IN_USER", username);
-			    	session.setAttribute("ROLE", "ADMIN");
-					response.sendRedirect("adddog.jsp");
+			    	session.setAttribute("LOGGED_IN_USER", "ADMIN");
+					session.setAttribute("ADMINROLE", "admin");
+
+					response.sendRedirect("Adminpage.jsp");
 					
 					
 				} 

@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
+
 <head>
 <meta charset="ISO-8859-1">
 <title>AdminPage</title>
@@ -15,13 +18,19 @@
 <body>
 
 
-<div class="container">
+	<jsp:include page="header.jsp"></jsp:include>
+	<main class="container-fluid">
+
+
+
+<!-- <div class="container">
   <h2>AdminPage</h2>
-  <a href="Admin.jsp" class="btn btn-info" role="button">AdminAddDogs</a>
-    <a href="AdminOrderLogin.jsp" class="btn btn-info" role="button">AdminVeiworderList</a>
-        <a href="AdminVeiwList.jsp" class="btn btn-info" role="button">AdminVeiwList</a>
+  <a href="adddog.jsp" class="btn btn-info" role="button">AdminAddDogs</a>
+    <a href="orderDetail.jsp" class="btn btn-info" role="button">AdminVeiworderList</a>
+        <a href="dogdetails.jsp" class="btn btn-info" role="button">AdminVeiwList</a>
     
-  
+  </div> -->
+  </main>
 
 
 </body>
@@ -39,4 +48,3 @@
 
 
 
-<

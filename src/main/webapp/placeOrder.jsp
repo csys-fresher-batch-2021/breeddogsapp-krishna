@@ -7,7 +7,8 @@
 <title>placeOrder</title>
 </head>
 <body>
-
+<jsp:include page="header.jsp"></jsp:include>
+	<main class="container-fluid">
 
 <h3>PlaceOrder</h3>
  <form action="PlaceOrderServlet" method="post">
@@ -24,6 +25,7 @@
 	<br/>
   <button  type="submit">Confirm</button>
     </form>
+    </main>
 </body>
 </html>
 
