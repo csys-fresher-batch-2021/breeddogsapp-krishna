@@ -8,6 +8,9 @@
 </head>
 <body>
 
+	<jsp:include page="header.jsp"></jsp:include>
+	<main class="container-fluid">
+
 
 <% 
 	String msg=request.getParameter("message");
@@ -34,6 +37,9 @@ if(msg !=null)
 		</form>
 		<br /> Note: Admin credentials are hard coded <br /> * User
 			Name:9626848802<br /> * Password: k1234
+			
+			
+			</main>
 </body>
 </html>
 
