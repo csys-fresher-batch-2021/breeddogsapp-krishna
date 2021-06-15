@@ -41,6 +41,11 @@ String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
        <li class="nav-item">
         <a class="nav-link" href="placeOrder.jsp">PlaceOrder</a>
       </li>
+      
+      
+       <li class="nav-item">
+        <a class="nav-link" href="UserOrderVeiw.jsp">VeiwUserOrder</a>
+      </li>
     <%
     }%>
        

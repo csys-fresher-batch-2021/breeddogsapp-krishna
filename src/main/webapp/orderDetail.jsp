@@ -21,11 +21,20 @@
 		<caption>Placed User</caption>
 		<thead>
 		<tr>
-		        <th scope="col">S.NO</th>
+		
+		
+		
+		
+                <th scope="col">S.NO</th>		
+		        <th scope="col">ID.NO</th>
+		       
+		       
 			    <th scope="col">Dog No</th>
 			    <th scope="col">Phone No</th>
 			    
 				<th scope="col">User Address</th>
+				<th scope="col">Status</th>
+				
 				</tr>
 				
 		</thead>
@@ -48,12 +57,19 @@
 	    
 	            <tr>
 	            <td><%=i %></td>
+	            <td><%=orderDetail.getOrderId() %></td>
 	            <td><%=orderDetail.getDogno()%></td>
-			    <td><%=orderDetail.getphoneno()%></td>
+			    <td><%=orderDetail.getPhoneno()%></td>
 	            
 			    <td><%=orderDetail.getAddress()%></td>
-			    <td><a href="DeleteOrderServlet?dogno=<%=orderDetail.getDogno()%>" class="btn btn-danger">Delete</a>
 			    
+		       <td><%=orderDetail.getStatus()%></td>
+			    
+  
+			    <td><a href="RejectOrderServlet?orderId=<%=orderDetail.getOrderId()%>" class="btn btn-danger">Delete</a></td>
+ 
+              
+			    <td><a href="AcceptOrderServlet?orderId=<%=orderDetail.getOrderId()%>" class="btn btn-success">Accept</a></td>
 			    </tr>
 			    <%
 			    }
