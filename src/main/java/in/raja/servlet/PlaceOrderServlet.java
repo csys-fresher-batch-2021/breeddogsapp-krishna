@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import in.raja.dao.OrderDAO;
 import in.raja.model.AdminOrderList;
 import in.raja.service.AdminOrderListService;
-import in.raja.service.DogManager;
 
 /**
  * Servlet implementation class placeOrderServlet
