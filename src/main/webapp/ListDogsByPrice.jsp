@@ -7,6 +7,8 @@
 <%@page import="in.raja.service.DogManager"%>
 <head>
 <title>MyApp</title>
+	<link rel="stylesheet" href="ListDogByPrice.css">
+
 </head>
 <body>
  

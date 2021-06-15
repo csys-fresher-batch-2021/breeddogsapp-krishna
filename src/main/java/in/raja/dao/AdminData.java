@@ -14,7 +14,10 @@ public class AdminData {
 
 	/*
 	 * Create array list to store all admins
+	 * 
 	 */
+	
+	
 	private static List<AdminDetails> adminList = new ArrayList<>();
 
 	static {

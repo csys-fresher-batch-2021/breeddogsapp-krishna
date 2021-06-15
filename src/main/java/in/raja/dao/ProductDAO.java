@@ -22,8 +22,7 @@ public class ProductDAO {
 	 * 
 	 * @param product
 	 * @throws SQLException
-	 * @throws Exception
-	 */
+	 * @throws Exceptionrrij*/
 
 	public static  void save(DogDetails products) throws SQLException {
 
@@ -80,7 +79,7 @@ public class ProductDAO {
 	
 	
 	public static void delete(int dogno) throws Exception{
-		String sql = "DELETE FROM breed_dogs where dog_no = ?;";
+		String sql = "DELETE FROM breed_dogs where dog_no = ?";
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			pst = connection.prepareStatement(sql);
@@ -103,17 +102,6 @@ public class ProductDAO {
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	public static List<DogDetails> findAll() {
@@ -171,35 +159,13 @@ public class ProductDAO {
 		return productList;
 	}
 
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-
-
-
 
 
 	public static List<Integer>   searchDogAvailability(int order_dogno) {
 		
 		int  orderDogNo=0;
 		List<Integer> dogNoList = new ArrayList<>();
-		String sql = "select  * FROM breed_dogs where dog_no = ?;";
+		String sql = "select  * FROM breed_dogs where dog_no = ?";
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			pst = connection.prepareStatement(sql);
@@ -229,14 +195,11 @@ public class ProductDAO {
 	
 	
 	
-	
-	
-	
 public static List<AdminOrderList>   getOrderDetails() {
 		
 		
 		List<AdminOrderList> orderList = new ArrayList<>();
-		String sql = "select  * from placeorder_dogs;";
+		String sql = "select  * from placeorder_dogs order by id";
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			pst = connection.prepareStatement(sql);
@@ -247,10 +210,12 @@ public static List<AdminOrderList>   getOrderDetails() {
 			
 			
 			while (rs.next()) {
+				int id = rs.getInt("id");
 				 int  orderDogNo = rs.getInt("order_dogno");
 				 Long orderMobileNo = rs.getLong("orderuser_phoneno");
 				 String orderAddress = rs.getString("orderuser_address");
-				 AdminOrderList adminOrderList = new AdminOrderList(orderDogNo, orderMobileNo, orderAddress);
+				 String status = rs.getString("status");
+				 AdminOrderList adminOrderList = new AdminOrderList( id , orderDogNo, orderMobileNo, orderAddress , status);
 				 
 				 orderList.add(adminOrderList);
 				
@@ -265,9 +230,86 @@ public static List<AdminOrderList>   getOrderDetails() {
 		}
 		return orderList;
 }
+
+
+
+
+
+
+
+
+
+
+
+public static boolean acceptOrder(int orderId) {
+	String sql = "update placeorder_dogs set status ='Accepted' where id=?" ;
+
+	
+	boolean isUpdated = false;
+
+	try {
+		connection = ConnectionUtil.CreateConnection();
+		pst = connection.prepareStatement(sql);
+		
+
+		
+		pst.setInt(1, orderId);
+		pst.executeUpdate();
+		isUpdated = true;
+
+			
+			
+	
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	} 
+	finally {
+		
+		ConnectionUtil.closeConnection(rs, pst, connection);
+	}
+
 	
 	
+	return isUpdated ;
+}
+
+public static boolean rejectOrder(int orderId) {
 	
+	
+String sql = "update placeorder_dogs set status ='Rejected' where id=?" ;
+
+	
+	boolean isUpdated = false;
+
+	try {
+		connection = ConnectionUtil.CreateConnection();
+		pst = connection.prepareStatement(sql);
+		
+
+		
+		pst.setInt(1, orderId);
+		pst.executeUpdate();
+		isUpdated = true;
+
+			
+			
+	
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	} 
+	finally {
+		
+		ConnectionUtil.closeConnection(rs, pst, connection);
+	}
+
+	
+	
+	return isUpdated ;
+}
+
+
 }
 	
 	

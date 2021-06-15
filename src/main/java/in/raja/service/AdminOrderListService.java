@@ -1,28 +1,40 @@
 package in.raja.service;
 
 
+
+import java.sql.SQLException;
+import java.util.List;
+
 import in.raja.dao.OrderDAO;
+import in.raja.dao.ProductDAO;
 import in.raja.model.AdminOrderList;
 
 
 public class AdminOrderListService {
 
 
-	public static boolean addOrder(int dogno, long phoneno, String address) throws Exception {
-		
 
-		boolean isAdded = false;
-		{
-			AdminOrderList order = new AdminOrderList(dogno, phoneno, address);
-			boolean isValid = DogManager.checkAvailable(dogno);
-			OrderDAO.saveOrder(order);
-			if (isValid) {
-				isAdded = true;
 
-			}
-		}
-		return isAdded;
-
+	public static boolean acceptOrder(int orderId) {
+		return ProductDAO.acceptOrder(orderId);
 	}
 
+	public static boolean rejectOrder(int orderId) {
+		return ProductDAO.rejectOrder(orderId);
+	}
+
+	
+	
+
+
+	public static boolean addOrder(AdminOrderList obj) throws SQLException {
+		
+	    	    OrderDAO.saveOrder(obj);
+    	   
+       
+	return true;
+		
+	}
+	
+	
 }
