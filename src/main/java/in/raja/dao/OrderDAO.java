@@ -162,7 +162,7 @@ public class OrderDAO {
 				String userAddress = rs.getString("orderuser_address");
 				String status = rs.getString("status");
 				int userId = rs.getInt("user_id");
-				int orderId = rs.getInt("oder_id");
+				int orderId = rs.getInt("order_id");
 
 
 
