@@ -125,11 +125,10 @@ public class OrderDAO {
 
 	
 	
-	public static List<AdminOrderList> orderList() {
+	public static List<AdminOrderList> orderList(String userName) throws Exception{
 
 		
 		
-
 		 Connection connection = null;
 		 PreparedStatement pst = null;
 		 ResultSet rs = null;	
@@ -144,12 +143,15 @@ public class OrderDAO {
 			connection = ConnectionUtil.CreateConnection();
 
 			// Step 2: Query
-			String sql ="select * from placeorder_dogs";
+			String sql ="select * from placeorder_dogs where user_id = ? ";
 			pst = connection.prepareStatement(sql);
 			// Step 3: execute query
 
-			
-			
+
+	         int id =getId(userName);
+ 
+	         pst.setInt(1, id);
+
 		
 			rs = pst.executeQuery();
 			

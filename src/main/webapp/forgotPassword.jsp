@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Change the password : </title>
+<title>Change the password :</title>
 </head>
 <body>
 
@@ -16,21 +16,24 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-<form action="ForgotPasswordServlet"  method="post">  
-  
-
-  
-<table>
-  <caption>Change Password</caption> 
-  
-<tr>
-
-  <th scope = "col"> PHONE NUMBER</th>
-  <td><input type="number" name="phoneNumber" onchange="phonenumber()"  id="phoneNumber" min=1000000000 max=9999999999 placeholder="Enter Your PhNo"  required autofocus  /><br/><br/></td>  
-</tr>
+		<form action="ForgotPasswordServlet" method="post">
 
 
-<tr>
+
+			<table>
+				<caption>Change Password</caption>
+
+				<tr>
+
+					<th scope="col">PHONE NUMBER</th>
+					<td><input type="number" name="phoneNumber"
+						onchange="phonenumber()" id="phoneNumber" min=1000000000
+						max=9999999999 placeholder="Enter Your PhNo" required autofocus /><br />
+					<br /></td>
+				</tr>
+
+
+				<tr>
 					<th scope="col">NEW PASSWORD</th>
 					<td><input type="password" id="password1" name="password1"
 						placeholder="Enter Password" required></td>
@@ -38,21 +41,21 @@
 
 
 
-<tr>
+				<tr>
 					<th scope="col">RE-ENTER NEW PASSWORD</th>
 					<td><input type="password" id="password2" name="password2"
 						placeholder="Re-Enter Password" required></td>
 				</tr>
-</table>  
-	
+			</table>
+
 			<button type="submit" onclick="checkall()">SUBMIT</button>
 
-</form>
+		</form>
 
 
 
 
-<script>
+		<script>
 			function phonenumber() {
 				let mobileNumber = document.querySelector("#phoneNumber").value;
 				if (mobileNumber.trim().length == 10) {
@@ -78,18 +81,17 @@
 				}
 			}
 		</script>
-<%
+		<%
+		String message = (String) session.getAttribute("Message");
+		if (message != null && message.equalsIgnoreCase("its not registered")) {
+		%>
+		<p class="text-danger"><%=message%></p>
+		<%
+		}
+		%>
 
-String message = (String) session.getAttribute("Message");
-if (message != null && message.equalsIgnoreCase("its not registered")){
-	%>
-	<p class = "text-danger"><%=message %></p>
-	<%
-	}
-	%>
 
-
-</main>
+	</main>
 </body>
 </html>
 

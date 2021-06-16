@@ -33,7 +33,7 @@
 
 
 
-	    List<AdminOrderList> taskList =OrderDAO.orderList();
+	    List<AdminOrderList> taskList =OrderDAO.orderList(userName);
 
 	    	    /*   int i=0; */
 	    	      for(AdminOrderList detail:taskList)
