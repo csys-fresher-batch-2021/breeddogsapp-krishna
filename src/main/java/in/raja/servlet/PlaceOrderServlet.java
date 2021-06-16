@@ -31,6 +31,11 @@ public class PlaceOrderServlet extends HttpServlet {
 			
 			HttpSession sess = request.getSession();
 			String userName = (String) sess.getAttribute("LOGGED_IN_USER");
+			
+			
+			
+			
+			
             int id = OrderDAO.getId(userName);
             String status = "Pending";
 
@@ -41,12 +46,12 @@ public class PlaceOrderServlet extends HttpServlet {
 			long phoneno=Long.parseLong(request.getParameter("phoneno"));
 		    String address = request.getParameter("address");
 		    
-		    AdminOrderList obj=new AdminOrderList(1,dogno,phoneno,address,status,id);
+		    AdminOrderList obj=new AdminOrderList(id , phoneno , address , status , dogno ,  );
 		    
 		    
 
 		    
-		   boolean added = AdminOrderListService.addOrder(  obj );
+		   boolean added = AdminOrderListService.addOrder( obj );
 			
 		   if(added) {
 			   

@@ -26,8 +26,8 @@
 		
 		
                 <th scope="col">S.NO</th>		
-		        <th scope="col">ID.NO</th>
-		       
+ 		        <th scope="col">ID.NO</th>
+ 	       
 		       
 			    <th scope="col">Dog No</th>
 			    <th scope="col">Phone No</th>
@@ -57,8 +57,9 @@
 	    
 	            <tr>
 	            <td><%=i %></td>
-	            <td><%=orderDetail.getOrderId() %></td>
-	            <td><%=orderDetail.getDogno()%></td>
+	            
+             <td><%=orderDetail.getUserid()%></td> 
+	       <td><%=orderDetail.getDogno()%></td>
 			    <td><%=orderDetail.getPhoneno()%></td>
 	            
 			    <td><%=orderDetail.getAddress()%></td>

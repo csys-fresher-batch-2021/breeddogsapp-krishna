@@ -46,8 +46,16 @@ public class AdminOrderList {
 		this.status = status;
 	}
 	
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
 	
-	
+	public AdminOrderList() {
+		
+	}
 	
 	public AdminOrderList(int id,int dogno, long phoneno, String address, String status) {
 		this.orderId =id;
@@ -77,27 +85,31 @@ public class AdminOrderList {
 	}
 	
 
-	public AdminOrderList(Integer dogno2, long phoneno2, String address2, String status2, int id) {
+	public AdminOrderList(Integer dogno2, long phoneno2, String address2, String status2, int id , int order_id) {
 		this.dogno = dogno2;
 		this.phoneno = phoneno2;
 		this.address = address2;
 		this.status = status2;
 		this.userid =id;
+		this.orderId=order_id;
 
 
 	}
-	public int getOrderId() {
-		return orderId;
-	}
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
+//	public AdminOrderList(int id, long phoneno2, String address2, String status2, Integer dogno2) {
+//		this.dogno = dogno2;
+//		this.phoneno = phoneno2;
+//		this.address = address2;
+//		this.status = status2;
+//		this.userid =id;
+//		this.orderId=order_id;
+//
+//	}
 	@Override
 	public String toString() {
 		return "AdminOrderList [userid=" + userid + ", orderId=" + orderId + ", dogno=" + dogno + ", phoneno=" + phoneno
 				+ ", address=" + address + ", status=" + status + "]";
 	}
-	
+
 	
 	
 }

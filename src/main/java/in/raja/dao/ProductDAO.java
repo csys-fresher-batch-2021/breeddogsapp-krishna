@@ -22,26 +22,21 @@ public class ProductDAO {
 	 * 
 	 * @param product
 	 * @throws SQLException
-	 * @throws Exceptionrrij*/
+	 * @throws Exceptionrrij
+	 */
 
-	public static  void save(DogDetails products) throws SQLException {
+	public static void save(DogDetails products) throws SQLException {
 
-		
-		 Connection connection = null;
-		 PreparedStatement pst = null;
-		
+		Connection connection = null;
+		PreparedStatement pst = null;
+
 		try {
 
-
 			connection = ConnectionUtil.CreateConnection();
-			
-			
-			String sql ="INSERT INTO breed_dogs(dog_age, dog_name, dog_no, dog_gender, dog_place, dog_price, dog_insurance ) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-			
+			String sql = "INSERT INTO breed_dogs(dog_age, dog_name, dog_no, dog_gender, dog_place, dog_price, dog_insurance ) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
 			pst = connection.prepareStatement(sql);
-			
-
 
 			pst.setString(1, products.getDogAge());
 
@@ -55,66 +50,43 @@ public class ProductDAO {
 			pst.executeUpdate();
 
 			// insert,update and delete
-		
-		} 
-		catch (SQLException e) {
+
+		} catch (SQLException e) {
 
 			e.printStackTrace();
-			
+
 		} finally {
 
 			ConnectionUtil.closeConnection(pst, connection);
 		}
 
 	}
-	
-	
-	
-	
-	
 
-
-	
-	
-	
-	
-	public static void delete(int dogno) throws Exception{
+	public static void delete(int dogno) throws Exception {
 		String sql = "DELETE FROM breed_dogs where dog_no = ?";
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, dogno);
 			pst.executeUpdate();
-			}
-		
-		
-		
+		}
+
 		catch (SQLException e) {
 			throw new Exception("DogsRow can't be deleted");
-		} 
-		
-		
+		}
+
 		finally {
 			ConnectionUtil.closeConnection(pst, connection);
 		}
-		
-		
-		
-	}
 
-	
+	}
 
 	public static List<DogDetails> findAll() {
 
-		
-		
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
 
-		 Connection connection = null;
-		 PreparedStatement pst = null;
-		 ResultSet rs = null;	
-		
-		
-		
 		List<DogDetails> productList = new ArrayList<>();
 
 		try {
@@ -123,13 +95,12 @@ public class ProductDAO {
 			connection = ConnectionUtil.CreateConnection();
 
 			// Step 2: Query
-			String sql ="select * from breed_dogs";
+			String sql = "select * from breed_dogs";
 			pst = connection.prepareStatement(sql);
 			// Step 3: execute query
 
 			rs = pst.executeQuery();
-			
-			
+
 			while (rs.next()) {
 
 				int dogno = rs.getInt("dog_no");
@@ -141,29 +112,26 @@ public class ProductDAO {
 				String doginsurance = rs.getString("dog_insurance");
 
 				// Store the data in model
-				DogDetails product = new DogDetails(  dogno, dogname, dogage, doggender, doglocation, dogprice, doginsurance);
+				DogDetails product = new DogDetails(dogno, dogname, dogage, doggender, doglocation, dogprice,
+						doginsurance);
 				// Store all products in list
 				productList.add(product);
 
-				
 			}
-			
 
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
-			
+
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 		return productList;
 	}
 
+	public static List<Integer> searchDogAvailability(int order_dogno) {
 
-
-	public static List<Integer>   searchDogAvailability(int order_dogno) {
-		
-		int  orderDogNo=0;
+		int orderDogNo = 0;
 		List<Integer> dogNoList = new ArrayList<>();
 		String sql = "select  * FROM breed_dogs where dog_no = ?";
 		try {
@@ -172,151 +140,103 @@ public class ProductDAO {
 			pst.setInt(1, order_dogno);
 
 			rs = pst.executeQuery();
-			
-			
-			
+
 			while (rs.next()) {
-				 orderDogNo = rs.getInt("dog_no");
-				 dogNoList.add(orderDogNo);
-				
+				orderDogNo = rs.getInt("dog_no");
+				dogNoList.add(orderDogNo);
+
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
-			
+
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 		return dogNoList;
 
-	
-	
 	}
-	
-	
-	
-public static List<AdminOrderList>   getOrderDetails() {
-		
-		
+
+	public static List<AdminOrderList> getOrderDetails() {
+
 		List<AdminOrderList> orderList = new ArrayList<>();
-		String sql = "select  * from placeorder_dogs order by id";
 		try {
 			connection = ConnectionUtil.CreateConnection();
+			String sql = "select  * from placeorder_dogs";
 			pst = connection.prepareStatement(sql);
-			
 
 			rs = pst.executeQuery();
-			
-			
-			
+
 			while (rs.next()) {
-				int id = rs.getInt("id");
-				 int  orderDogNo = rs.getInt("order_dogno");
-				 Long orderMobileNo = rs.getLong("orderuser_phoneno");
-				 String orderAddress = rs.getString("orderuser_address");
-				 String status = rs.getString("status");
-				 AdminOrderList adminOrderList = new AdminOrderList( id , orderDogNo, orderMobileNo, orderAddress , status);
-				 
-				 orderList.add(adminOrderList);
-				
-				
+				AdminOrderList adminOrderList = new AdminOrderList();
+				adminOrderList.setOrderId(rs.getInt("order_id"));
+				adminOrderList.setUserid(rs.getInt("user_id"));
+				adminOrderList.setPhoneno(rs.getLong("orderuser_phoneno"));
+				adminOrderList.setAddress(rs.getString("orderuser_address"));
+				adminOrderList.setStatus(rs.getString("status"));
+				adminOrderList.setDogno(rs.getInt("order_dogno"));
+			
+
+				orderList.add(adminOrderList);
+
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
-			
+
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 		return orderList;
-}
-
-
-
-
-
-
-
-
-
-
-
-public static boolean acceptOrder(int orderId) {
-	String sql = "update placeorder_dogs set status ='Accepted' where id=?" ;
-
-	
-	boolean isUpdated = false;
-
-	try {
-		connection = ConnectionUtil.CreateConnection();
-		pst = connection.prepareStatement(sql);
-		
-
-		
-		pst.setInt(1, orderId);
-		pst.executeUpdate();
-		isUpdated = true;
-
-			
-			
-	
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-	} 
-	finally {
-		
-		ConnectionUtil.closeConnection(rs, pst, connection);
 	}
 
-	
-	
-	return isUpdated ;
-}
+	public static boolean acceptOrder(int orderId) {
+		String sql = "update placeorder_dogs set status ='Accepted' where order_id=?";
 
-public static boolean rejectOrder(int orderId) {
-	
-	
-String sql = "update placeorder_dogs set status ='Rejected' where id=?" ;
+		boolean isUpdated = false;
 
-	
-	boolean isUpdated = false;
+		try {
+			connection = ConnectionUtil.CreateConnection();
+			pst = connection.prepareStatement(sql);
 
-	try {
-		connection = ConnectionUtil.CreateConnection();
-		pst = connection.prepareStatement(sql);
-		
+			pst.setInt(1, orderId);
+			pst.executeUpdate();
+			isUpdated = true;
 
-		
-		pst.setInt(1, orderId);
-		pst.executeUpdate();
-		isUpdated = true;
+		} catch (SQLException e) {
 
-			
-			
-	
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-	} 
-	finally {
-		
-		ConnectionUtil.closeConnection(rs, pst, connection);
+			e.printStackTrace();
+		} finally {
+
+			ConnectionUtil.closeConnection(rs, pst, connection);
+		}
+
+		return isUpdated;
 	}
 
-	
-	
-	return isUpdated ;
+	public static boolean rejectOrder(int orderId) {
+
+		String sql = "update placeorder_dogs set status ='Rejected' where order_id=?";
+
+		boolean isUpdated = false;
+
+		try {
+			connection = ConnectionUtil.CreateConnection();
+			pst = connection.prepareStatement(sql);
+
+			pst.setInt(1, orderId);
+			pst.executeUpdate();
+			isUpdated = true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			ConnectionUtil.closeConnection(rs, pst, connection);
+		}
+
+		return isUpdated;
+	}
+
 }
-
-
-}
-	
-	
-
-	
-	
-	
-	
-	
-
