@@ -32,9 +32,8 @@
 		String userName = (String) sess.getAttribute("LOGGED_IN_USER");
 
 
-		int id = OrderDAO.getId(userName);
 
-	    List<AdminOrderList> taskList =OrderDAO.orderList(id);
+	    List<AdminOrderList> taskList =OrderDAO.orderList();
 
 	    	    /*   int i=0; */
 	    	      for(AdminOrderList detail:taskList)

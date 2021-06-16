@@ -19,60 +19,42 @@ import in.raja.service.AdminOrderListService;
 @WebServlet("/PlaceOrderServlet")
 public class PlaceOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    
 
 	@Override
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
-			
+
 			HttpSession sess = request.getSession();
 			String userName = (String) sess.getAttribute("LOGGED_IN_USER");
-            int id = OrderDAO.getId(userName);
-            String status = "Pending";
+			AdminOrderList obj = new AdminOrderList();
 
+			obj.setUserid(OrderDAO.getId(userName));
+			obj.setStatus("Pending");
 
+			obj.setDogno(Integer.parseInt(request.getParameter("dogno")));
+			obj.setPhoneno(Long.parseLong(request.getParameter("phoneno")));
+			obj.setAddress(request.getParameter("address"));
 
+			boolean added = AdminOrderListService.addOrder(obj);
 
-			Integer dogno=Integer.parseInt(request.getParameter("dogno"));
-			long phoneno=Long.parseLong(request.getParameter("phoneno"));
-		    String address = request.getParameter("address");
-		    
-		    AdminOrderList obj=new AdminOrderList(1,dogno,phoneno,address,status,id);
-		    
-		    
+			if (added) {
 
-		    
-		   boolean added = AdminOrderListService.addOrder(  obj );
-			
-		   if(added) {
-			   
-				 response.sendRedirect("billUser.jsp?dogno="+dogno+"&phoneno="+phoneno+"&address="+address);
+				response.sendRedirect("billUser.jsp?dogno=" + obj.getDogno() + "&phoneno=" + obj.getPhoneno()
+						+ "&address=" + obj.getAddress());
 
-		   }
-			
-			
-					else
-					{
+			}
+
+			else {
 				response.sendRedirect("placeOrder.jsp");
-					
+
 			}
-					
-		} 	catch (Exception e) {
-					e.printStackTrace();
-			}
-	
-	
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }
-}
-
-
-	
-			
-
-
-

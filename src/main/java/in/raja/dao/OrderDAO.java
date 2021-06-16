@@ -125,7 +125,7 @@ public class OrderDAO {
 
 	
 	
-	public static List<AdminOrderList> orderList(int id) {
+	public static List<AdminOrderList> orderList() {
 
 		
 		
@@ -144,13 +144,13 @@ public class OrderDAO {
 			connection = ConnectionUtil.CreateConnection();
 
 			// Step 2: Query
-			String sql ="select * from placeorder_dogs where user_id = ? ";
+			String sql ="select * from placeorder_dogs";
 			pst = connection.prepareStatement(sql);
 			// Step 3: execute query
 
 			
 			
-			pst.setInt(1, id);
+		
 			rs = pst.executeQuery();
 			
 			
@@ -162,10 +162,12 @@ public class OrderDAO {
 				String userAddress = rs.getString("orderuser_address");
 				String status = rs.getString("status");
 				int userId = rs.getInt("user_id");
+				int orderId = rs.getInt("order_id");
+
 
 
 				// Store the data in model
-				AdminOrderList product = new AdminOrderList(  dogno, userPhoneno,userAddress, status,userId);
+				AdminOrderList product = new AdminOrderList(  dogno, userPhoneno,userAddress, status,userId , orderId);
 				// Store all products in list
 				orderList.add(product);
 
