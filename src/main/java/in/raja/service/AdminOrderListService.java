@@ -14,11 +14,17 @@ public class AdminOrderListService {
 
 
 
-	public static boolean acceptOrder(int orderId) {
-		return ProductDAO.acceptOrder(orderId);
+	public static boolean acceptOrder(int orderId,int dogNo) throws Exception {
+		
+		
+		boolean isAccepted = ProductDAO.acceptOrder(orderId);
+		OrderDAO.updateDogStatus(dogNo,true);
+		return isAccepted;
+		
 	}
 
-	public static boolean rejectOrder(int orderId) {
+	public static boolean rejectOrder(int orderId,int dogNo) throws Exception {
+		OrderDAO.updateDogStatus(dogNo,false);
 		return ProductDAO.rejectOrder(orderId);
 	}
 

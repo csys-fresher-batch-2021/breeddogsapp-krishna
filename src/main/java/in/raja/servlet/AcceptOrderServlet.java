@@ -23,10 +23,10 @@ public class AcceptOrderServlet extends HttpServlet {
     	
     	try {
 			int orderId = Integer.parseInt(request.getParameter("orderId"));
-			
+			int dogNo = Integer.parseInt(request.getParameter("Dogno"));
 			
 			System.out.println(orderId);
-			boolean updated = AdminOrderListService.acceptOrder(orderId);
+			boolean updated = AdminOrderListService.acceptOrder(orderId,dogNo);
 			if(updated) {
 				response.sendRedirect("orderDetail.jsp");
 			}

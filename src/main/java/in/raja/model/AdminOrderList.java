@@ -9,6 +9,7 @@ public class AdminOrderList {
 	private String address;
 	private String status;
 	
+	
 	public int getUserid() {
 		return userid;
 	}

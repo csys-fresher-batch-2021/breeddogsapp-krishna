@@ -1,6 +1,7 @@
 package in.raja.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import in.raja.dao.OrderDAO;
 import in.raja.model.AdminOrderList;
 import in.raja.service.AdminOrderListService;
+
 
 /**
  * Servlet implementation class placeOrderServlet
@@ -30,13 +32,18 @@ public class PlaceOrderServlet extends HttpServlet {
 			HttpSession sess = request.getSession();
 			String userName = (String) sess.getAttribute("LOGGED_IN_USER");
 			AdminOrderList obj = new AdminOrderList();
-
+            LocalDate orderdate = LocalDate.now();
+            LocalDate deliverydate = orderdate.plusDays(7);
+            
 			obj.setUserid(OrderDAO.getId(userName));
 			obj.setStatus("Pending");
+
+    
 
 			obj.setDogno(Integer.parseInt(request.getParameter("dogno")));
 			obj.setPhoneno(Long.parseLong(request.getParameter("phoneno")));
 			obj.setAddress(request.getParameter("address"));
+			
 
 			boolean added = AdminOrderListService.addOrder(obj);
 

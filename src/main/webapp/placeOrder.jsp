@@ -9,12 +9,14 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-
+<%
+String dogNo = request.getParameter("Dogno");
+%>
 <h3>PlaceOrder</h3>
  <form action="PlaceOrderServlet" method="post">
 
 <label for="dogno">DogNo : </label>
-	<input type="number" name="dogno" placeholder="Enter Dog Number   " required autofocus/>
+	<input type="number" name="dogno" value="<%=dogNo%>" readOnly/>
 <br/>
 <label for="dogno">PhoneNo : </label>
 	<input type="number" name="phoneno" min="1000000000" max="9999999999" placeholder="Enter Phone Number   " required autofocus/>
@@ -29,7 +31,3 @@
 </body>
 </html>
 
-
-
-
-	

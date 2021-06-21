@@ -4,6 +4,12 @@
 <%@page import="java.util.List"%>
 <%@page import="in.raja.model.AdminOrderList"%>
 <%@page import="in.raja.dao.AdminOrder"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.time.LocalDateTime"%>
+
+
+
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="in.raja.service.AdminOrderListService"%><!DOCTYPE html>
@@ -17,6 +23,9 @@
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Dog Details</h3>
+		
+		
+		
 		<table class="table table-bordered">
 		<caption>Placed User</caption>
 		<thead>
@@ -35,6 +44,7 @@
 				<th scope="col">User Address</th>
 				<th scope="col">Status</th>
 				
+				
 				</tr>
 				
 		</thead>
@@ -48,14 +58,11 @@
 	    
 	    <% 
 	    
-	    List<AdminOrderList> order = ProductDAO.getOrderDetails();
+	    List<AdminOrderList> order = ProductDAO.getOrderDetails(); 
 		int i = 0;
 		for (AdminOrderList orderDetail : order) {
 			i++;
-	    %>
-	    
-	    
-	            <tr>
+	    %>	            <tr>
 	            <td><%=i %></td>
 	            
              <td><%=orderDetail.getUserid()%></td> 
@@ -67,10 +74,13 @@
 		       <td><%=orderDetail.getStatus()%></td>
 			    
   
-			    <td><a href="RejectOrderServlet?orderId=<%=orderDetail.getOrderId()%>" class="btn btn-danger">Delete</a></td>
+			    <td><a href="RejectOrderServlet?orderId=<%=orderDetail.getOrderId()%>&Dogno=<%=orderDetail.getDogno()%>" class="btn btn-danger">Reject</a></td>
  
               
-			    <td><a href="AcceptOrderServlet?orderId=<%=orderDetail.getOrderId()%>" class="btn btn-success">Accept</a></td>
+			    <td><a href="AcceptOrderServlet?orderId=<%=orderDetail.getOrderId()%>&Dogno=<%=orderDetail.getDogno()%>" class="btn btn-success">Accept</a></td>
+			    
+			    
+			    
 			    </tr>
 			    <%
 			    }

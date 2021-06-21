@@ -1,7 +1,7 @@
 package in.raja.service;
 
 
-
+import in.raja.dao.OrderDAO;
 import in.raja.exception.ValidatorException;
 import in.raja.model.UserDetails;
 import in.raja.util.StringValidator;
@@ -46,7 +46,10 @@ public class UserService {
 
 	
 	
-	
+	public static void editOrderDetails(long mobileNo , String address , int userId , int orderId) throws Exception {
+		
+		OrderDAO.updateOrderDetails(mobileNo, address, userId, orderId);
+	}
 	
 	
 	

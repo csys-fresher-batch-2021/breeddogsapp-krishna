@@ -10,42 +10,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import in.raja.service.DogManager;
 
-
 @WebServlet("/DeleteOrderServlet")
 public class DeleteOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
-  			 
-			   Integer dogNo=Integer.parseInt(request.getParameter("dogno"));
-			   
-			   
+			String value = request.getParameter("orderId");
+			System.out.println("1st"+value);
+			Integer orderId = Integer.parseInt(value);
+			System.out.println("1st"+orderId);
+			boolean deleted = DogManager.deleteOrder(orderId);
+			System.out.println("3rd"+deleted);
+			if (deleted) {
+				System.out.println("success");
+				response.sendRedirect("UserOrderView.jsp");
+			}
 
-				
-			   boolean deleted = DogManager.deleteOrder(dogNo);
-			   
-			   
+		} catch (Exception e) {
+			System.out.println("Failed");
+			String error = "unable to delete";
+			response.sendRedirect("UserOrderView.jsp?error=" + error);
 
-			   if(deleted){
-			      response.sendRedirect("orderDetail.jsp");
-			   }
-			  
-		   }
-		   catch(Exception e)
-		   {
-			   
-              String error = "unable to delete";
-              response.sendRedirect("orderDetail.jsp?error=" + error);
-
-		   }
-		 
-	   }
-	 
-		
-  
-
+		}
 
 	}
 
-
+}

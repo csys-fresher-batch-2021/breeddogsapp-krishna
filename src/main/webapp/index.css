@@ -1,12 +1,12 @@
 @charset "ISO-8859-1";
 body{
-	 background-image: url('https://t4.ftcdn.net/jpg/03/07/28/29/240_F_307282946_dbctSHdtrRtWYHoHkUC53JkWkkhm2zJW.jpg');
 	background-size: cover;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
     background-size: 900px 300px;
+    
    
 	}
 	.body h3{
@@ -16,4 +16,56 @@ body{
 	color:black;
 }
 	
+#home{
+	background-color:#ffdb4d;
+	text-transform : uppercase;
+	overflow:hidden;
 	
+}
+
+.title{
+	transform : rotate(-90deg); 
+	margin-top : 200px;
+		margin-bottom : 200px;
+	margin-left : 100px;
+	
+	font-size : 30px;
+	font-weight:600;
+	letter-spacing:7px;
+	color:#fff;
+}
+
+.sub{
+	margin-top: 200px;
+	font-size:30px;
+	
+}
+
+.con{
+	font-size: 40px;
+	font-weight: 600px;
+	color :#fff;
+	
+}
+
+.con2{
+	
+	font-size: 20px;
+	font-weight: 80px;
+	color :#286604;
+	
+	
+}
+
+
+
+
+
+/* #home .img-fluid{
+	position: relative;
+	top:112px;
+ 	transform: rotate(2deg);
+
+}
+ */
+

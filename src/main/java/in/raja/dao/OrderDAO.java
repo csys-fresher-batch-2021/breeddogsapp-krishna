@@ -11,89 +11,127 @@ import in.raja.model.AdminOrderList;
 import in.raja.util.ConnectionUtil;
 
 public class OrderDAO {
-	
-	
-	
-	
+
 	static Connection connection = null;
 	static PreparedStatement pst = null;
 	static ResultSet rs = null;
 
-	
-	public static void saveOrder(AdminOrderList UserPlaceOrder) throws SQLException{
-		
+	public static void saveOrder(AdminOrderList UserPlaceOrder) throws SQLException {
+
 		Connection connection = null;
-		 PreparedStatement pst = null;
-		
+		PreparedStatement pst = null;
 
-		 try {
+		try {
 
+			connection = ConnectionUtil.CreateConnection();
 
-				connection = ConnectionUtil.CreateConnection();
-				
-				String sql ="INSERT INTO placeorder_dogs( order_dogno , orderuser_phoneno , orderuser_address  ,status ,user_id ) VALUES ( ?, ?, ?,?,?)";
+			String sql = "INSERT INTO placeorder_dogs( order_dogno , orderuser_phoneno , orderuser_address  ,status ,user_id  ) VALUES ( ?, ?, ?,?,?)";
 
-				pst = connection.prepareStatement(sql);
-				
+			pst = connection.prepareStatement(sql);
 
-				
-				
-				
-				
+			pst.setInt(1, UserPlaceOrder.getDogno());
 
-				
-				pst.setInt(1, UserPlaceOrder.getDogno());
+			pst.setLong(2, UserPlaceOrder.getPhoneno());
+			pst.setString(3, UserPlaceOrder.getAddress());
 
-				pst.setLong(2, UserPlaceOrder.getPhoneno());
-				pst.setString(3, UserPlaceOrder.getAddress());
-				
-				pst.setString(4, UserPlaceOrder.getStatus());
+			pst.setString(4, UserPlaceOrder.getStatus());
 
-				pst.setInt(5, UserPlaceOrder.getUserid());
+			pst.setInt(5, UserPlaceOrder.getUserid());
 
+			pst.executeUpdate();
 
-				
-				pst.executeUpdate();
+		}
 
-		       }
-		 
-		 
-		 catch (SQLException e) {
+		catch (SQLException e) {
 
-				e.printStackTrace();
-				
-			} finally {
+			e.printStackTrace();
 
-				ConnectionUtil.closeConnection(pst, connection);
-			}
+		} finally {
+
+			ConnectionUtil.closeConnection(pst, connection);
+		}
 	}
 
-
-	public static void delete(int dogno) throws Exception{
+	public static void delete(int dogno) throws Exception {
 		String sql = "DELETE FROM placeorder_dogs where order_dogno = ?";
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, dogno);
 			pst.executeUpdate();
-			}
-		
-		
-		
+		}
+
 		catch (SQLException e) {
 			throw new Exception("DogsRow can't be deleted");
-		} 
-		
-		
+		}
+
 		finally {
 			ConnectionUtil.closeConnection(pst, connection);
 		}
-		
-		
-		
+
+	}
+	
+	public static void deleteByOrderId(int orderId) throws Exception {
+		String sql = "DELETE FROM placeorder_dogs where order_id = ?";
+		try {
+			connection = ConnectionUtil.CreateConnection();
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, orderId);
+			pst.executeUpdate();
+		}
+
+		catch (SQLException e) {
+			throw new Exception("Order can't be deleted");
+		}
+
+		finally {
+			ConnectionUtil.closeConnection(pst, connection);
+		}
+
 	}
 
-	
+	public static void updateDogStatus(int dogno, boolean status) throws Exception {
+		String sql = "update breed_dogs set sold_status = ? where dog_no = ?";
+		try {
+			connection = ConnectionUtil.CreateConnection();
+			pst = connection.prepareStatement(sql);
+			pst.setBoolean(1, status);
+			pst.setInt(2, dogno);
+			pst.executeUpdate();
+		}
+
+		catch (SQLException e) {
+			throw new Exception("DogsRow can't be update");
+		}
+
+		finally {
+			ConnectionUtil.closeConnection(pst, connection);
+		}
+
+	}
+
+	public static void updateOrderDetails(long mobileNo, String address, int userId, int orderId) throws Exception {
+		String sql = "update placeorder_dogs set orderuser_phoneno = ? ,orderuser_address = ?  where user_id = ? AND order_id = ?";
+		try {
+			connection = ConnectionUtil.CreateConnection();
+			pst = connection.prepareStatement(sql);
+			pst.setLong(1, mobileNo);
+			pst.setString(2, address);
+			pst.setInt(3, userId);
+			pst.setInt(4, orderId);
+			pst.executeUpdate();
+		}
+
+		catch (SQLException e) {
+			throw new Exception("DogsRow can't be update");
+		}
+
+		finally {
+			ConnectionUtil.closeConnection(pst, connection);
+		}
+
+	}
+
 	public static int getId(String userName) throws Exception {
 		int id = 0;
 		Connection con = null;
@@ -102,11 +140,11 @@ public class OrderDAO {
 		try {
 			String url = "select user_id,user_username from register_user ";
 			con = ConnectionUtil.CreateConnection();
-			
-            pst = con.prepareStatement(url);
-			
-            rs = pst.executeQuery();
-            while (rs.next()) {
+
+			pst = con.prepareStatement(url);
+
+			rs = pst.executeQuery();
+			while (rs.next()) {
 				int userId = rs.getInt("user_id");
 				String user = rs.getString("user_username");
 				if (user.equals(userName)) {
@@ -115,7 +153,7 @@ public class OrderDAO {
 				}
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
 			ConnectionUtil.closeConnection(pst, connection);
@@ -123,18 +161,12 @@ public class OrderDAO {
 		return id;
 	}
 
-	
-	
-	public static List<AdminOrderList> orderList(String userName) throws Exception{
+	public static List<AdminOrderList> orderList(String userName) throws Exception {
 
-		
-		
-		 Connection connection = null;
-		 PreparedStatement pst = null;
-		 ResultSet rs = null;	
-		
-		
-		
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
 		List<AdminOrderList> orderList = new ArrayList<>();
 
 		try {
@@ -143,73 +175,40 @@ public class OrderDAO {
 			connection = ConnectionUtil.CreateConnection();
 
 			// Step 2: Query
-			String sql ="select * from placeorder_dogs where user_id = ? ";
+			String sql = "select * from placeorder_dogs where user_id = ? ";
 			pst = connection.prepareStatement(sql);
 			// Step 3: execute query
 
+			int id = getId(userName);
 
-	         int id =getId(userName);
- 
-	         pst.setInt(1, id);
+			pst.setInt(1, id);
 
-		
 			rs = pst.executeQuery();
-			
-			
+
 			while (rs.next()) {
 
-				
 				int dogno = rs.getInt("order_dogno");
-			long userPhoneno = rs.getLong("orderuser_phoneno");
+				long userPhoneno = rs.getLong("orderuser_phoneno");
 				String userAddress = rs.getString("orderuser_address");
 				String status = rs.getString("status");
 				int userId = rs.getInt("user_id");
 				int orderId = rs.getInt("order_id");
 
-
-
 				// Store the data in model
-				AdminOrderList product = new AdminOrderList(  dogno, userPhoneno,userAddress, status,userId , orderId);
+				AdminOrderList product = new AdminOrderList(dogno, userPhoneno, userAddress, status, userId, orderId);
 				// Store all products in list
 				orderList.add(product);
 
-				
 			}
-			
 
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
-			
+
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 		return orderList;
 	}
 
-
-
-	
-	
-	
-	
-	
-
 }
-		 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
