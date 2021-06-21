@@ -1,7 +1,6 @@
 package in.raja.servlet;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,8 +31,6 @@ public class PlaceOrderServlet extends HttpServlet {
 			HttpSession sess = request.getSession();
 			String userName = (String) sess.getAttribute("LOGGED_IN_USER");
 			AdminOrderList obj = new AdminOrderList();
-            LocalDate orderdate = LocalDate.now();
-            LocalDate deliverydate = orderdate.plusDays(7);
             
 			obj.setUserid(OrderDAO.getId(userName));
 			obj.setStatus("Pending");

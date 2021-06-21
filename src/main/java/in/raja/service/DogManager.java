@@ -88,7 +88,6 @@ public class DogManager {
 		boolean isdeleted = false;
 
 		if (NumberValidator.isValidNumber(orderId, "Invalid Dogno")) {
-			System.out.println("2nd"+orderId);
 			OrderDAO.deleteByOrderId(orderId);
 			isdeleted = true;
 

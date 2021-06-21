@@ -19,18 +19,13 @@ public class DeleteOrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String value = request.getParameter("orderId");
-			System.out.println("1st"+value);
 			Integer orderId = Integer.parseInt(value);
-			System.out.println("1st"+orderId);
 			boolean deleted = DogManager.deleteOrder(orderId);
-			System.out.println("3rd"+deleted);
 			if (deleted) {
-				System.out.println("success");
 				response.sendRedirect("UserOrderView.jsp");
 			}
 
 		} catch (Exception e) {
-			System.out.println("Failed");
 			String error = "unable to delete";
 			response.sendRedirect("UserOrderView.jsp?error=" + error);
 
