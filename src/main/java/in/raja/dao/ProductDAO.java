@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import in.raja.model.AdminOrderList;
 import in.raja.model.DogDetails;
 import in.raja.util.ConnectionUtil;
+
 
 public class ProductDAO {
 
@@ -95,7 +97,7 @@ public class ProductDAO {
 			connection = ConnectionUtil.CreateConnection();
 
 			// Step 2: Query
-			String sql = "select * from breed_dogs";
+			String sql = "select * from breed_dogs where sold_status=false";
 			pst = connection.prepareStatement(sql);
 			// Step 3: execute query
 
@@ -162,7 +164,7 @@ public class ProductDAO {
 		List<AdminOrderList> orderList = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.CreateConnection();
-			String sql = "select  * from placeorder_dogs";
+			String sql = "select  * from placeorder_dogs order by order_id DESC ";
 			pst = connection.prepareStatement(sql);
 
 			rs = pst.executeQuery();
@@ -175,7 +177,7 @@ public class ProductDAO {
 				adminOrderList.setAddress(rs.getString("orderuser_address"));
 				adminOrderList.setStatus(rs.getString("status"));
 				adminOrderList.setDogno(rs.getInt("order_dogno"));
-			
+				
 
 				orderList.add(adminOrderList);
 

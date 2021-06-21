@@ -20,8 +20,9 @@ public class RejectOrderServlet extends HttpServlet {
     	
     	try {
 			int orderId = Integer.parseInt(request.getParameter("orderId"));
+			int dogNo = Integer.parseInt(request.getParameter("Dogno"));
 			System.out.println(orderId);
-			boolean updated = AdminOrderListService.rejectOrder(orderId);
+			boolean updated = AdminOrderListService.rejectOrder(orderId,dogNo);
 			if(updated) {
 				response.sendRedirect("orderDetail.jsp");
 			}

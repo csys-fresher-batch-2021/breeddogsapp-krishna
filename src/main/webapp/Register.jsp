@@ -18,7 +18,7 @@
     <h3>UserRegistration</h3>
   
   
-UserName:<input type="text" name="userName" id="userName"  placeholder="Enter Your Name" required autofocus/><br/><br/>  
+UserName:<input type="text" name="userName" id="userName"  placeholder="Enter Your UserName" required autofocus/><br/><br/>  
 PhoneNumber:<input type="number" name="phoneNumber"  id="phoneNumber" min=1000000000 max=9999999999 placeholder="Enter Your PhNo"  required autofocus  /><br/><br/>  
 Email Id:<input type="email" name="userMail"  id="userMail" placeholder="Enter Your Mail"  required autofocus  /><br/><br/>  
 Password:<input type="password" name="password1"  id="password1" min=5 max=8 placeholder="EnterYourPassword" required autofocus    /><br/><br/> 

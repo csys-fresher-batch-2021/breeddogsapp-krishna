@@ -83,13 +83,12 @@ public class DogManager {
 		return isdeleted;
 	}
 
-	public static boolean deleteOrder(int dogno) throws Exception {
+	public static boolean deleteOrder(int orderId) throws Exception {
 
 		boolean isdeleted = false;
 
-		if (NumberValidator.isValidNumber(dogno, "Invalid Dogno")) {
-
-			OrderDAO.delete(dogno);
+		if (NumberValidator.isValidNumber(orderId, "Invalid Dogno")) {
+			OrderDAO.deleteByOrderId(orderId);
 			isdeleted = true;
 
 		}
@@ -104,32 +103,24 @@ public class DogManager {
 
 		costDetails.removeAll(costDetails);
 
-		if (breedType == 1) {
-			for (DogDetails breed : ProductDAO.findAll()) {
-				if (breed.getDogPrice() <= 5000) {
-					costDetails.add(breed);
-
-				}
-			}
-		} else if (breedType == 2) {
-			for (DogDetails breed : ProductDAO.findAll())
-				if (breed.getDogPrice() > 5000 && breed.getDogPrice() <= 10000) {
-					costDetails.add(breed);
-				}
-
-		} else if (breedType == 3) {
-			for (DogDetails breed : ProductDAO.findAll())
-				if (breed.getDogPrice() > 10000) {
-					costDetails.add(breed);
-
-				}
-		}
-
-		else if (breedType == 4) {
-			for (DogDetails breed : ProductDAO.findAll())
-				costDetails.add(breed);
-
-		}
+		
+		  if (breedType == 1) { for (DogDetails breed : ProductDAO.findAll()) { if
+		  (breed.getDogPrice() <= 5000) { costDetails.add(breed);
+		  
+		  } } } else if (breedType == 2) { for (DogDetails breed :
+		  ProductDAO.findAll()) if (breed.getDogPrice() > 5000 && breed.getDogPrice()
+		  <= 10000) { costDetails.add(breed); }
+		  
+		  } else if (breedType == 3) { for (DogDetails breed : ProductDAO.findAll()) if
+		  (breed.getDogPrice() > 10000) { costDetails.add(breed);
+		  
+		  } }
+		  
+		  else if (breedType == 4) { for (DogDetails breed : ProductDAO.findAll())
+		  costDetails.add(breed);
+		  
+		  }
+		 
 
 		return costDetails;
 	}

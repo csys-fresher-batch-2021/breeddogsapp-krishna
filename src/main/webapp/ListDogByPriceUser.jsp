@@ -45,23 +45,20 @@ console.log(cost);
 let url = "SearchByCostServlet?cost="+cost;
 fetch(url).then(res=>res.json()).then(res=>{
 	console.log(res);
-	var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th></thead>'
+	var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th><th>Purchase</th></thead>'
 		tableData+= '<tbody>'
 	    for(i = 0;i < res.length; i++){
-	    	tableData+= '<tr>';
-	    	tableData+= '<td>' + res[i].dogno + '</td>';
-	    	tableData+= '<td>' + res[i].dogname + '</td>';
-	    	tableData+= '<td>' + res[i].age + '</td>';
-	    	tableData+= '<td>' + res[i].gender + '</td>';
-	    	tableData+= '<td>' + res[i].place + '</td>';
-	    	tableData+= '<td>' + res[i].price + '</td>';
-	    	tableData+= '<td>' + res[i].insurance + '</td>';
-
-
-	    	
-	    	
-	    	
+	    	tableData+= '<tr>'+	    	
+	    	'<td>' + res[i].dogno + '</td>'+
+	    	'<td>' + res[i].dogname + '</td>'+
+	    	'<td>' + res[i].age + '</td>'+
+	    	'<td>' + res[i].gender + '</td>'+
+	    	'<td>' + res[i].place + '</td>'+
+	    	'<td>' + res[i].price + '</td>'+
+	    	'<td>' + res[i].insurance + '</td>'+
+	    	'<td><a href="placeOrder.jsp?Dogno='+ res[i].dogno +'" class="btn  btn-success">Buy</a></td></tr>';
 	    }
+
 		tableData+='</tbody>';
 	     document.getElementById("sortedDogs").innerHTML = tableData; 
 
@@ -69,6 +66,11 @@ fetch(url).then(res=>res.json()).then(res=>{
 });
 
 }
+
+
+
+
+
 </script>
 </body>
 </html>
