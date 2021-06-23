@@ -1,78 +1,49 @@
 package in.raja.model;
 
 public class UserDetails {
-	private String username;
+	private String userName;
 	private String userMail;
-	private  String password1;
-	private String password2;
+	private String password;
+	private String confirmPassword;
 	private String city;
-	private  long phoneNumber;
+	private long phoneNumber;
 
-	public UserDetails(String username, String userMail, String password1, String password2, long phoneNumber, String city) {
-		this.username = username;
+	public UserDetails(String userName, String userMail, String password, String confirmPassword, long phoneNumber,
+			String city) {
+		this.userName = userName;
 		this.userMail = userMail;
-		this.password1 = password1;
-		this.password2 = password2;
-
+		this.password = password;
+		this.confirmPassword = confirmPassword;
 
 		this.phoneNumber = phoneNumber;
-        this.city = city;
-		 
-		
+		this.city = city;
+
 	}
-	
-
-	
-
-	
-
-
-
-	
-
-
-
-
-
-
-
-
-
 
 	public String getName() {
-		return username;
+		return userName;
 	}
 
 	public String getUserMail() {
 		return userMail;
 	}
 
-	public  String getpassword1() {
-		return password1;
+	public String getpassword1() {
+		return password;
 	}
 
-	
-	public  long getphoneNumber() {
+	public long getphoneNumber() {
 		return phoneNumber;
 	}
-
-	
 
 	public String getcity() {
 		return city;
 	}
 
-
 	@Override
 	public String toString() {
-		return "UserDetails [username=" + username + ", userMail=" + userMail + ", password1=" + password1
-				+ ", password2=" + password2 + ", city=" + city + ", phoneNumber=" + phoneNumber + "]";
+		return "UserDetails [username=" + userName + ", userMail=" + userMail + ", password1=" + password
+				+ ", password2=" + confirmPassword + ", city=" + city + ", phoneNumber=" + phoneNumber + "]";
 	}
-
-
-
-	
-	
-	
 
 }

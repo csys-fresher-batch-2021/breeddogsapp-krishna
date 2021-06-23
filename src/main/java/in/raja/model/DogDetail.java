@@ -1,27 +1,26 @@
 package in.raja.model;
 
-public class DogDetails {
-	private int dogno;
-	private String dogname;
-	private String age;
+public class DogDetail {
+	private int dogNo;
+	private String dogName;
+	private int age;
 	private String gender;
 	private String place;
 	private int price;
 	private String insurance;
 
 	public int getDogNo() {
-		return dogno;
-	}
-	public String getDogName() {
-		return dogname;
+		return dogNo;
 	}
 
-	
-	
-	
-	public String getDogAge() {
+	public String getDogName() {
+		return dogName;
+	}
+
+	public int getDogAge() {
 		return age;
 	}
+
 	public String getDogGender() {
 		return gender;
 	}
@@ -38,10 +37,10 @@ public class DogDetails {
 		return insurance;
 	}
 
-	public DogDetails(int dogno, String dogname, String age, String gender, String place, int price, String insurance) {
+	public DogDetail(int dogno, String dogname, int age, String gender, String place, int price, String insurance) {
 
-		this.dogno = dogno;
-		this.dogname = dogname;
+		this.dogNo = dogno;
+		this.dogName = dogname;
 		this.age = age;
 		this.gender = gender;
 		this.place = place;
@@ -52,7 +51,7 @@ public class DogDetails {
 
 	@Override
 	public String toString() {
-		return "DogDetails [dogno=" + dogno + ", dogname=" + dogname + ", age=" + age + ", gender=" + gender
+		return "DogDetails [dogno=" + dogNo + ", dogname=" + dogName + ", age=" + age + ", gender=" + gender
 				+ ", place=" + place + ", price=" + price + ", insurance=" + insurance + "]";
 	}
 

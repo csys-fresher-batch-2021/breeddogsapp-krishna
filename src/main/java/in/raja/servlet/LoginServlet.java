@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import in.raja.exception.DbException;
 import in.raja.service.UserRegister;
 /**
  * Servlet implementation class UserLoginServlet
@@ -24,17 +26,22 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username = request.getParameter("username");
+		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
 		UserRegister userRegister = new UserRegister();
-		boolean isValid = userRegister.checkUser(username, password);
+		boolean isValid = false;
+		try {
+			isValid = userRegister.checkUser(username, password);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
 		if (isValid) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", username);
 			session.setAttribute("ROLE", "user");
 
 			
-			response.sendRedirect("placeOrder.jsp");
+			response.sendRedirect("PlaceOrder.jsp");
 		} else {
 			response.sendRedirect("Login.jsp?errorMessage=Invalid Login Credentials");
 		}

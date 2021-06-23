@@ -15,27 +15,24 @@ import in.raja.service.AdminOrderListService;
 @WebServlet("/AcceptOrderServlet")
 public class AcceptOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-    	
-    	try {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
 			int orderId = Integer.parseInt(request.getParameter("orderId"));
-			int dogNo = Integer.parseInt(request.getParameter("Dogno"));
-			
-			System.out.println(orderId);
-			boolean updated = AdminOrderListService.acceptOrder(orderId,dogNo);
-			if(updated) {
-				response.sendRedirect("orderDetail.jsp");
-			}
-		}catch(Exception e) {
-			response.sendRedirect("orderDetail.jsp?errorMessage=No orders available");
-		}
+			int dogNo = Integer.parseInt(request.getParameter("DogNo"));
 
-    	
+			boolean updated = AdminOrderListService.acceptOrder(orderId, dogNo);
+			if (updated) {
+				response.sendRedirect("OrderDetail.jsp");
+			}
+		} catch (IOException e) {
+			response.sendRedirect("OrderDetail.jsp?errorMessage=No orders available");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 	}
 
-	
 }

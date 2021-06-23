@@ -16,36 +16,30 @@ import in.raja.service.DogManager;
 @WebServlet("/ForgotPasswordServlet")
 public class ForgotPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ForgotPasswordServlet() {
-        super();
-    }
 
-	
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ForgotPasswordServlet() {
+		super();
+	}
+
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
-		
+
 		try {
-			
+
 			session.removeAttribute("Message");
-		String phoneNumber=request.getParameter("phoneNumber");
+			String phoneNumber = request.getParameter("phoneNumber");
 
-		String password1 = request.getParameter("password1");
-		String password2 = request.getParameter("password2");
-		
+			String password = request.getParameter("password");
+			String confirmPassword = request.getParameter("confirmPassword");
 
-			
-		
+			boolean success = DogManager.forgotUserDetails(phoneNumber, password, confirmPassword);
 
-			boolean success= DogManager.forgotUserDetails(phoneNumber , password1 , password2);
-			
-			
-			
 			if (success) {
 
 				String errorMessage = "User password update Successfully";
@@ -53,39 +47,16 @@ public class ForgotPasswordServlet extends HttpServlet {
 			} else {
 
 				String errorMessage = "Can't Change your password";
-				response.sendRedirect("forgotPassword.jsp?errorMessage=" + errorMessage);
+				response.sendRedirect("ForgotPassword.jsp?errorMessage=" + errorMessage);
 			}
 
 		}
 
 		catch (Exception e) {
 
-			String errorMessage ="Invalid User" ;
-			response.sendRedirect("forgotPassword.jsp?errorMessage=" + errorMessage);
+			String errorMessage = "Invalid User";
+			response.sendRedirect("ForgotPassword.jsp?errorMessage=" + errorMessage);
 		}
 
-    
-    }
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

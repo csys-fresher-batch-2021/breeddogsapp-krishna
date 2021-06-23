@@ -1,25 +1,25 @@
 package in.raja.service;
 
-
-import in.raja.dao.UserDao;
-import in.raja.util.StringValidation;
+import in.raja.dao.UserDAO;
+import in.raja.exception.DbException;
+import in.raja.util.StringValidator;
 
 public class UserRegister {
 
-
-	UserDao userDao = new UserDao();
+	UserDAO userDAO = new UserDAO();
 
 	/**
 	 * This method is used to add medicine
+	 * 
 	 * @param medicine
 	 * @return
+	 * @throws DbException 
 	 */
 
-	
-	public boolean checkUser(String username, String password) {
+	public boolean checkUser(String username, String password) throws DbException {
 		boolean isChecked = false;
-		if (StringValidation.isValidString(username, password) && userDao.findUser(username, password)) {
-				isChecked = true;
+		if (StringValidator.isValidString(username, password) && UserDAO.findByUsernameAndPassword(username, password)) {
+			isChecked = true;
 		}
 		return isChecked;
 

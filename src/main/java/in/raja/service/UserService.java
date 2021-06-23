@@ -1,14 +1,16 @@
 package in.raja.service;
 
-
 import in.raja.dao.OrderDAO;
+import in.raja.dao.UserDAO;
+import in.raja.exception.DbException;
 import in.raja.exception.ValidatorException;
 import in.raja.model.UserDetails;
 import in.raja.util.StringValidator;
+import in.raja.validate.UserValidate;
 
 public class UserService {
 
-	private UserService() {
+	public UserService() {
 		/**
 		 * Constructor
 		 */
@@ -27,14 +29,12 @@ public class UserService {
 
 	}
 
-	
-	
-	public static boolean checkUser(String phoneNumber, String password1) {
+	public static boolean checkUser(String phoneNumber, String password) {
 		boolean isValid = false;
 		long mobileNo = Long.parseLong(phoneNumber);
 		for (UserDetails user : UserData.getUsers1()) {
 			if (user.getphoneNumber() == mobileNo) {
-				if (user.getpassword1().equals(password1)) {
+				if (user.getpassword1().equals(password)) {
 					isValid = true;
 				}
 				break;
@@ -42,44 +42,12 @@ public class UserService {
 		}
 		return isValid;
 	}
-	
 
-	
-	
-	public static void editOrderDetails(long mobileNo , String address , int userId , int orderId) throws Exception {
-		
+	public static void editOrderDetails(long mobileNo, String address, int userId, int orderId) throws Exception {
+
 		OrderDAO.updateOrderDetails(mobileNo, address, userId, orderId);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public static boolean rejectIfValueEmpty(String name, String password) {
 		boolean isEmpty = false;
 		try {
@@ -110,4 +78,20 @@ public class UserService {
 		return name;
 	}
 
+	
+	public boolean addUser(UserDetails... registerDetails) throws DbException {
+		boolean added = false;
+
+		for (UserDetails registerDetails1 : registerDetails) {
+			if (UserValidate.isValidUserDetail(registerDetails1)) {
+				UserDAO user = new UserDAO();
+				user.save(registerDetails1);
+
+				added = true;
+			}
+		}
+		return added;
+	}
+	
+	
 }

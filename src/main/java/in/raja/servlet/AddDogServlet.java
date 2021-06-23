@@ -8,65 +8,53 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.raja.model.DogDetails;
+import in.raja.model.DogDetail;
 import in.raja.service.DogManager;
+
 /**
  * Servlet implementation class AddDonorServlet
  */
 @WebServlet("/AddDogServlet")
 public class AddDogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	   
-	   
-		Integer dogno=Integer.parseInt(request.getParameter("dogno"));
-		System.out.println(dogno);
-		String dogname=request.getParameter("dogname");
-		String age=request.getParameter("age");
-		String gender=request.getParameter("gender");
-		String place=request.getParameter("place");
-		Integer price=Integer.parseInt(request.getParameter("price"));
-        String insurance=request.getParameter("insurance");
-		
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
-			
-		DogDetails product = new DogDetails(dogno,dogname,age,gender,place,price,insurance);
-		
-		
-		DogManager addProduct = new DogManager();
-		
-		
-		boolean success=addProduct.addDog(product);
-		
-		
-		if (success) {
 
-			String infoMessage = "Product Added Successfully";
-			response.sendRedirect("dogdetails.jsp?infoMessage=" + infoMessage);
-		} else {
+			Integer dogNo = Integer.parseInt(request.getParameter("dogNo"));
+			String dogName = request.getParameter("dogName");
+			int age = Integer.parseInt(request.getParameter("age"));
+			String gender = request.getParameter("gender");
+			String place = request.getParameter("place");
+			Integer price = Integer.parseInt(request.getParameter("price"));
+			String insurance = request.getParameter("insurance");
 
-			String errorMessage = "Invalid product";
-			response.sendRedirect("adddog.jsp?errorMessage=" + errorMessage);
+			DogDetail dogDetail = new DogDetail(dogNo, dogName, age, gender, place, price, insurance);
+
+
+			boolean success = DogManager.addDog(dogDetail);
+
+			if (success) {
+
+				String infoMessage = "Product Added Successfully";
+				response.sendRedirect("DogDetails.jsp?infoMessage=" + infoMessage);
+			} else {
+
+				String errorMessage = "Invalid product";
+				response.sendRedirect("AddDog.jsp?errorMessage=" + errorMessage);
+			}
+
+		}
+
+		catch (Exception e) {
+
+			String errorMessage = e.getMessage();
+			response.sendRedirect("AddDog.jsp?errorMessage=" + errorMessage);
 		}
 
 	}
 
-	catch (Exception e) {
-
-		String errorMessage = e.getMessage();
-		response.sendRedirect("adddog.jsp?errorMessage=" + errorMessage);
-	}
-
-	}
-
-
 }
-
-
-
-
-
-	
-

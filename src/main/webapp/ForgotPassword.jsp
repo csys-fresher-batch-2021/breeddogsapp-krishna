@@ -29,13 +29,13 @@
 					<td><input type="number" name="phoneNumber"
 						onchange="phonenumber()" id="phoneNumber" min=1000000000
 						max=9999999999 placeholder="Enter Your PhNo" required autofocus /><br />
-					<br /></td>
+						<br /></td>
 				</tr>
 
 
 				<tr>
 					<th scope="col">NEW PASSWORD</th>
-					<td><input type="password" id="password1" name="password1"
+					<td><input type="password" id="password" name="password"
 						placeholder="Enter Password" required></td>
 				</tr>
 
@@ -43,8 +43,8 @@
 
 				<tr>
 					<th scope="col">RE-ENTER NEW PASSWORD</th>
-					<td><input type="password" id="password2" name="password2"
-						placeholder="Re-Enter Password" required></td>
+					<td><input type="password" id="confirmPassword"
+						name="confirmPassword" placeholder="Re-Enter Password" required></td>
 				</tr>
 			</table>
 
@@ -65,8 +65,8 @@
 				}
 			}
 			function checkall() {
-				let password1 = document.querySelector('#password1').value;
-				let password2 = document.querySelector('#password2').value;
+				let password1 = document.querySelector('#password').value;
+				let password2 = document.querySelector('#confirmPassword').value;
 				let phonenumber = document.querySelector('#phoneNumber').value;
 				if (password1.length == 0 || password2.length == 0
 						|| phonenumber.length == 0) {

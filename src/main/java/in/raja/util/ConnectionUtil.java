@@ -15,12 +15,10 @@ public class ConnectionUtil {
 
 	}
 
-	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
-
-	private static final String DB_USERNAME = "postgres";
-	private static final String DB_PASSWORD = "Kmahakmaha12345";
-
-	private static final String DB_URL = "jdbc:postgresql://localhost/dogbreed_db";
+	private static String driverClass = System.getenv("spring.datasource.driver-class-name");
+	private static String url = System.getenv("spring.datasource.url");
+	private static String username = System.getenv("spring.datasource.username");
+	private static String password = System.getenv("spring.datasource.password");
 
 	public static Connection CreateConnection() {
 
@@ -28,11 +26,11 @@ public class ConnectionUtil {
 
 		try {
 			// Step 1: load the database driver into memory( ClassNotFoundException)
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverClass);
 
 			// Step 2: Get the Database Connection (SQLException)
 
-			connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+			connection = DriverManager.getConnection(url, username, password);
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -59,26 +57,19 @@ public class ConnectionUtil {
 			throw new UtilException("There no connection to close");
 		}
 	}
-		
-		
-		
-		
-		
-		public static void closeConnection( PreparedStatement pst, Connection connection) {
-			try {
-				
 
-				if (pst != null) {
-					pst.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				throw new UtilException("There no connection to close");
+	public static void closeConnection(PreparedStatement pst, Connection connection) {
+		try {
+
+			if (pst != null) {
+				pst.close();
 			}
+			if (connection != null) {
+				connection.close();
+			}
+		} catch (SQLException e) {
+			throw new UtilException("There no connection to close");
+		}
 	}
-
-		
 
 }

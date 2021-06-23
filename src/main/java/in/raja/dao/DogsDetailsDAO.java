@@ -4,16 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.raja.model.AdminOrderList;
-import in.raja.model.DogDetails;
+import in.raja.exception.DbException;
+import in.raja.model.DogDetail;
 import in.raja.util.ConnectionUtil;
 
+public class DogsDetailsDAO {
 
-public class ProductDAO {
+	private DogsDetailsDAO() {
+		// Default constructor
+	}
 
 	static Connection connection = null;
 	static PreparedStatement pst = null;
@@ -24,10 +26,11 @@ public class ProductDAO {
 	 * 
 	 * @param product
 	 * @throws SQLException
+	 * @throws DbException
 	 * @throws Exceptionrrij
 	 */
 
-	public static void save(DogDetails products) throws SQLException {
+	public static void save(DogDetail dogDetail) throws DbException {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -40,22 +43,22 @@ public class ProductDAO {
 
 			pst = connection.prepareStatement(sql);
 
-			pst.setString(1, products.getDogAge());
+			pst.setInt(1, dogDetail.getDogAge());
 
-			pst.setString(2, products.getDogName());
-			pst.setInt(3, products.getDogNo());
+			pst.setString(2, dogDetail.getDogName());
+			pst.setInt(3, dogDetail.getDogNo());
 
-			pst.setString(4, products.getDogGender());
-			pst.setString(5, products.getDogPlace());
-			pst.setInt(6, products.getDogPrice());
-			pst.setString(7, products.getDogInsurance());
+			pst.setString(4, dogDetail.getDogGender());
+			pst.setString(5, dogDetail.getDogPlace());
+			pst.setInt(6, dogDetail.getDogPrice());
+			pst.setString(7, dogDetail.getDogInsurance());
 			pst.executeUpdate();
 
 			// insert,update and delete
 
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			throw new DbException("Unable to save dog details");
 
 		} finally {
 
@@ -64,7 +67,7 @@ public class ProductDAO {
 
 	}
 
-	public static void delete(int dogno) throws Exception {
+	public static void deleteByDogNo(int dogno) throws DbException {
 		String sql = "DELETE FROM breed_dogs where dog_no = ?";
 		try {
 			connection = ConnectionUtil.CreateConnection();
@@ -74,7 +77,7 @@ public class ProductDAO {
 		}
 
 		catch (SQLException e) {
-			throw new Exception("DogsRow can't be deleted");
+			throw new DbException("DogsRow can't be deleted");
 		}
 
 		finally {
@@ -83,13 +86,13 @@ public class ProductDAO {
 
 	}
 
-	public static List<DogDetails> findAll() {
+	public static List<DogDetail> findAll() throws DbException {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 
-		List<DogDetails> productList = new ArrayList<>();
+		List<DogDetail> dogList = new ArrayList<>();
 
 		try {
 
@@ -107,31 +110,32 @@ public class ProductDAO {
 
 				int dogno = rs.getInt("dog_no");
 				String dogname = rs.getString("dog_name");
-				String dogage = rs.getString("dog_age");
+				int dogage = rs.getInt("dog_age");
 				String doggender = rs.getString("dog_gender");
 				String doglocation = rs.getString("dog_place");
 				int dogprice = rs.getInt("dog_price");
 				String doginsurance = rs.getString("dog_insurance");
 
 				// Store the data in model
-				DogDetails product = new DogDetails(dogno, dogname, dogage, doggender, doglocation, dogprice,
+				DogDetail dogDetails = new DogDetail(dogno, dogname, dogage, doggender, doglocation, dogprice,
 						doginsurance);
 				// Store all products in list
-				productList.add(product);
+				dogList.add(dogDetails);
 
 			}
 
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			throw new DbException("DogDetails are not displayed , please check.");
+
 		} finally {
 
 			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
-		return productList;
+		return dogList;
 	}
 
-	public static List<Integer> searchDogAvailability(int order_dogno) {
+	public static List<Integer> findByDogNo(int orderDogno) throws DbException {
 
 		int orderDogNo = 0;
 		List<Integer> dogNoList = new ArrayList<>();
@@ -139,7 +143,7 @@ public class ProductDAO {
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			pst = connection.prepareStatement(sql);
-			pst.setInt(1, order_dogno);
+			pst.setInt(1, orderDogno);
 
 			rs = pst.executeQuery();
 
@@ -150,7 +154,7 @@ public class ProductDAO {
 			}
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			throw new DbException("DogDetails are not displayed , please check.");
 		} finally {
 
 			ConnectionUtil.closeConnection(rs, pst, connection);
@@ -159,86 +163,25 @@ public class ProductDAO {
 
 	}
 
-	public static List<AdminOrderList> getOrderDetails() {
-
-		List<AdminOrderList> orderList = new ArrayList<>();
-		try {
-			connection = ConnectionUtil.CreateConnection();
-			String sql = "select  * from placeorder_dogs order by order_id DESC ";
-			pst = connection.prepareStatement(sql);
-
-			rs = pst.executeQuery();
-
-			while (rs.next()) {
-				AdminOrderList adminOrderList = new AdminOrderList();
-				adminOrderList.setOrderId(rs.getInt("order_id"));
-				adminOrderList.setUserid(rs.getInt("user_id"));
-				adminOrderList.setPhoneno(rs.getLong("orderuser_phoneno"));
-				adminOrderList.setAddress(rs.getString("orderuser_address"));
-				adminOrderList.setStatus(rs.getString("status"));
-				adminOrderList.setDogno(rs.getInt("order_dogno"));
-				
-
-				orderList.add(adminOrderList);
-
-			}
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			ConnectionUtil.closeConnection(rs, pst, connection);
-		}
-		return orderList;
-	}
-
-	public static boolean acceptOrder(int orderId) {
-		String sql = "update placeorder_dogs set status ='Accepted' where order_id=?";
-
-		boolean isUpdated = false;
-
+	public static boolean updateDogStatus(int dogno, boolean status) throws DbException {
+		String sql = "update breed_dogs set sold_status = ? where dog_no = ?";
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			pst = connection.prepareStatement(sql);
-
-			pst.setInt(1, orderId);
+			pst.setBoolean(1, status);
+			pst.setInt(2, dogno);
 			pst.executeUpdate();
-			isUpdated = true;
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			ConnectionUtil.closeConnection(rs, pst, connection);
 		}
 
-		return isUpdated;
-	}
-
-	public static boolean rejectOrder(int orderId) {
-
-		String sql = "update placeorder_dogs set status ='Rejected' where order_id=?";
-
-		boolean isUpdated = false;
-
-		try {
-			connection = ConnectionUtil.CreateConnection();
-			pst = connection.prepareStatement(sql);
-
-			pst.setInt(1, orderId);
-			pst.executeUpdate();
-			isUpdated = true;
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			ConnectionUtil.closeConnection(rs, pst, connection);
+		catch (SQLException e) {
+			throw new DbException("Can't update the Dog Status");
 		}
 
-		return isUpdated;
+		finally {
+			ConnectionUtil.closeConnection(pst, connection);
+		}
+		return status;
+
 	}
 
 }
