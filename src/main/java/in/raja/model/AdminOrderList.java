@@ -2,32 +2,32 @@ package in.raja.model;
 
 public class AdminOrderList {
 	
-	private int userid ;
+	private int userId ;
 	private int orderId;
-	private int dogno;
-	private long phoneno;
+	private int dogNo;
+	private long phoneNo;
 	private String address;
 	private String status;
 	
 	
-	public int getUserid() {
-		return userid;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public int getDogno() {
-		return dogno;
+	public int getDogNo() {
+		return dogNo;
 	}
-	public void setDogno(int dogno) {
-		this.dogno = dogno;
+	public void setDogNo(int dogNo) {
+		this.dogNo = dogNo;
 	}
-	public long getPhoneno() {
-		return phoneno;
+	public long getPhoneNo() {
+		return phoneNo;
 	}
-	public void setPhoneno(long phoneno) {
-		this.phoneno = phoneno;
+	public void setPhoneNo(long phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 	public String getAddress() {
 		return address;
@@ -58,56 +58,48 @@ public class AdminOrderList {
 		
 	}
 	
-	public AdminOrderList(int id,int dogno, long phoneno, String address, String status) {
+	public AdminOrderList(int id,int dogNo, long phoneNo, String address, String status) {
 		this.orderId =id;
-		this.dogno = dogno;
-		this.phoneno = phoneno;
+		this.dogNo = dogNo;
+		this.phoneNo = phoneNo;
 		this.address = address;
 		this.status = status;
 	}
-	public AdminOrderList(Integer userId , Integer dogno2, long phoneno2, String address2) {
-		this.userid=userId;
+	public AdminOrderList(Integer userId , Integer dogNo2, long phoneNo2, String address2) {
+		this.userId=userId;
 		
-		this.dogno = dogno2;
+		this.dogNo = dogNo2;
 
-		this.phoneno = phoneno2;
+		this.phoneNo = phoneNo2;
 		this.address = address2;
 	}
 	
 	
-	public AdminOrderList(int orderId2, int dogno2, long userPhoneno, String userAddress, String status2, int userId2) {
-		this.userid=userId2;
+	public AdminOrderList(int orderId2, int dogNo2, long userPhoneNo, String userAddress, String status2, int userId2) {
+		this.userId=userId2;
 		this.orderId=orderId2;
-		this.dogno = dogno2;
+		this.dogNo = dogNo2;
 		this.status = status2;
 
-		this.phoneno = userPhoneno;
+		this.phoneNo = userPhoneNo;
 		this.address = userAddress;
 	}
 	
 
-	public AdminOrderList(Integer dogno2, long phoneno2, String address2, String status2, int id , int order_id) {
-		this.dogno = dogno2;
-		this.phoneno = phoneno2;
+	public AdminOrderList(Integer dogNo2, long phoneNo2, String address2, String status2, int id , int orderId) {
+		this.dogNo = dogNo2;
+		this.phoneNo = phoneNo2;
 		this.address = address2;
 		this.status = status2;
-		this.userid =id;
-		this.orderId=order_id;
+		this.userId =id;
+		this.orderId=orderId;
 
 
 	}
-//	public AdminOrderList(int id, long phoneno2, String address2, String status2, Integer dogno2) {
-//		this.dogno = dogno2;
-//		this.phoneno = phoneno2;
-//		this.address = address2;
-//		this.status = status2;
-//		this.userid =id;
-//		this.orderId=order_id;
-//
-//	}
+
 	@Override
 	public String toString() {
-		return "AdminOrderList [userid=" + userid + ", orderId=" + orderId + ", dogno=" + dogno + ", phoneno=" + phoneno
+		return "AdminOrderList [userid=" + userId + ", orderId=" + orderId + ", dogno=" + dogNo + ", phoneno=" + phoneNo
 				+ ", address=" + address + ", status=" + status + "]";
 	}
 

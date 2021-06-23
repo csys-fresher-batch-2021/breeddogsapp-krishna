@@ -12,16 +12,20 @@
 		<%
 		String infoMessage = request.getParameter("infoMessage");
 		if (infoMessage != null) {
-			%>
-		<div style="color: green;"><%=infoMessage %></div>
-		<%}%>
+		%>
+		<div style="color: green;"><%=infoMessage%></div>
+		<%
+		}
+		%>
 
-		<% 
+		<%
 		String errorMessage = request.getParameter("errorMessage");
 		if (errorMessage != null) {
-			%>
-		<div style="color: red"><%=errorMessage %></div>
-		<%}%>
+		%>
+		<div style="color: red"><%=errorMessage%></div>
+		<%
+		}
+		%>
 	</main>
 </body>
 </html>

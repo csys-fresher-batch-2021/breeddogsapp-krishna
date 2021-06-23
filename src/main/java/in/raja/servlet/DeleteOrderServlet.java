@@ -20,7 +20,7 @@ public class DeleteOrderServlet extends HttpServlet {
 		try {
 			String value = request.getParameter("orderId");
 			Integer orderId = Integer.parseInt(value);
-			boolean deleted = DogManager.deleteOrder(orderId);
+			boolean deleted = DogManager.deleteOrderById(orderId);
 			if (deleted) {
 				response.sendRedirect("UserOrderView.jsp");
 			}

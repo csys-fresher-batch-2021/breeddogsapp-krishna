@@ -12,45 +12,35 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import in.raja.model.DogDetails;
+import in.raja.model.DogDetail;
 import in.raja.service.DogManager;
+
 /**
  * Servlet implementation class SearchByCostServlet
  */
 @WebServlet("/SearchByCostServlet")
-public class SearchByCostServlet extends HttpServlet
-{
+public class SearchByCostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-    	System.out.println("Heloo");
-		
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
 			String cost = request.getParameter("cost");
 			int type = Integer.parseInt(cost);
-			List<DogDetails> added = DogManager.searchBreedByCost(type);
-		//	HttpSession session = request.getSession();
-			//session.setAttribute("CostList",added.get(0));
-			Gson gson = new Gson();		
+			List<DogDetail> added = DogManager.searchDogByCost(type);
+			Gson gson = new Gson();
 			String obj = gson.toJson(added);
 			PrintWriter out = response.getWriter();
 			out.println(obj);
-			out.flush();			
-			
-			
-			
-				
-			
-			
-		}
-		catch(Exception e)
-		{
+			out.flush();
+
+		} catch (Exception e) {
 			String errorMessage = "Unable to add Breeds ";
 			response.sendRedirect("ListDogsByPrice.jsp?errorMessage=" + errorMessage);
 		}
-		
-		
+
 	}
-	
+
 }

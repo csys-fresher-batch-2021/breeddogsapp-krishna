@@ -6,11 +6,12 @@ import java.util.regex.Pattern;
 import in.raja.exception.UtilException;
 
 public class PasswordValidator {
-	
-	private PasswordValidator(){
-		//Default constructor
+
+	private PasswordValidator() {
+		// Default constructor
 
 	}
+
 	/**
 	 * Validate the password would contain, minimum of 8 character maximum of 20
 	 * characters Small and capital Alphabets Some numerical Some special character

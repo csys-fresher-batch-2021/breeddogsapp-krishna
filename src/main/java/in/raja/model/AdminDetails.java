@@ -2,30 +2,25 @@ package in.raja.model;
 
 public class AdminDetails {
 	private String name;
-	private  long phoneNumber;
-	private  String passWord;
-	
-	public  AdminDetails(String name,long phoneNumber,String passWord){
+	private long phoneNumber;
+	private String passWord;
 
-		this.name=name;
-		this.phoneNumber=phoneNumber;
-		this.passWord=passWord;
+	public AdminDetails(String name, long phoneNumber, String passWord) {
+
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.passWord = passWord;
 	}
-	
-	
-	
 
-	
-
-	
 	public String getName() {
 		return name;
 	}
 
-	public  long getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public  String getPassWord() {
+
+	public String getPassWord() {
 		return passWord;
 	}
 
@@ -34,5 +29,4 @@ public class AdminDetails {
 		return "Admin [name=" + name + ", phoneNumber=" + phoneNumber + ", passWord=" + passWord + "]";
 	}
 
-	
 }

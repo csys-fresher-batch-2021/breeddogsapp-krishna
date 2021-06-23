@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import in.raja.dao.OrderDAO;
+import in.raja.dao.UserDAO;
 import in.raja.model.AdminOrderList;
 import in.raja.service.AdminOrderListService;
-
 
 /**
  * Servlet implementation class placeOrderServlet
@@ -31,28 +30,25 @@ public class PlaceOrderServlet extends HttpServlet {
 			HttpSession sess = request.getSession();
 			String userName = (String) sess.getAttribute("LOGGED_IN_USER");
 			AdminOrderList obj = new AdminOrderList();
-            
-			obj.setUserid(OrderDAO.getId(userName));
+
+			obj.setUserId(UserDAO.findByUsername(userName));
 			obj.setStatus("Pending");
 
-    
-
-			obj.setDogno(Integer.parseInt(request.getParameter("dogno")));
-			obj.setPhoneno(Long.parseLong(request.getParameter("phoneno")));
+			obj.setDogNo(Integer.parseInt(request.getParameter("dogNo")));
+			obj.setPhoneNo(Long.parseLong(request.getParameter("phoneNo")));
 			obj.setAddress(request.getParameter("address"));
-			
 
 			boolean added = AdminOrderListService.addOrder(obj);
 
 			if (added) {
 
-				response.sendRedirect("billUser.jsp?dogno=" + obj.getDogno() + "&phoneno=" + obj.getPhoneno()
+				response.sendRedirect("BillUser.jsp?dogNo=" + obj.getDogNo() + "&phoneNo=" + obj.getPhoneNo()
 						+ "&address=" + obj.getAddress());
 
 			}
 
 			else {
-				response.sendRedirect("placeOrder.jsp");
+				response.sendRedirect("PlaceOrder.jsp");
 
 			}
 

@@ -52,22 +52,29 @@
 
 					<td><%=i%></td>
 
-					<td><%=detail.getDogno()%></td>
-					<td><input id="phoneNo<%=i%>" type="text" name="input_field" data-orderId ="<%=detail.getOrderId()%>" data-mobileNumber = "<%=detail.getPhoneno()%>"
-						value="<%=detail.getPhoneno()%>" readOnly /></td>
-					<td><input id="address<%=i%>" type="text" name="input_field" data-address = "<%=detail.getAddress()%>"
+					<td><%=detail.getDogNo()%></td>
+					<td><input id="phoneNo<%=i%>" type="text" name="input_field"
+						data-orderId="<%=detail.getOrderId()%>"
+						data-mobileNumber="<%=detail.getPhoneNo()%>"
+						value="<%=detail.getPhoneNo()%>" readOnly /></td>
+					<td><input id="address<%=i%>" type="text" name="input_field"
+						data-address="<%=detail.getAddress()%>"
 						value="<%=detail.getAddress()%>" readOnly /></td>
 					<td><%=detail.getStatus()%></td>
-					<td><a href="DeleteOrderServlet?orderId=<%=detail.getOrderId() %>"
-						class="btn btn-danger">Delete</a> 
-					<td><div id="editBtn" style="display:block"><a onclick="callFunctionm(<%=i%>,1)"
-						class="btn btn-success">Edit</a></div>
-						<div id="okBtn" style="display:none"> <a onclick="callFunctionm(<%=i%>,2)" class="btn btn-success">ok</a> 
-						<a onclick="callFunctionm(<%=i%>,3)" class="btn btn-danger">Cancel</a>
+					<td><a
+						href="DeleteOrderServlet?orderId=<%=detail.getOrderId()%>"
+						class="btn btn-danger">Delete</a>
+					<td><div id="editBtn" style="display: block">
+							<a onclick="callFunctionm(<%=i%>,1)" class="btn btn-success">Edit</a>
 						</div>
-				
+						<div id="okBtn" style="display: none">
+							<a onclick="callFunctionm(<%=i%>,2)" class="btn btn-success">ok</a>
+							<a onclick="callFunctionm(<%=i%>,3)" class="btn btn-danger">Cancel</a>
+						</div>
 				</tr>
-				 <%i++;%>
+				<%
+				i++;
+				%>
 				<%
 				}
 				%>
@@ -76,6 +83,6 @@
 
 		</table>
 	</main>
-<script src="js/edit-details.js"></script>	
+	<script src="js/edit-details.js"></script>
 </body>
 </html>

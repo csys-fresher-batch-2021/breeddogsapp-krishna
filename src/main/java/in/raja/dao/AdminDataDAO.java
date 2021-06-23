@@ -5,18 +5,13 @@ import java.util.List;
 
 import in.raja.model.AdminDetails;
 
-public class AdminData {
-	private AdminData() {
+public class AdminDataDAO {
+	private AdminDataDAO() {
 		/**
 		 * constructor
 		 */
 	}
 
-	/*
-	 * Create array list to store all admins
-	 * 
-	 */
-	
 	
 	private static List<AdminDetails> adminList = new ArrayList<>();
 
@@ -25,26 +20,11 @@ public class AdminData {
 		AdminDetails admin2 = new AdminDetails("maha", 9999999999l, "a1234");
 		adminList.add(admin1);
 		adminList.add(admin2);
-		
-		
-		
+
 	}
 
-	/**
-	 * This method is used to return admins
-	 * 
-	 * @return
-	 */
-	public static List<AdminDetails> getAdmin() {
+	
+	public static List<AdminDetails> findAllAdmin() {
 		return adminList;
 	}
 }
-
-
-
-
-
-
-
-
-
