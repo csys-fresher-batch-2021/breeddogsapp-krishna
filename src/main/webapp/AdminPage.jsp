@@ -2,10 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-
 <head>
 <meta charset="ISO-8859-1">
 <title>AdminPage</title>
@@ -19,17 +15,10 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-
-
-
 		<div class="container"></div>
 	</main>
-
-
 </body>
 </html>
 

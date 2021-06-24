@@ -17,7 +17,6 @@
 		<%
 		}
 		%>
-
 		<%
 		String errorMessage = request.getParameter("errorMessage");
 		if (errorMessage != null) {

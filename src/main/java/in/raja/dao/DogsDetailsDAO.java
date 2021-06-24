@@ -39,25 +39,25 @@ public class DogsDetailsDAO {
 
 			connection = ConnectionUtil.CreateConnection();
 
-			String sql = "INSERT INTO breed_dogs(dog_age, dog_name, dog_no, dog_gender, dog_place, dog_price, dog_insurance ) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO breed_dogs(dog_age, dog_name,  dog_gender, dog_place, dog_price, dog_insurance ) VALUES ( ?, ?, ?, ?, ?, ?)";
 
 			pst = connection.prepareStatement(sql);
 
 			pst.setInt(1, dogDetail.getDogAge());
 
 			pst.setString(2, dogDetail.getDogName());
-			pst.setInt(3, dogDetail.getDogNo());
 
-			pst.setString(4, dogDetail.getDogGender());
-			pst.setString(5, dogDetail.getDogPlace());
-			pst.setInt(6, dogDetail.getDogPrice());
-			pst.setString(7, dogDetail.getDogInsurance());
+			pst.setString(3, dogDetail.getDogGender());
+			pst.setString(4, dogDetail.getDogPlace());
+			pst.setInt(5, dogDetail.getDogPrice());
+			pst.setString(6, dogDetail.getDogInsurance());
 			pst.executeUpdate();
 
 			// insert,update and delete
 
 		} catch (SQLException e) {
 
+			e.printStackTrace();
 			throw new DbException("Unable to save dog details");
 
 		} finally {

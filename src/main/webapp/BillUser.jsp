@@ -11,13 +11,10 @@
 	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="BillUser.css">
-
-
 <style>
 body {
 	background-color: rgb(167, 81, 167);
 }
-
 #main-content {
 	background-color: rgb(206, 198, 206);
 	width: 400px;
@@ -25,13 +22,10 @@ body {
 }
 </style>
 </head>
-
 <body>
 	<div class="container d-flex justify-content-center">
 		<div id="main-content" class="rounded p-3 mt-5">
 			<h1 class="display-4 text-center">PLACED ORDER DETAILS</h1>
-
-
 			<p>
 				Dog No : <span id="dogno"> <% out.println(request.getParameter("dogNo")); %>
 				</span>
@@ -44,9 +38,6 @@ body {
 				ORDERED DETAILS : <span id="oredrdetails"> <% out.println(request.getParameter("address")); %>
 				</span>
 			</p>
-
-
-
 			<p class="text-center">HAPPY CUSTOMER !!!</p>
 			<button onclick="saveDetails()" href="DogDetails.jsp">OK</button>
 		</div>

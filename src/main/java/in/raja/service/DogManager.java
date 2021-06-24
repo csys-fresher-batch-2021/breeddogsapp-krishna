@@ -26,14 +26,14 @@ public class DogManager {
 		return userList;
 	}
 
-	public static boolean addDog(DogDetail... product) throws DbException {
+	public static boolean addDog(DogDetail... dogDetails) throws DbException {
 
 		boolean added = false;
 
-		for (DogDetail product1 : product) {
-			if (DogDetailValidation.isValidProduct(product1)) {
+		for (DogDetail details : dogDetails) {
+			if (DogDetailValidation.isValidProduct(details)) {
 
-				DogsDetailsDAO.save(product1);
+				DogsDetailsDAO.save(details);
 
 				added = true;
 			}

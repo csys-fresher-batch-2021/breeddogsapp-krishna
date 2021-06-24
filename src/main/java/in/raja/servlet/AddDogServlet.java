@@ -24,7 +24,6 @@ public class AddDogServlet extends HttpServlet {
 
 		try {
 
-			Integer dogNo = Integer.parseInt(request.getParameter("dogNo"));
 			String dogName = request.getParameter("dogName");
 			int age = Integer.parseInt(request.getParameter("age"));
 			String gender = request.getParameter("gender");
@@ -32,8 +31,7 @@ public class AddDogServlet extends HttpServlet {
 			Integer price = Integer.parseInt(request.getParameter("price"));
 			String insurance = request.getParameter("insurance");
 
-			DogDetail dogDetail = new DogDetail(dogNo, dogName, age, gender, place, price, insurance);
-
+			DogDetail dogDetail = new DogDetail(dogName, age, gender, place, price, insurance);
 
 			boolean success = DogManager.addDog(dogDetail);
 

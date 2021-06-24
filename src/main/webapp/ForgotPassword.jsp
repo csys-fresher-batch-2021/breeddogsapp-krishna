@@ -7,54 +7,31 @@
 <title>Change the password :</title>
 </head>
 <body>
-
-
-
-
-
-
-
-	<jsp:include page="header.jsp"></jsp:include>
+   <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form action="ForgotPasswordServlet" method="post">
-
-
-
 			<table>
 				<caption>Change Password</caption>
-
 				<tr>
-
 					<th scope="col">PHONE NUMBER</th>
 					<td><input type="number" name="phoneNumber"
 						onchange="phonenumber()" id="phoneNumber" min=1000000000
 						max=9999999999 placeholder="Enter Your PhNo" required autofocus /><br />
 						<br /></td>
 				</tr>
-
-
 				<tr>
 					<th scope="col">NEW PASSWORD</th>
 					<td><input type="password" id="password" name="password"
 						placeholder="Enter Password" required></td>
 				</tr>
-
-
-
 				<tr>
 					<th scope="col">RE-ENTER NEW PASSWORD</th>
 					<td><input type="password" id="confirmPassword"
 						name="confirmPassword" placeholder="Re-Enter Password" required></td>
 				</tr>
 			</table>
-
 			<button type="submit" onclick="checkall()">SUBMIT</button>
-
 		</form>
-
-
-
-
 		<script>
 			function phonenumber() {
 				let mobileNumber = document.querySelector("#phoneNumber").value;
@@ -89,8 +66,6 @@
 		<%
 		}
 		%>
-
-
 	</main>
 </body>
 </html>

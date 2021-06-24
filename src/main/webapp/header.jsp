@@ -14,15 +14,10 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-
 <%
 String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
 String role = (String) session.getAttribute("ROLE");
@@ -47,59 +42,36 @@ String adminrole = (String) session.getAttribute("ADMINROLE");
 				if (loggedInUsername == null) {
 				%>
 				<li class="nav-item"><a class="nav-link"
-					href="ListDogsByPrice.jsp">DogList</a></li>
+					href="ListDogByPrice.jsp">DogList</a></li>
 				<%
 				}
-				%>
-
+				%> 
 				<%
 				if ("user".equalsIgnoreCase(role)) {
 				%>
 				<li class="nav-item"><a class="nav-link" href="PlaceOrder.jsp">PlaceOrder</a>
 				</li>
-
-
 				<li class="nav-item"><a class="nav-link"
 					href="ListDogByPriceUser.jsp">DogList</a></li>
-
 				<li class="nav-item"><a class="nav-link"
 					href="UserOrderView.jsp">ViewUserOrder</a></li>
 				<%
 				}
 				%>
-
-
 				<%
 				if ("admin".equalsIgnoreCase(adminrole)) {
 				%>
 				<li class="nav-item"><a class="nav-link" href="AddDog.jsp">AdminAddDetails</a>
 				</li>
-
-
-
-
 				<li class="nav-item"><a class="nav-link" href="OrderDetail.jsp">AdminViewOrderDetails</a>
 				</li>
-
-
-
-
 				<li class="nav-item"><a class="nav-link" href="DogDetails.jsp">AdminviewListDetails</a>
 				</li>
 				<%
 				}
 				%>
-
 			</ul>
-
-
 		</div>
-
-
-
-
-
-
 		<%
 		if (loggedInUsername == null) {
 		%>
@@ -119,10 +91,7 @@ String adminrole = (String) session.getAttribute("ADMINROLE");
 		<%
 		} else {
 		%>
-
-
-
-		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        	<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 			<li class="nav-item"><a class="nav-link" href="#">Welcome<%=" " + loggedInUsername%></a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
@@ -132,11 +101,5 @@ String adminrole = (String) session.getAttribute("ADMINROLE");
 		<%
 		}
 		%>
-
-
-
-
-
-
 	</nav>
 </header>

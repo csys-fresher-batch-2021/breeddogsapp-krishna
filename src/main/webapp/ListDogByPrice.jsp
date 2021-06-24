@@ -8,11 +8,8 @@
 <head>
 <title>MyApp</title>
 <link rel="stylesheet" href="ListDogByPrice.css">
-
 </head>
 <body>
-
-
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Dog Details</h3>
@@ -25,16 +22,10 @@
 
 			<option value="3">Above 10000</option>
 			<option value="4">All</option>
-
-
 		</select>
-
 		<table id="sortedDogs" class="table table-bordered">
-
-			<caption>Search Details</caption>
-
 		</table>
-		<a href=" "></a>
+		<a href="UserDogServlet.java"></a>
 	</main>
 	<script>
 function select(){
@@ -44,32 +35,23 @@ console.log(cost);
 let url = "SearchByCostServlet?cost="+cost;
 fetch(url).then(res=>res.json()).then(res=>{
 	console.log(res);
-	var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th><th>Purchase</th></thead>'
+	var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th></thead>'
 		tableData+= '<tbody>'
 	    for(i = 0;i < res.length; i++){
-	    	tableData+= '<tr>'+	    	
-	    	'<td>' + res[i].dogNo + '</td>'+
-	    	'<td>' + res[i].dogName + '</td>'+
-	    	'<td>' + res[i].age + '</td>'+
-	    	'<td>' + res[i].gender + '</td>'+
-	    	'<td>' + res[i].place + '</td>'+
-	    	'<td>' + res[i].price + '</td>'+
-	    	'<td>' + res[i].insurance + '</td>'+
-	    	'<td><a href="PlaceOrder.jsp?DogNo='+ res[i].dogNo +'" class="btn  btn-success">Buy</a></td></tr>';
+	    	tableData+= '<tr>';
+	    	tableData+= '<td>' + res[i].dogNo + '</td>';
+	    	tableData+= '<td>' + res[i].dogName + '</td>';
+	    	tableData+= '<td>' + res[i].age + '</td>';
+	    	tableData+= '<td>' + res[i].gender + '</td>';
+	    	tableData+= '<td>' + res[i].place + '</td>';
+	    	tableData+= '<td>' + res[i].price + '</td>';
+	    	tableData+= '<td>' + res[i].insurance + '</td>';
 	    }
-
 		tableData+='</tbody>';
 	     document.getElementById("sortedDogs").innerHTML = tableData; 
-
 	
 });
-
 }
-
-
-
-
-
 </script>
 </body>
 </html>
