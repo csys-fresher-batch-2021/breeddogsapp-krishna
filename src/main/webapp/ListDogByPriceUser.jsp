@@ -34,7 +34,7 @@
 			<caption>Search Details</caption>
 
 		</table>
-		<a href="UserDogServlet.java"></a>
+		<a href="SearchByCostServlet.java"></a>
 	</main>
 	<script>
 function select(){
