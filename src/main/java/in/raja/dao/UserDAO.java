@@ -29,7 +29,7 @@ public class UserDAO {
 		try {
 			connection = ConnectionUtil.CreateConnection();
 
-			String sql = "INSERT INTO userdetails(user_username, user_emailid, user_password  ,user_phonenumber    , user_city) values (?,?,?,?,?)";
+			String sql = "INSERT INTO userdetails(username,emailid,password,phonenumber,city) values (?,?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 
 			pst.setString(1, registerDetails.getName());
@@ -40,6 +40,7 @@ public class UserDAO {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 
 			throw new DbException("Can't insert user details");
 
