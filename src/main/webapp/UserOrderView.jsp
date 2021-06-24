@@ -21,14 +21,10 @@
 			<thead>
 				<tr>
 					<th scope="col">SI No</th>
-
 					<th scope="col">Order Dog No</th>
 					<th scope="col">Contact NO</th>
 					<th scope="col">Delivery Address</th>
 					<th scope="col">Status</th>
-
-
-
 				</tr>
 			</thead>
 			<tbody>

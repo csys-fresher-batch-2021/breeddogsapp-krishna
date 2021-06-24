@@ -20,7 +20,6 @@ public class DogDetailValidation {
 	 */
 	public static boolean isValidProduct(DogDetail dogDetail) {
 		boolean valid = false;
-		boolean dogno = NumberValidator.isValidNumber(dogDetail.getDogNo(), "Dog NO is Empty");
 		boolean dogname = checkDogName(dogDetail.getDogName());
 		boolean dogage = NumberValidator.isValidNumber(dogDetail.getDogAge(), "Dog age is empty");
 		boolean doggender = StringValidator.isValidString(dogDetail.getDogGender(), "Dog gender is Empty");
@@ -28,7 +27,7 @@ public class DogDetailValidation {
 		boolean dogprice = NumberValidator.isValidNumber(dogDetail.getDogPrice(), "Dog price is Empty");
 		boolean doginsurance = StringValidator.isValidString(dogDetail.getDogInsurance(), "Dog insurance is Empty");
 
-		if (dogno && dogplace && dogname && dogage && dogprice && doggender && doginsurance) {
+		if (dogplace && dogname && dogage && dogprice && doggender && doginsurance) {
 
 			valid = true;
 

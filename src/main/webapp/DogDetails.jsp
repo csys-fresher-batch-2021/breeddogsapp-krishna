@@ -17,7 +17,6 @@
 			<caption>Dog Details</caption>
 			<thead>
 				<tr>
-
 					<th scope="col">Dog No</th>
 					<th scope="col">Dog Name</th>
 					<th scope="col">Dog Age</th>
@@ -25,39 +24,30 @@
 					<th scope="col">Dog Place</th>
 					<th scope="col">Dog Price</th>
 					<th scope="col">Dog Insurance</th>
-
 				</tr>
 
 			</thead>
 			<tbody>
 				<%
-	    List<DogDetail> taskList =DogsDetailsDAO.findAll();
-	    	    	    if(taskList!=null)
-	    	    	      for(DogDetail detail:taskList)
-	    	    	      {
-	    %>
-
-
-
-
-
+				List<DogDetail> taskList = DogsDetailsDAO.findAll();
+				if (taskList != null)
+					for (DogDetail detail : taskList) {
+				%>
 				<tr>
-
-					<td><%=detail.getDogNo() %></td>
-					<td><%=detail.getDogName() %></td>
+					<td><%=detail.getDogNo()%></td>
+					<td><%=detail.getDogName()%></td>
 					<td><%=detail.getDogAge()%></td>
-					<td><%=detail.getDogGender() %></td>
-					<td><%=detail.getDogPlace() %></td>
-					<td><%=detail.getDogPrice() %></td>
-					<td><%=detail.getDogInsurance() %></td>
-
+					<td><%=detail.getDogGender()%></td>
+					<td><%=detail.getDogPlace()%></td>
+					<td><%=detail.getDogPrice()%></td>
+					<td><%=detail.getDogInsurance()%></td>
 					<td><a href="DeleteServlet?dogNo=<%=detail.getDogNo()%>"
 						class="btn btn-danger">Delete</a>
 				</tr>
-				<%}%>
+				<%
+				}
+				%>
 			</tbody>
-
-
 		</table>
 		<a href="AddDog.jsp">Add Dog</a>
 	</main>

@@ -49,6 +49,17 @@ public class DogDetail {
 
 	}
 
+	public DogDetail(String dogname, int age, String gender, String place, int price, String insurance) {
+
+		this.dogName = dogname;
+		this.age = age;
+		this.gender = gender;
+		this.place = place;
+		this.price = price;
+		this.insurance = insurance;
+
+	}
+
 	@Override
 	public String toString() {
 		return "DogDetails [dogno=" + dogNo + ", dogname=" + dogName + ", age=" + age + ", gender=" + gender

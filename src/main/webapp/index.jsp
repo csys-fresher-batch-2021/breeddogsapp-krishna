@@ -20,8 +20,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapix.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -42,11 +40,7 @@
 						<h4 class="sub">we offer</h4>
 						<h1 class="con">Proffesional</h1>
 						<h4 class="con2">daycare,grooming&training</h4>
-
-
-
 					</div>
-
 					<img class="img-fluid" src="dogImage.jpg" alt="dogs">
 				</div>
 			</div>

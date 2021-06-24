@@ -32,14 +32,6 @@
 						/*   int i=0; */
 						for (DogDetail detail : taskList) {
 				%>
-
-
-
-
-
-
-
-
 				<tr>
 
 					<td><%=detail.getDogNo()%></td>

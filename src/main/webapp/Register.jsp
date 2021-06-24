@@ -11,13 +11,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form action="RegisterServlet" method="post">
-
-
-
-
 			<h3>UserRegistration</h3>
-
-
 			UserName:<input type="text" name="userName" id="userName"
 				placeholder="Enter Your UserName" required autofocus /><br /> <br />
 			PhoneNumber:<input type="number" name="phoneNumber" id="phoneNumber"

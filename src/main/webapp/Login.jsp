@@ -15,14 +15,8 @@
 <body>
 	<jsp:include page="Message.jsp"></jsp:include>
 	<main class="container-fluid">
-
-
 		<div style="text-align: center" class="header">
-			        
-			<h1>UserLogin</h1>
-
-
-			        
+			<h1>UserLogin</h1>      
 			<form action="LoginServlet" method="post">
 				            <label for="userName">UserName:</label>             <input
 					type="text" name="userName" id="userName" min=3 max=9999999999
@@ -32,21 +26,11 @@
 					placeholder="Enter Your Password" required autofocus />
 				            <br>             <br> <br>           
 				            
-				<button type="submit" id="button" class="btn btn-primary">Login</button>
-
-				        
+				<button type="submit" id="button" class="btn btn-primary">Login</button>       
 			</form>
-
-
 			Forgot <a href="ForgotPassword.jsp" id="forgot"> password? </a>     
 		</div>
-
-
-
-
-
-
-		<%
+     	<%
 		String message = request.getParameter("message");
 		if (message == null) {
 			out.print("");
@@ -55,7 +39,6 @@
 		}
 		%>
 	</main>
-
 </body>
 </html>
 
