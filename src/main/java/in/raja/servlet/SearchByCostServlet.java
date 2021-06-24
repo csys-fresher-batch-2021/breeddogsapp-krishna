@@ -38,7 +38,7 @@ public class SearchByCostServlet extends HttpServlet {
 
 		} catch (Exception e) {
 			String errorMessage = "Unable to add Breeds ";
-			response.sendRedirect("ListDogsByPrice.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("ListDogsByPriceUser.jsp?errorMessage=" + errorMessage);
 		}
 
 	}

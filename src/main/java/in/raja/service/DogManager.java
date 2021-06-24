@@ -11,8 +11,8 @@ import in.raja.exception.ServiceException;
 import in.raja.model.DogDetail;
 import in.raja.model.UserDetails;
 import in.raja.util.NumberValidator;
-import in.raja.validate.PasswordValidation;
 import in.raja.validate.DogDetailValidation;
+import in.raja.validate.PasswordValidation;
 
 public class DogManager {
 
@@ -71,7 +71,7 @@ public class DogManager {
 	public static List<DogDetail> searchDogByCost(int breedType) throws DbException {
 
 		List<DogDetail> costDetails = DogsDetailsDAO.findAll();
-
+		costDetails.clear();
 		if (breedType == 1) {
 			for (DogDetail breed : DogsDetailsDAO.findAll()) {
 				if (breed.getDogPrice() <= 5000) {
