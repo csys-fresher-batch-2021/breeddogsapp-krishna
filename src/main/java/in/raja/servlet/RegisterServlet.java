@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.raja.model.UserDetails;
-import in.raja.service.DogManager;
 import in.raja.service.UserService;
 
 /**
@@ -49,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
 			} else {
 
 				String errorMessage = "Invalid User";
-				response.sendRedirect("adddog.jsp?errorMessage=" + errorMessage);
+				response.sendRedirect("Register.jsp?errorMessage=" + errorMessage);
 			}
 
 		}
@@ -57,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
 		catch (Exception e) {
 
 			String errorMessage = e.getMessage();
-			response.sendRedirect("adddog.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("Register.jsp?errorMessage=" + errorMessage);
 		}
 
 	}

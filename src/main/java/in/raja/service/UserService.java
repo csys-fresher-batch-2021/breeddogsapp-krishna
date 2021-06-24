@@ -78,11 +78,11 @@ public class UserService {
 		return name;
 	}
 
-	
 	public boolean addUser(UserDetails... registerDetails) throws DbException {
 		boolean added = false;
 
 		for (UserDetails registerDetails1 : registerDetails) {
+
 			if (UserValidate.isValidUserDetail(registerDetails1)) {
 				UserDAO user = new UserDAO();
 				user.save(registerDetails1);
@@ -92,6 +92,5 @@ public class UserService {
 		}
 		return added;
 	}
-	
-	
+
 }
