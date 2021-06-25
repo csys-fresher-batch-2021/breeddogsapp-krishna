@@ -15,6 +15,7 @@
 body {
 	background-color: rgb(167, 81, 167);
 }
+
 #main-content {
 	background-color: rgb(206, 198, 206);
 	width: 400px;

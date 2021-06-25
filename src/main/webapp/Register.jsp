@@ -76,8 +76,6 @@ input[type=email]:focus, input[type=email]:focus {
   background-color: #ddd;
   outline: none;
 }
-
-
 </style>
 <title>Register Page</title>
 </head>

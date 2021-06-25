@@ -1,6 +1,7 @@
 package in.raja.servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +29,7 @@ public class PlaceOrderServlet extends HttpServlet {
 		try {
 
 			HttpSession sess = request.getSession();
+
 			String userName = (String) sess.getAttribute("LOGGED_IN_USER");
 			AdminOrderList obj = new AdminOrderList();
 
@@ -37,7 +39,8 @@ public class PlaceOrderServlet extends HttpServlet {
 			obj.setDogNo(Integer.parseInt(request.getParameter("dogNo")));
 			obj.setPhoneNo(Long.parseLong(request.getParameter("phoneNo")));
 			obj.setAddress(request.getParameter("address"));
-
+			obj.setOrderDate(LocalDateTime.now());
+			obj.setDeliveryDate(LocalDateTime.now().plusDays(5));
 			boolean added = AdminOrderListService.addOrder(obj);
 
 			if (added) {

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class OrderDAO {
 
 			connection = ConnectionUtil.CreateConnection();
 
-			String sql = "INSERT INTO placeorder_dogs( order_dogno , orderuser_phoneno , orderuser_address  ,status ,user_id  ) VALUES ( ?, ?, ?,?,?)";
+			String sql = "INSERT INTO placeorder_dogs( order_dogno , orderuser_phoneno , orderuser_address  ,status ,user_id , order_date , delivery_date ) VALUES ( ?, ?, ?,?,?,?,?)";
 
 			pst = connection.prepareStatement(sql);
 
@@ -42,6 +44,8 @@ public class OrderDAO {
 			pst.setString(4, userPlaceOrder.getStatus());
 
 			pst.setInt(5, userPlaceOrder.getUserId());
+			pst.setTimestamp(6, Timestamp.valueOf(userPlaceOrder.getOrderDate()));
+			pst.setTimestamp(7, Timestamp.valueOf(userPlaceOrder.getDeliveryDate()));
 
 			pst.executeUpdate();
 
@@ -149,10 +153,12 @@ public class OrderDAO {
 				String status = rs.getString("status");
 				int userId = rs.getInt("user_id");
 				int orderId = rs.getInt("order_id");
-
+				LocalDateTime orderDate = rs.getTimestamp("order_date").toLocalDateTime();
+				LocalDateTime deliveryDate = rs.getTimestamp("delivery_date").toLocalDateTime();
 				// Store the data in model
 				AdminOrderList orderDetail = new AdminOrderList(dogno, userPhoneno, userAddress, status, userId,
-						orderId);
+						orderId, orderDate, deliveryDate);
+
 				// Store all products in list
 				orderList.add(orderDetail);
 
@@ -186,9 +192,10 @@ public class OrderDAO {
 				adminOrderList.setAddress(rs.getString("orderuser_address"));
 				adminOrderList.setStatus(rs.getString("status"));
 				adminOrderList.setDogNo(rs.getInt("order_dogno"));
+				adminOrderList.setOrderDate(rs.getTimestamp("order_date").toLocalDateTime());
+				adminOrderList.setDeliveryDate(rs.getTimestamp("delivery_date").toLocalDateTime());
 
 				orderList.add(adminOrderList);
-
 			}
 		} catch (SQLException e) {
 
