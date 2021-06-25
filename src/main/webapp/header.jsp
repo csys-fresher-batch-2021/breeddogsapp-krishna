@@ -45,7 +45,7 @@ String adminrole = (String) session.getAttribute("ADMINROLE");
 					href="ListDogByPrice.jsp">DogList</a></li>
 				<%
 				}
-				%> 
+				%>
 				<%
 				if ("user".equalsIgnoreCase(role)) {
 				%>
@@ -91,7 +91,7 @@ String adminrole = (String) session.getAttribute("ADMINROLE");
 		<%
 		} else {
 		%>
-        	<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 			<li class="nav-item"><a class="nav-link" href="#">Welcome<%=" " + loggedInUsername%></a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>

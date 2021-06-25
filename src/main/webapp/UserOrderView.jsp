@@ -1,4 +1,6 @@
 
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="in.raja.dao.OrderDAO"%>
 
 <%@page import="java.util.List"%>
@@ -25,6 +27,8 @@
 					<th scope="col">Contact NO</th>
 					<th scope="col">Delivery Address</th>
 					<th scope="col">Status</th>
+					<th scope="col">Order Date</th>
+					<th scope="col">Delivery Date</th>					
 				</tr>
 			</thead>
 			<tbody>
@@ -32,20 +36,16 @@
 				HttpSession sess = request.getSession();
 				String userName = (String) sess.getAttribute("LOGGED_IN_USER");
 
-				List<AdminOrderList> taskList = OrderDAO.orderList(userName);
-
+				List<AdminOrderList> orderList = OrderDAO.orderList(userName);
+			    DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 				int i = 1;
-				for (AdminOrderList detail : taskList) {
+				for (AdminOrderList detail : orderList) {	
+					
+					String orderDate = detail.getOrderDate().format(formatters);
+					String deliveryDate = detail.getDeliveryDate().format(formatters);
+
 				%>
-
-
-
-
-
-
-
 				<tr>
-
 					<td><%=i%></td>
 
 					<td><%=detail.getDogNo()%></td>
@@ -57,6 +57,10 @@
 						data-address="<%=detail.getAddress()%>"
 						value="<%=detail.getAddress()%>" readOnly /></td>
 					<td><%=detail.getStatus()%></td>
+					<td><%=orderDate %></td>
+					<td><%=deliveryDate %></td>
+					
+					
 					<td><a
 						href="DeleteOrderServlet?orderId=<%=detail.getOrderId()%>"
 						class="btn btn-danger">Delete</a>
