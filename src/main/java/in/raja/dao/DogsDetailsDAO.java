@@ -100,7 +100,7 @@ public class DogsDetailsDAO {
 			connection = ConnectionUtil.CreateConnection();
 
 			// Step 2: Query
-			String sql = "select * from breed_dogs where sold_status=false";
+			String sql = "select * from breed_dogs where sold_status=false ";
 			pst = connection.prepareStatement(sql);
 			// Step 3: execute query
 
