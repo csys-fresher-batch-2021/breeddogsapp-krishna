@@ -3,6 +3,7 @@ package in.raja.model;
 import java.io.InputStream;
 
 public class DogDetail {
+	private InputStream dogImageByte;
 	private String dogImage;
 	private int dogNo;
 	private String dogName;
