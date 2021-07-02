@@ -27,7 +27,7 @@ public class UserDAO {
 		PreparedStatement pst = null;
 
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			String sql = "INSERT INTO userdetails(username,emailid,password,phonenumber,city) values (?,?,?,?,?)";
 			pst = connection.prepareStatement(sql);
@@ -64,7 +64,7 @@ public class UserDAO {
 		PreparedStatement pst = null;
 
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			String sql = "UPDATE userdetails SET password = ? where phonenumber = ? ";
 			pst = connection.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class UserDAO {
 		try {
 
 			// Step 1: Get the connection
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			// Step 2: Query
 			String sql = "select * from userdetails";
@@ -144,7 +144,7 @@ public class UserDAO {
 		try {
 
 			// Step 1: Get the connection
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			// Step 2: Query
 			String sql = "select * from userdetails where username=?";
@@ -187,7 +187,7 @@ public class UserDAO {
 		boolean valid = false;
 
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			String sql = "select username,password from userdetails where username = ? and password = ?";
 			pst = connection.prepareStatement(sql);
@@ -213,7 +213,7 @@ public class UserDAO {
 		ResultSet rs = null;
 		try {
 			String url = "select id,username from userdetails ";
-			con = ConnectionUtil.CreateConnection();
+			con = ConnectionUtil.createConnection();
 
 			pst = con.prepareStatement(url);
 

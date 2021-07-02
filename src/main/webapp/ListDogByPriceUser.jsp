@@ -32,20 +32,30 @@
 		<table id="sortedDogs" class="table table-bordered">
 
 			<caption>Search Details</caption>
-
-		</table>
-		<a href=" "></a>
+        <thead class="thead-dark">
+        <tr>
+        <th scope= "col"> Dog No</th>
+        <th scope= "col"> Dog Name</th>
+        <th scope= "col"> Dog Age(Days)</th>
+        <th scope= "col"> Dog Gender</th>
+        <th scope= "col"> Place</th>
+        <th scope= "col"> Price</th>
+        <th scope= "col">Insurance</th>
+        <th scope= "col">Purchase</th>
+        </tr>
+        </thead>
+        <tbody id = "searchDog">
+        </tbody>
+        </table>
+        <a href=""></a>
 	</main>
 	<script>
 function select(){
 	
 var cost = document.getElementById("sortDog").value;
-console.log(cost);
 let url = "SearchByCostServlet?cost="+cost;
 fetch(url).then(res=>res.json()).then(res=>{
-	console.log(res);
-	var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age(Days)</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th><th>Purchase</th></thead>'
-		tableData+= '<tbody>'
+	var tableData = '';
 	    for(i = 0;i < res.length; i++){
 	    	tableData+= '<tr>'+	    	
 	    	'<td>' + res[i].dogNo + '</td>'+
@@ -58,7 +68,6 @@ fetch(url).then(res=>res.json()).then(res=>{
 	    	'<td><a href="PlaceOrder.jsp?DogNo='+ res[i].dogNo +'" class="btn  btn-success">Buy</a></td></tr>';
 	    }
 
-		tableData+='</tbody>';
 	     document.getElementById("sortedDogs").innerHTML = tableData; 
 
 	

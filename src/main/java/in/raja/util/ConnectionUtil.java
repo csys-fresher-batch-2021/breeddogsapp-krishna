@@ -21,7 +21,7 @@ public class ConnectionUtil {
 	private static String username = System.getenv("spring.datasource.username");
 	private static String password = System.getenv("spring.datasource.password");
 
-	public static Connection CreateConnection() {
+	public static Connection createConnection() {
 
 		Connection connection = null;
 

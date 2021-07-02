@@ -29,10 +29,10 @@ public class RegisterServlet extends HttpServlet {
 		String userMail = request.getParameter("userMail");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
-		long phoneNumber = Long.parseLong(request.getParameter("phoneNumber"));
 		String city = request.getParameter("city");
 
 		try {
+			long phoneNumber = Long.parseLong(request.getParameter("phoneNumber"));
 
 			UserDetails registerDetails = new UserDetails(userName, userMail, password, confirmPassword, phoneNumber,
 					city);

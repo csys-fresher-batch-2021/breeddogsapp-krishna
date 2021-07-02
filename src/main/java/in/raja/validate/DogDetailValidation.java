@@ -21,11 +21,11 @@ public class DogDetailValidation {
 	public static boolean isValidProduct(DogDetail dogDetail) {
 		boolean valid = false;
 		boolean dogname = checkDogName(dogDetail.getDogName());
-		boolean dogage = NumberValidator.isValidNumber(dogDetail.getDogAge(), "Dog age is empty");
-		boolean doggender = StringValidator.isValidString(dogDetail.getDogGender(), "Dog gender is Empty");
-		boolean dogplace = StringValidator.isValidString(dogDetail.getDogPlace(), "Dog place is Empty");
-		boolean dogprice = NumberValidator.isValidNumber(dogDetail.getDogPrice(), "Dog price is Empty");
-		boolean doginsurance = StringValidator.isValidString(dogDetail.getDogInsurance(), "Dog insurance is Empty");
+		boolean dogage = NumberValidator.isValidNumber(dogDetail.getAge(), "Dog age is empty");
+		boolean doggender = StringValidator.isValidString(dogDetail.getGender(), "Dog gender is Empty");
+		boolean dogplace = StringValidator.isValidString(dogDetail.getPlace(), "Dog place is Empty");
+		boolean dogprice = NumberValidator.isValidNumber(dogDetail.getPrice(), "Dog price is Empty");
+		boolean doginsurance = StringValidator.isValidString(dogDetail.getInsurance(), "Dog insurance is Empty");
 
 		if (dogplace && dogname && dogage && dogprice && doggender && doginsurance) {
 

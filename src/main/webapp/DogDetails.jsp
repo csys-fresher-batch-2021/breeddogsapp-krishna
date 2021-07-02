@@ -44,11 +44,11 @@
 						width="50%" height="50%" alt="<%=detail.getDogNo()%>"></td>
 					<td><%=detail.getDogNo()%></td>
 					<td><%=detail.getDogName()%></td>
-					<td><%=detail.getDogAge()%></td>
-					<td><%=detail.getDogGender()%></td>
-					<td><%=detail.getDogPlace()%></td>
-					<td><%=detail.getDogPrice()%></td>
-					<td><%=detail.getDogInsurance()%></td>
+					<td><%=detail.getAge()%></td>
+					<td><%=detail.getGender()%></td>
+					<td><%=detail.getPlace()%></td>
+					<td><%=detail.getPrice()%></td>
+					<td><%=detail.getInsurance()%></td>
 					<td><a href="DeleteServlet?dogNo=<%=detail.getDogNo()%>"
 						class="btn btn-danger">Delete</a>
 				</tr>

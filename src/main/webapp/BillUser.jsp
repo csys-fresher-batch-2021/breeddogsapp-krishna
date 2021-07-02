@@ -24,23 +24,27 @@ body {
 </style>
 </head>
 <body>
+<%String dogNo= request.getParameter("dogNo");
+String phoneNo= request.getParameter("phoneNo");
+String address= request.getParameter("address");
+%>
 	<div class="container d-flex justify-content-center">
 		<div id="main-content" class="rounded p-3 mt-5">
 			<h1 class="display-4 text-center">PLACED ORDER DETAILS</h1>
 			<p>
-				Dog No : <span id="dogno"> <% out.println(request.getParameter("dogNo")); %>
+				Dog No : <span id="dogno"> <%=dogNo%>
 				</span>
 			</p>
 			<p>
-				PHONE NUMBER : <span id="phoneno"> <% out.println(request.getParameter("phoneNo")); %>
+				PHONE NUMBER : <span id="phoneno"> <%=phoneNo %>
 				</span>
 			</p>
 			<p>
-				ORDERED DETAILS : <span id="oredrdetails"> <% out.println(request.getParameter("address")); %>
+				ORDERED DETAILS : <span id="oredrdetails"> <%= address%>
 				</span>
 			</p>
 			<p class="text-center">HAPPY CUSTOMER !!!</p>
-			<button onclick="saveDetails()" href="DogDetails.jsp">OK</button>
+			<button onclick="saveDetails()" ></button>
 		</div>
 	</div>
 

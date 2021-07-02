@@ -1,4 +1,4 @@
-const SERVICE_ID = "send_email";
+/*const SERVICE_ID = "send_email";
 const TEMPLATE_ID = "placeorder_template";
 async function sendEmail(to, dogNo) {
 	const orderTemplateParams = {
@@ -17,4 +17,12 @@ async function sendEmail(to, dogNo) {
 				alert("FAILED..."+ error);
 			}
 		);
-}
+}*/
+
+dogDetails.setDogImageByte(rs.getBinaryStream(1));
+				dogDetails.set(rs.getString("dog_name"));
+				dogDetails.setDogImageByte(rs.getInt("dog_age"));
+				dogDetails.setDogImageByte(rs.getString("dog_gender"));
+				dogDetails.setDogImageByte(rs.getString("dog_place"));
+				dogDetails.setDogImageByte(rs.getInt("dog_price"));
+				dogDetails.setDogImageByte(rs.getString("dog_insurance"));
