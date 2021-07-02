@@ -29,7 +29,6 @@ public class GetDogImageServlet extends HttpServlet {
 		try {
 			byte[] image = DogManager.retireveImage(imageName);
 			OutputStream obj = response.getOutputStream();
-			System.out.println(obj);
 			obj.write(image);
 		} catch (IOException e) {
 			String errorMessage = "unable to retireve image";

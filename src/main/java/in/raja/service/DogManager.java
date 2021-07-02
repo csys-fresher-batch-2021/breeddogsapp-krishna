@@ -28,7 +28,6 @@ public class DogManager {
 	}
 
 	public static boolean addDog(DogDetail... dogDetails) throws DbException, IOException {
-		System.out.println(dogDetails);
 
 		boolean added = false;
 

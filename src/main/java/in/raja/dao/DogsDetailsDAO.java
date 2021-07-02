@@ -39,7 +39,7 @@ public class DogsDetailsDAO {
 	 * @throws Exceptionrrij
 	 */
 
-	public static boolean save(DogDetail dogDetail) throws DbException, FileNotFoundException, IOException {
+	public static boolean save(DogDetail dogDetail) throws DbException, IOException {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -109,8 +109,8 @@ public class DogsDetailsDAO {
 		try {
 			connection = ConnectionUtil.CreateConnection();
 			st = connection.createStatement();
-			int dog_no = Integer.parseInt(dogNo);
-			ResultSet rs = st.executeQuery("SELECT dog_image FROM  breed_dogs WHERE dog_no ='" + dog_no + "'");
+			int dogNumber = Integer.parseInt(dogNo);
+			ResultSet rs = st.executeQuery("SELECT dog_image FROM  breed_dogs WHERE dog_no ='" + dogNumber + "'");
 			if (rs != null) {
 				while (rs.next()) {
 					imgBytes = rs.getBytes(1);

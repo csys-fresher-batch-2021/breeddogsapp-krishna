@@ -37,7 +37,6 @@ public class LoginServlet extends HttpServlet {
 		try {
 			isValid = userRegister.checkUser(username, password);
 			user = UserDAO.findUserByUsername(username);
-			System.out.println("User : " + user);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
