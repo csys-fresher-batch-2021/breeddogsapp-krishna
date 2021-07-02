@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,10 +21,6 @@ public class DogsDetailsDAO {
 	private DogsDetailsDAO() {
 		// Default constructor
 	}
-
-	static Connection connection = null;
-	static PreparedStatement pst = null;
-	static ResultSet rs = null;
 
 	/**
 	 * This method is used to add the product in the Database
@@ -47,7 +42,7 @@ public class DogsDetailsDAO {
 
 		try {
 
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			File dogImageFile = new File("D:\\images\\" + dogDetail.getDogImage());
 
 			try (FileInputStream image1 = new FileInputStream(dogImageFile)) {
@@ -58,14 +53,14 @@ public class DogsDetailsDAO {
 
 				pst.setBinaryStream(1, image1, dogImageFile.length());
 
-				pst.setInt(2, dogDetail.getDogAge());
+				pst.setInt(2, dogDetail.getAge());
 
 				pst.setString(3, dogDetail.getDogName());
 
-				pst.setString(4, dogDetail.getDogGender());
-				pst.setString(5, dogDetail.getDogPlace());
-				pst.setInt(6, dogDetail.getDogPrice());
-				pst.setString(7, dogDetail.getDogInsurance());
+				pst.setString(4, dogDetail.getGender());
+				pst.setString(5, dogDetail.getPlace());
+				pst.setInt(6, dogDetail.getPrice());
+				pst.setString(7, dogDetail.getInsurance());
 				res = pst.executeUpdate();
 			}
 			// insert,update and delete
@@ -84,9 +79,12 @@ public class DogsDetailsDAO {
 	}
 
 	public static void deleteByDogNo(int dogno) throws DbException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+
 		String sql = "DELETE FROM breed_dogs where dog_no = ?";
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, dogno);
 			pst.executeUpdate();
@@ -107,7 +105,7 @@ public class DogsDetailsDAO {
 		Statement st = null;
 		byte[] imgBytes = null;
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			st = connection.createStatement();
 			int dogNumber = Integer.parseInt(dogNo);
 			ResultSet rs = st.executeQuery("SELECT dog_image FROM  breed_dogs WHERE dog_no ='" + dogNumber + "'");
@@ -136,7 +134,7 @@ public class DogsDetailsDAO {
 		try {
 
 			// Step 1: Get the connection
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			// Step 2: Query
 			String sql = "select * from breed_dogs where sold_status=false ";
@@ -146,19 +144,19 @@ public class DogsDetailsDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-				InputStream dogimage = rs.getBinaryStream(1);
-				int dogno = rs.getInt("dog_no");
 
-				String dogname = rs.getString("dog_name");
-				int dogage = rs.getInt("dog_age");
-				String doggender = rs.getString("dog_gender");
-				String doglocation = rs.getString("dog_place");
-				int dogprice = rs.getInt("dog_price");
-				String doginsurance = rs.getString("dog_insurance");
+				DogDetail dogDetails = new DogDetail();
+				dogDetails.setDogImageByte(rs.getBinaryStream(1));
+				dogDetails.setDogNo(rs.getInt("dog_no"));
+				dogDetails.setDogName(rs.getString("dog_name"));
+				dogDetails.setAge(rs.getInt("dog_age"));
+				dogDetails.setGender(rs.getString("dog_gender"));
+				dogDetails.setPlace(rs.getString("dog_place"));
+				dogDetails.setPrice(rs.getInt("dog_price"));
+				dogDetails.setInsurance(rs.getString("dog_insurance"));
 
 				// Store the data in model
-				DogDetail dogDetails = new DogDetail(dogimage, dogno, dogname, dogage, doggender, doglocation, dogprice,
-						doginsurance);
+
 				// Store all products in list
 				dogList.add(dogDetails);
 
@@ -176,12 +174,15 @@ public class DogsDetailsDAO {
 	}
 
 	public static List<Integer> findByDogNo(int orderDogno) throws DbException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
 
 		int orderDogNo = 0;
 		List<Integer> dogNoList = new ArrayList<>();
 		String sql = "select  * FROM breed_dogs where dog_no = ?";
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, orderDogno);
 
@@ -204,9 +205,12 @@ public class DogsDetailsDAO {
 	}
 
 	public static boolean updateDogStatus(int dogno, boolean status) throws DbException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+
 		String sql = "update breed_dogs set sold_status = ? where dog_no = ?";
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setBoolean(1, status);
 			pst.setInt(2, dogno);

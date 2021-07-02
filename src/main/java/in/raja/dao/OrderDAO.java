@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class OrderDAO {
 
 		try {
 
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			String sql = "INSERT INTO placeorder_dogs( order_dogno , orderuser_phoneno , orderuser_address  ,status ,user_id , order_date , delivery_date ) VALUES ( ?, ?, ?,?,?,?,?)";
 
@@ -64,7 +63,7 @@ public class OrderDAO {
 	public static void deleteByDogNo(int dogno) throws DbException {
 		String sql = "DELETE FROM placeorder_dogs where order_dogno = ?";
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, dogno);
 			pst.executeUpdate();
@@ -83,7 +82,7 @@ public class OrderDAO {
 	public static void deleteByOrderId(int orderId) throws DbException {
 		String sql = "DELETE FROM placeorder_dogs where order_id = ?";
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, orderId);
 			pst.executeUpdate();
@@ -102,7 +101,7 @@ public class OrderDAO {
 	public static void updateOrderDetails(long mobileNo, String address, int userId, int orderId) throws DbException {
 		String sql = "update placeorder_dogs set orderuser_phoneno = ? ,orderuser_address = ?  where user_id = ? AND order_id = ?";
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setLong(1, mobileNo);
 			pst.setString(2, address);
@@ -132,7 +131,7 @@ public class OrderDAO {
 		try {
 
 			// Step 1: Get the connection
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 
 			// Step 2: Query
 			String sql = "select * from placeorder_dogs where user_id = ? ";
@@ -146,22 +145,16 @@ public class OrderDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-
-				int dogno = rs.getInt("order_dogno");
-				long userPhoneno = rs.getLong("orderuser_phoneno");
-				String userAddress = rs.getString("orderuser_address");
-				String status = rs.getString("status");
-				int userId = rs.getInt("user_id");
-				int orderId = rs.getInt("order_id");
-				LocalDateTime orderDate = rs.getTimestamp("order_date").toLocalDateTime();
-				LocalDateTime deliveryDate = rs.getTimestamp("delivery_date").toLocalDateTime();
-				// Store the data in model
-				AdminOrderList orderDetail = new AdminOrderList(dogno, userPhoneno, userAddress, status, userId,
-						orderId, orderDate, deliveryDate);
-
-				// Store all products in list
+				AdminOrderList orderDetail = new AdminOrderList();
+				orderDetail.setDogNo(rs.getInt("order_dogno"));
+				orderDetail.setPhoneNo(rs.getLong("orderuser_phoneno"));
+				orderDetail.setAddress(rs.getString("orderuser_address"));
+				orderDetail.setStatus(rs.getString("status"));
+				orderDetail.setUserId(rs.getInt("user_id"));
+				orderDetail.setOrderId(rs.getInt("order_id"));
+				orderDetail.setOrderDate(rs.getTimestamp("order_date").toLocalDateTime());
+				orderDetail.setDeliveryDate(rs.getTimestamp("delivery_date").toLocalDateTime());
 				orderList.add(orderDetail);
-
 			}
 
 		} catch (SQLException e) {
@@ -178,7 +171,7 @@ public class OrderDAO {
 
 		List<AdminOrderList> orderList = new ArrayList<>();
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			String sql = "select  * from placeorder_dogs order by order_id DESC ";
 			pst = connection.prepareStatement(sql);
 
@@ -213,7 +206,7 @@ public class OrderDAO {
 		boolean isUpdated = false;
 
 		try {
-			connection = ConnectionUtil.CreateConnection();
+			connection = ConnectionUtil.createConnection();
 			pst = connection.prepareStatement(sql);
 
 			pst.setString(1, status);

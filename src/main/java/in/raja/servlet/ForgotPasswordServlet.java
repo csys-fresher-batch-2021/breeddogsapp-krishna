@@ -38,7 +38,6 @@ public class ForgotPasswordServlet extends HttpServlet {
 
 			String password = request.getParameter("password");
 			String confirmPassword = request.getParameter("confirmPassword");
-			System.out.println(confirmPassword);
 			boolean success = DogManager.forgotUserDetails(phoneNumber, password, confirmPassword);
 
 			if (success) {

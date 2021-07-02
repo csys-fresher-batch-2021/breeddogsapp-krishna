@@ -43,7 +43,7 @@ public class UserService {
 		return isValid;
 	}
 
-	public static void editOrderDetails(long mobileNo, String address, int userId, int orderId) throws Exception {
+	public static void editOrderDetails(long mobileNo, String address, int userId, int orderId) throws DbException {
 
 		OrderDAO.updateOrderDetails(mobileNo, address, userId, orderId);
 	}

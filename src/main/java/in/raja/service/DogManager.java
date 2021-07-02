@@ -1,6 +1,7 @@
 package in.raja.service;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class DogManager {
 		return image;
 	}
 
-	public static boolean deleteDog(int dogNo) throws Exception {
+	public static boolean deleteDog(int dogNo) throws DbException {
 
 		boolean isdeleted = false;
 
@@ -64,7 +65,7 @@ public class DogManager {
 		return isdeleted;
 	}
 
-	public static boolean deleteOrderById(int orderId) throws Exception {
+	public static boolean deleteOrderById(int orderId) throws DbException {
 
 		boolean isdeleted = false;
 
@@ -83,7 +84,7 @@ public class DogManager {
 		costDetails.clear();
 		if (breedType == 1) {
 			for (DogDetail breed : DogsDetailsDAO.findAll()) {
-				if (breed.getDogPrice() <= 5000) {
+				if (breed.getPrice() <= 5000) {
 					costDetails.add(breed);
 
 				}
@@ -92,13 +93,13 @@ public class DogManager {
 
 			for (DogDetail breed : DogsDetailsDAO.findAll())
 
-				if (breed.getDogPrice() > 5000 && breed.getDogPrice() <= 10000) {
+				if (breed.getPrice() > 5000 && breed.getPrice() <= 10000) {
 					costDetails.add(breed);
 				}
 
 		} else if (breedType == 3) {
 			for (DogDetail breed : DogsDetailsDAO.findAll())
-				if (breed.getDogPrice() > 10000) {
+				if (breed.getPrice() > 10000) {
 					costDetails.add(breed);
 
 				}
@@ -113,7 +114,8 @@ public class DogManager {
 		return costDetails;
 	}
 
-	public static boolean forgotUserDetails(String phoneNumber, String password1, String password2) throws Exception {
+	public static boolean forgotUserDetails(String phoneNumber, String password1, String password2)
+			throws DbException, ServiceException, SQLException {
 		long mobileNo = Long.parseUnsignedLong(phoneNumber);
 		boolean change = false;
 		if (PasswordValidation.isEqual(password1, password2) && isExist(mobileNo)) {
@@ -125,7 +127,7 @@ public class DogManager {
 		return change;
 	}
 
-	public static boolean checkAvailable(int dogno) throws Exception {
+	public static boolean checkAvailable(int dogno) throws DbException {
 
 		boolean isValid = false;
 

@@ -5,6 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PasswordValidation {
+	private PasswordValidation() {
+		// Default constructor
+	}
+
 	public static boolean isValidPassword(String phonenumber) {
 
 		// Regex to check valid password.
@@ -29,9 +33,6 @@ public class PasswordValidation {
 		return m.matches();
 	}
 
-	
-	
-	
 	public static boolean isEqual(String password1, String password2) throws SQLException {
 		boolean isMatch = false;
 		if (password1.equals(password2)) {
