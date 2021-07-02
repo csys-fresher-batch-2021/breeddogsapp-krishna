@@ -35,10 +35,13 @@ console.log(cost);
 let url = "SearchByCostServlet?cost="+cost;
 fetch(url).then(res=>res.json()).then(res=>{
 	console.log(res);
-	var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age(Days)</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th></thead>'
+	var tableData = '<thead class="thead-dark"><th>Dog Image</th><th>Dog No</th><th>Dog Name</th><th>Dog Age(Days)</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th></thead>'
 		tableData+= '<tbody>'
 	    for(i = 0;i < res.length; i++){
 	    	tableData+= '<tr>';
+	    	tableData+=	'<td><img '+
+	    		'src="GetDogImageServlet?imageName='+ res[i].dogNo + '"' +
+			'width="50%" height="50%" alt="' + res[i] + '"></td>';
 	    	tableData+= '<td>' + res[i].dogNo + '</td>';
 	    	tableData+= '<td>' + res[i].dogName + '</td>';
 	    	tableData+= '<td>' + res[i].age + '</td>';

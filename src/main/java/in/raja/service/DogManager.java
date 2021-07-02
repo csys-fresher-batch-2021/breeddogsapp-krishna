@@ -1,5 +1,6 @@
 package in.raja.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,8 @@ public class DogManager {
 		return userList;
 	}
 
-	public static boolean addDog(DogDetail... dogDetails) throws DbException {
+	public static boolean addDog(DogDetail... dogDetails) throws DbException, IOException {
+		System.out.println(dogDetails);
 
 		boolean added = false;
 
@@ -39,6 +41,14 @@ public class DogManager {
 			}
 		}
 		return added;
+	}
+
+	public static byte[] retireveImage(String imageName) {
+		byte[] image;
+
+		image = DogsDetailsDAO.retireveDogImage(imageName);
+
+		return image;
 	}
 
 	public static boolean deleteDog(int dogNo) throws Exception {

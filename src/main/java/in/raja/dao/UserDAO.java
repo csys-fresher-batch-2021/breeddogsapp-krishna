@@ -133,6 +133,51 @@ public class UserDAO {
 		return userList;
 	}
 
+	public static UserDetails findUserByUsername(String userName) throws DbException {
+
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
+		UserDetails user = null;
+
+		try {
+
+			// Step 1: Get the connection
+			connection = ConnectionUtil.CreateConnection();
+
+			// Step 2: Query
+			String sql = "select * from userdetails where username=?";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, userName);
+			// Step 3: execute query
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+
+				String userName1 = rs.getString("username");
+				String emailId = rs.getString("emailid");
+				String password = rs.getString("password");
+				String city = rs.getString("city");
+				long phoneNumber = rs.getLong("phonenumber");
+
+				// Store the data in model
+				user = new UserDetails(userName1, emailId, password, city, phoneNumber, null);
+				// Store all products in list
+
+			}
+
+		} catch (SQLException e) {
+
+			throw new DbException("Can't able to display the user details.");
+		} finally {
+
+			ConnectionUtil.closeConnection(rs, pst, connection);
+		}
+		return user;
+	}
+
 	public static boolean findByUsernameAndPassword(String username, String password) throws DbException {
 
 		Connection connection = null;

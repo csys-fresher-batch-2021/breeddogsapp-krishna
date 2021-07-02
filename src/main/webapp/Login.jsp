@@ -18,7 +18,7 @@
 		<div style="text-align: center" class="header">
 			<h1>UserLogin</h1>
 			      
-			<form action="LoginServlet" method="post">
+			<form action="LoginServlet" method="Post">
 				            <label for="userName">UserName:</label>             <input
 					type="text" name="userName" id="userName" min=3 max=9999999999
 					placeholder="Enter Your Name" required autofocus />             <br>
@@ -33,6 +33,9 @@
 			Forgot <a href="ForgotPassword.jsp" id="forgot"> password? </a>     
 		</div>
 		<%
+		String email = (String) session.getAttribute("LOGGED_IN_USEREMAIL");
+		String role = (String) session.getAttribute("ROLE");
+		String adminrole = (String) session.getAttribute("ADMINROLE");
 		String message = request.getParameter("message");
 		if (message == null) {
 			out.print("");
@@ -42,6 +45,7 @@
 		%>
 	</main>
 </body>
+
 </html>
 
 

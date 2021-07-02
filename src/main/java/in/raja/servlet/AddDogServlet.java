@@ -18,30 +18,35 @@ import in.raja.service.DogManager;
 public class AddDogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public AddDogServlet() {
+		super();
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		try {
-
+			String dogImage = request.getParameter("imageSource");
 			String dogName = request.getParameter("dogName");
 			int age = Integer.parseInt(request.getParameter("age"));
 			String gender = request.getParameter("gender");
 			String place = request.getParameter("place");
 			Integer price = Integer.parseInt(request.getParameter("price"));
 			String insurance = request.getParameter("insurance");
-
-			DogDetail dogDetail = new DogDetail(dogName, age, gender, place, price, insurance);
+		
+			DogDetail dogDetail = new DogDetail(dogImage, dogName, age, gender, place, price, insurance);
+			
 
 			boolean success = DogManager.addDog(dogDetail);
 
 			if (success) {
 
-				String infoMessage = "Product Added Successfully";
+				String infoMessage = "Dog Added Successfully";
 				response.sendRedirect("DogDetails.jsp?infoMessage=" + infoMessage);
 			} else {
 
-				String errorMessage = "Invalid product";
+				String errorMessage = "Invalid DogDetails";
 				response.sendRedirect("AddDog.jsp?errorMessage=" + errorMessage);
 			}
 

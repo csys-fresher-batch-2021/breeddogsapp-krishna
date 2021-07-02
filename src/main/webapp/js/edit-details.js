@@ -1,7 +1,7 @@
-function show(){
+function show(serial){
 	
-	let edit = document.getElementById("editBtn");
-	let done = document.getElementById("okBtn");
+	let edit = document.getElementById("editBtn" +serial);
+	let done = document.getElementById("okBtn" + serial);
 	if(edit.style.display === "block"){
 		
 		edit.style.display = "none";
@@ -13,7 +13,7 @@ function show(){
 	}
 }
 
-function callFunctionm(serial, option) {
+function callFunction(serial, option) {
 	let phoneNo = document.getElementById("phoneNo" + serial);
 	let address = document.getElementById("address" + serial);
 	let id = phoneNo.getAttribute("data-orderId");
@@ -23,7 +23,7 @@ function callFunctionm(serial, option) {
 		case 1:
 			phoneNo.readOnly = false;
 			address.readOnly = false;
-			show();
+			show(serial);
 			break;
 		case 2:
 			if (phoneNo.value === oldMobileNumber && address.value === oldAddress) {
@@ -48,7 +48,7 @@ function callFunctionm(serial, option) {
 						dt: editedJson
 					}
 				})
-				show();
+				show(serial);
 			}
 			break;
 		case 3:
@@ -57,7 +57,7 @@ function callFunctionm(serial, option) {
 			address.value = oldAddress;
 			phoneNo.readOnly = true;
 			address.readOnly = true;
-			show();
+			show(serial);
 			break;
 
 	}

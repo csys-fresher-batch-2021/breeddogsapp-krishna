@@ -14,7 +14,7 @@ String dogNo = request.getParameter("DogNo");
 %>
 		<h3>PlaceOrder</h3>
 		 
-		<form action="PlaceOrderServlet" method="post">
+		<form action="PlaceOrderServlet" method="post" onsubmit="send()">
 
 			<label for="dogno">DogNo : </label> <input type="number" name="dogNo"
 				id="dogNo" value="<%=dogNo%>" readOnly /> <br /> <label
