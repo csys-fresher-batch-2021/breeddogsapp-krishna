@@ -30,6 +30,7 @@ public class SearchByCostServlet extends HttpServlet {
 			String cost = request.getParameter("cost");
 			int type = Integer.parseInt(cost);
 			List<DogDetail> added = DogManager.searchDogByCost(type);
+
 			Gson gson = new Gson();
 			String obj = gson.toJson(added);
 			PrintWriter out = response.getWriter();

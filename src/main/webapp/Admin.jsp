@@ -30,6 +30,7 @@ input[type=number]:focus, input[type=number]:focus {
 	background-color: #ddd;
 	outline: none;
 }
+
 input[type=password], input[type=password] {
 	width: 100%;
 	padding: 15px;
@@ -43,10 +44,11 @@ input[type=password]:focus, input[type=password]:focus {
 	background-color: #ddd;
 	outline: none;
 }
+
 img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 </style>
 <title>Admin</title>
@@ -77,14 +79,16 @@ img {
 			</table>
 			<button type="submit">SUBMIT</button>
 		</form>
-		
+
 		<br /> Note: Admin credentials are hard coded <br /> * User
 		Name:9626848802<br /> * Password: k1234 <br />
-				<section id="home">
-		
-							<img class="img-fluid" src="https://crueltyfreelife.org/wp-content/uploads/2020/02/blog-12.jpg" alt="dogs" style="width:50%">
-							
-							</section>
+		<section id="home">
+
+			<img class="img-fluid"
+				src="https://crueltyfreelife.org/wp-content/uploads/2020/02/blog-12.jpg"
+				alt="dogs" style="width: 50%">
+
+		</section>
 	</main>
 </body>
 </html>

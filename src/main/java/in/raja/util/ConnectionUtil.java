@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import in.raja.exception.UtilException;
 
@@ -58,7 +59,7 @@ public class ConnectionUtil {
 		}
 	}
 
-	public static void closeConnection(PreparedStatement pst, Connection connection) {
+	public static void closeConnection(Statement pst, Connection connection) {
 		try {
 
 			if (pst != null) {

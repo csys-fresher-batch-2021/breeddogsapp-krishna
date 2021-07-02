@@ -28,7 +28,7 @@
 					<th scope="col">Delivery Address</th>
 					<th scope="col">Status</th>
 					<th scope="col">Order Date</th>
-					<th scope="col">Delivery Date</th>					
+					<th scope="col">Delivery Date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -59,17 +59,17 @@
 					<td><%=detail.getStatus()%></td>
 					<td><%=orderDate %></td>
 					<td><%=deliveryDate %></td>
-					
-					
+
+
 					<td><a
 						href="DeleteOrderServlet?orderId=<%=detail.getOrderId()%>"
 						class="btn btn-danger">Delete</a>
-					<td><div id="editBtn" style="display: block">
-							<a onclick="callFunctionm(<%=i%>,1)" class="btn btn-success">Edit</a>
+					<td><div id="editBtn<%=i%>" style="display: block">
+							<a onclick="callFunction(<%=i%>,1)" class="btn btn-success">Edit</a>
 						</div>
-						<div id="okBtn" style="display: none">
-							<a onclick="callFunctionm(<%=i%>,2)" class="btn btn-success">ok</a>
-							<a onclick="callFunctionm(<%=i%>,3)" class="btn btn-danger">Cancel</a>
+						<div id="okBtn<%=i%>" style="display: none">
+							<a onclick="callFunction(<%=i%>,2)" class="btn btn-success">ok</a>
+							<a onclick="callFunction(<%=i%>,3)" class="btn btn-danger">Cancel</a>
 						</div>
 				</tr>
 				<%

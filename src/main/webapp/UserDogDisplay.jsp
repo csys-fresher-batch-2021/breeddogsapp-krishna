@@ -16,6 +16,8 @@
 			<caption>Dog Details</caption>
 			<thead>
 				<tr>
+					<th scope="col">Dog Image</th>
+
 					<th scope="col">Dog No</th>
 					<th scope="col">Dog Name</th>
 					<th scope="col">Dog Age</th>
@@ -33,6 +35,9 @@
 						for (DogDetail detail : taskList) {
 				%>
 				<tr>
+					<td><img
+						src="GetDogImageServlet?imageName=<%=detail.getDogNo()%>"
+						width="50%" height="50%" alt="<%=detail.getDogNo()%>"></td>
 
 					<td><%=detail.getDogNo()%></td>
 					<td><%=detail.getDogName()%></td>

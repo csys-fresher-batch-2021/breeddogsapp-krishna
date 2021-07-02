@@ -1,9 +1,15 @@
 package in.raja.dao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,34 +31,43 @@ public class DogsDetailsDAO {
 	 * This method is used to add the product in the Database
 	 * 
 	 * @param product
+	 * @return
 	 * @throws SQLException
 	 * @throws DbException
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 * @throws Exceptionrrij
 	 */
 
-	public static void save(DogDetail dogDetail) throws DbException {
+	public static boolean save(DogDetail dogDetail) throws DbException, IOException {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
+		int res = 0;
 
 		try {
 
 			connection = ConnectionUtil.CreateConnection();
+			File dogImageFile = new File("D:\\images\\" + dogDetail.getDogImage());
 
-			String sql = "INSERT INTO breed_dogs(dog_age, dog_name,  dog_gender, dog_place, dog_price, dog_insurance ) VALUES ( ?, ?, ?, ?, ?, ?)";
+			try (FileInputStream image1 = new FileInputStream(dogImageFile)) {
 
-			pst = connection.prepareStatement(sql);
+				String sql = "INSERT INTO breed_dogs(dog_image , dog_age, dog_name,  dog_gender, dog_place, dog_price, dog_insurance ) VALUES (? , ?, ?, ?, ?, ?, ?)";
 
-			pst.setInt(1, dogDetail.getDogAge());
+				pst = connection.prepareStatement(sql);
 
-			pst.setString(2, dogDetail.getDogName());
+				pst.setBinaryStream(1, image1, dogImageFile.length());
 
-			pst.setString(3, dogDetail.getDogGender());
-			pst.setString(4, dogDetail.getDogPlace());
-			pst.setInt(5, dogDetail.getDogPrice());
-			pst.setString(6, dogDetail.getDogInsurance());
-			pst.executeUpdate();
+				pst.setInt(2, dogDetail.getDogAge());
 
+				pst.setString(3, dogDetail.getDogName());
+
+				pst.setString(4, dogDetail.getDogGender());
+				pst.setString(5, dogDetail.getDogPlace());
+				pst.setInt(6, dogDetail.getDogPrice());
+				pst.setString(7, dogDetail.getDogInsurance());
+				res = pst.executeUpdate();
+			}
 			// insert,update and delete
 
 		} catch (SQLException e) {
@@ -64,6 +79,7 @@ public class DogsDetailsDAO {
 
 			ConnectionUtil.closeConnection(pst, connection);
 		}
+		return res == 1;
 
 	}
 
@@ -84,6 +100,29 @@ public class DogsDetailsDAO {
 			ConnectionUtil.closeConnection(pst, connection);
 		}
 
+	}
+
+	public static byte[] retireveDogImage(String dogNo) {
+		Connection connection = null;
+		Statement st = null;
+		byte[] imgBytes = null;
+		try {
+			connection = ConnectionUtil.CreateConnection();
+			st = connection.createStatement();
+			int dogNumber = Integer.parseInt(dogNo);
+			ResultSet rs = st.executeQuery("SELECT dog_image FROM  breed_dogs WHERE dog_no ='" + dogNumber + "'");
+			if (rs != null) {
+				while (rs.next()) {
+					imgBytes = rs.getBytes(1);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.closeConnection(st, connection);
+
+		}
+		return imgBytes;
 	}
 
 	public static List<DogDetail> findAll() throws DbException {
@@ -107,8 +146,9 @@ public class DogsDetailsDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-
+				InputStream dogimage = rs.getBinaryStream(1);
 				int dogno = rs.getInt("dog_no");
+
 				String dogname = rs.getString("dog_name");
 				int dogage = rs.getInt("dog_age");
 				String doggender = rs.getString("dog_gender");
@@ -117,7 +157,7 @@ public class DogsDetailsDAO {
 				String doginsurance = rs.getString("dog_insurance");
 
 				// Store the data in model
-				DogDetail dogDetails = new DogDetail(dogno, dogname, dogage, doggender, doglocation, dogprice,
+				DogDetail dogDetails = new DogDetail(dogimage, dogno, dogname, dogage, doggender, doglocation, dogprice,
 						doginsurance);
 				// Store all products in list
 				dogList.add(dogDetails);
