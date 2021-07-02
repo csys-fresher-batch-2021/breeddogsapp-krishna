@@ -1,7 +1,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDate"%>
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
 <title>PET SHOP</title>
 <link rel="stylesheet" href="index.css">

@@ -66,7 +66,7 @@ public class UserDAO {
 		try {
 			connection = ConnectionUtil.CreateConnection();
 
-			String sql = "UPDATE userdetails SET user_password = ? where user_phonenumber = ? ";
+			String sql = "UPDATE userdetails SET password = ? where phonenumber = ? ";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, newPassword);
 			pst.setLong(2, phoneNumber);

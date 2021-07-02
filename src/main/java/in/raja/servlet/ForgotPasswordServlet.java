@@ -1,6 +1,7 @@
 package in.raja.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 
 			String password = request.getParameter("password");
 			String confirmPassword = request.getParameter("confirmPassword");
-
+			System.out.println(confirmPassword);
 			boolean success = DogManager.forgotUserDetails(phoneNumber, password, confirmPassword);
 
 			if (success) {

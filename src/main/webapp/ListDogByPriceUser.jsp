@@ -1,6 +1,6 @@
 <!DOCTYPE>
 <%@page import="in.raja.dao.DogsDetailsDAO"%>
-<html lang="en" xml:lang="en">
+<html lang="en">
 <%@page import="java.util.List"%>
 <%@page import="in.raja.model.DogDetail"%>
 <%@page import="java.util.ArrayList"%>
