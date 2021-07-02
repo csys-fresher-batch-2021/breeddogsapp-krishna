@@ -1,13 +1,12 @@
 <!DOCTYPE>
 <%@page import="in.raja.dao.DogsDetailsDAO"%>
-<html lang="en" xml:lang="en">
+<html lang="en">
 <%@page import="java.util.List"%>
 <%@page import="in.raja.model.DogDetail"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="in.raja.service.DogManager"%>
 <head>
 <title>MyApp</title>
-<link rel="stylesheet" href="ListDogByPrice.css">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -24,6 +23,21 @@
 			<option value="4">All</option>
 		</select>
 		<table id="sortedDogs" class="table table-bordered">
+			<caption>List All Dogs</caption>
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Dog Image</th>
+					<th scope="col">Dog No</th>
+					<th scope="col">Dog Name</th>
+					<th scope="col">Dog Age(Days)</th>
+					<th scope="col">Dog Gender</th>
+					<th scope="col">Place</th>
+					<th scope="col">Price</th>
+					<th scope="col">Insurance</th>
+				</tr>
+			</thead>
+			<tbody id="dogList">
+			</tbody>
 		</table>
 		<a href="UserDogServlet.java"></a>
 	</main>
@@ -31,14 +45,12 @@
 function select(){
 	
 var cost = document.getElementById("sortDog").value;
-console.log(cost);
 let url = "SearchByCostServlet?cost="+cost;
 fetch(url).then(res=>res.json()).then(res=>{
-	console.log(res);
-	var tableData = '<thead class="thead-dark"><th>Dog Image</th><th>Dog No</th><th>Dog Name</th><th>Dog Age(Days)</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th></thead>'
-		tableData+= '<tbody>'
+
+	 var tableData = '' ;
 	    for(i = 0;i < res.length; i++){
-	    	tableData+= '<tr>';
+	    	tableData += '<tr>';
 	    	tableData+=	'<td><img '+
 	    		'src="GetDogImageServlet?imageName='+ res[i].dogNo + '"' +
 			'width="50%" height="50%" alt="' + res[i] + '"></td>';
@@ -49,9 +61,11 @@ fetch(url).then(res=>res.json()).then(res=>{
 	    	tableData+= '<td>' + res[i].place + '</td>';
 	    	tableData+= '<td>' + res[i].price + '</td>';
 	    	tableData+= '<td>' + res[i].insurance + '</td>';
+			tableData+='</tr>';
+			
+
 	    }
-		tableData+='</tbody>';
-	     document.getElementById("sortedDogs").innerHTML = tableData; 
+	     document.getElementById("dogList").innerHTML = tableData; 
 	
 });
 }

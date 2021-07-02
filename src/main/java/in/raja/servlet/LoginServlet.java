@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.raja.dao.UserDAO;
-import in.raja.exception.DbException;
 import in.raja.model.UserDetails;
 import in.raja.service.UserRegister;
 
@@ -37,18 +36,19 @@ public class LoginServlet extends HttpServlet {
 		try {
 			isValid = userRegister.checkUser(username, password);
 			user = UserDAO.findUserByUsername(username);
-		} catch (DbException e) {
-			e.printStackTrace();
-		}
-		if (isValid) {
-			HttpSession session = request.getSession();
-			session.setAttribute("LOGGED_IN_USER", username);
-			session.setAttribute("LOGGED_IN_USEREMAIL", user.getUserMail());
-			session.setAttribute("ROLE", "user");
 
-			response.sendRedirect("PlaceOrder.jsp");
-		} else {
-			response.sendRedirect("Login.jsp?errorMessage=Invalid Login Credentials");
+			if (isValid) {
+				HttpSession session = request.getSession();
+				session.setAttribute("LOGGED_IN_USER", username);
+				session.setAttribute("LOGGED_IN_USEREMAIL", user.getUserMail());
+				session.setAttribute("ROLE", "user");
+
+				response.sendRedirect("PlaceOrder.jsp");
+			} else {
+				response.sendRedirect("Login.jsp?errorMessage=Invalid Login Credentials");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
