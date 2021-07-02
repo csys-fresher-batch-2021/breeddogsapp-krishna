@@ -80,37 +80,64 @@ public class DogManager {
 
 	public static List<DogDetail> searchDogByCost(int breedType) throws DbException {
 
-		List<DogDetail> costDetails = DogsDetailsDAO.findAll();
-		costDetails.clear();
+		List<DogDetail> dogList = DogsDetailsDAO.findAll();
+		List<DogDetail> details = null;
 		if (breedType == 1) {
-			for (DogDetail breed : DogsDetailsDAO.findAll()) {
-				if (breed.getPrice() <= 5000) {
-					costDetails.add(breed);
 
-				}
-			}
+			details = filterTypeOne(dogList);
 		} else if (breedType == 2) {
-
-			for (DogDetail breed : DogsDetailsDAO.findAll())
-
-				if (breed.getPrice() > 5000 && breed.getPrice() <= 10000) {
-					costDetails.add(breed);
-				}
-
+			details = filterTypeOne(dogList);
 		} else if (breedType == 3) {
-			for (DogDetail breed : DogsDetailsDAO.findAll())
-				if (breed.getPrice() > 10000) {
-					costDetails.add(breed);
-
-				}
+			details = filterTypeOne(dogList);
+		} else {
+			details = dogList;
 		}
 
-		else if (breedType == 4) {
-			for (DogDetail breed : DogsDetailsDAO.findAll())
+		return details;
+	}
+
+	public static List<DogDetail> filterTypeFour(List<DogDetail> dogList) {
+		List<DogDetail> costDetails = new ArrayList<>();
+		for (DogDetail breed : dogList) {
+			costDetails.add(breed);
+
+		}
+		return costDetails;
+
+	}
+
+	public static List<DogDetail> filterTypeOne(List<DogDetail> dogList) {
+		List<DogDetail> costDetails = new ArrayList<>();
+
+		for (DogDetail breed : dogList) {
+			if (breed.getPrice() <= 5000) {
 				costDetails.add(breed);
 
+			}
 		}
+		return costDetails;
+	}
 
+	public static List<DogDetail> filterTypeTwo(List<DogDetail> dogList) {
+		List<DogDetail> costDetails = new ArrayList<>();
+
+		for (DogDetail breed : dogList)
+
+			if (breed.getPrice() > 5000 && breed.getPrice() <= 10000) {
+				costDetails.add(breed);
+			}
+
+		return costDetails;
+	}
+
+	public static List<DogDetail> filterTypeThree(List<DogDetail> dogList) {
+		List<DogDetail> costDetails = new ArrayList<>();
+
+		for (DogDetail breed : dogList)
+			if (breed.getPrice() > 10000) {
+				costDetails.add(breed);
+
+			}
 		return costDetails;
 	}
 

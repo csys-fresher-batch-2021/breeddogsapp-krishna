@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="header.css">
 <script src="assets/js/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
