@@ -108,19 +108,6 @@ public class AdminOrderList {
 
 	}
 
-	public AdminOrderList(Integer dogNo2, long phoneNo2, String address2, String status2, int id, int orderId,
-			LocalDateTime orderDate, LocalDateTime deliveryDate) {
-		this.dogNo = dogNo2;
-		this.phoneNo = phoneNo2;
-		this.address = address2;
-		this.status = status2;
-		this.userId = id;
-		this.orderId = orderId;
-		this.orderDate = orderDate;
-		this.deliveryDate = deliveryDate;
-
-	}
-
 	@Override
 	public String toString() {
 		return "AdminOrderList [userId=" + userId + ", orderId=" + orderId + ", dogNo=" + dogNo + ", phoneNo=" + phoneNo
