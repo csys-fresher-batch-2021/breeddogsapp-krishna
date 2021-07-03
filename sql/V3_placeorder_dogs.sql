@@ -5,4 +5,4 @@ create table placeorder_dogs(order_dogno int , orderuser_phoneno bigint , orderu
 							 delivery_date  timestamp without time zone );
 							 
 select * from placeorder_dogs;
- drop table placeorder_dogs;
+ drop table placeorder_dogs; 
