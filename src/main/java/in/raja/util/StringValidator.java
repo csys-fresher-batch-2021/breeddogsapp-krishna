@@ -27,7 +27,7 @@ public class StringValidator {
 		if (userName.length() >= 3) {
 			valid = true;
 		} else {
-			throw new ValidatorException("Insufficient user name length(min 4 and max 10)");
+			throw new ValidatorException("Insufficient Password Length(min 4 and max 10)");
 		}
 		return valid;
 	}

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.raja.model.UserDetails;
 import in.raja.service.UserService;
@@ -30,8 +31,11 @@ public class RegisterServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
 		String city = request.getParameter("city");
+		HttpSession session = request.getSession();
 
 		try {
+			session.removeAttribute("Message");
+
 			long phoneNumber = Long.parseLong(request.getParameter("phoneNumber"));
 
 			UserDetails registerDetails = new UserDetails(userName, userMail, password, confirmPassword, phoneNumber,
