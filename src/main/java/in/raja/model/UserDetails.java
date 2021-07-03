@@ -20,6 +20,14 @@ public class UserDetails {
 
 	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	public String getName() {
 		return userName;
 	}
