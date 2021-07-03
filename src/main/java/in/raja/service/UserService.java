@@ -1,5 +1,7 @@
 package in.raja.service;
 
+import java.sql.SQLException;
+
 import in.raja.dao.OrderDAO;
 import in.raja.dao.UserDAO;
 import in.raja.exception.DbException;
@@ -78,7 +80,7 @@ public class UserService {
 		return name;
 	}
 
-	public boolean addUser(UserDetails... registerDetails) throws DbException {
+	public boolean addUser(UserDetails... registerDetails) throws DbException, SQLException {
 		boolean added = false;
 
 		for (UserDetails registerDetails1 : registerDetails) {

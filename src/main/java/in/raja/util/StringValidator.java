@@ -24,10 +24,10 @@ public class StringValidator {
 	public static boolean isValidUsername(String userName) {
 
 		boolean valid = false;
-		if (userName.length() >= 3) {
+		if (userName.length() >= 3 && userName.length() <= 10) {
 			valid = true;
 		} else {
-			throw new ValidatorException("Insufficient Password Length(min 4 and max 10)");
+			throw new ValidatorException("Insufficient Password Length(min 3 and max 10)");
 		}
 		return valid;
 	}

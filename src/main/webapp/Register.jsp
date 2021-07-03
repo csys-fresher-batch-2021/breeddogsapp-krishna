@@ -109,7 +109,7 @@ input[type=email]:focus, input[type=email]:focus {
 					id="confirmPassword" min=5 max=8 placeholder="ReEnterPassword"
 					required autofocus /><br /> <br /> City: <select name="city"
 					id="city" required autofocus>
-					<option>Null</option>
+					<option>Select</option>
 					<option>Madurai</option>
 					<option>Chennai</option>
 					<option>Coimbatore</option>

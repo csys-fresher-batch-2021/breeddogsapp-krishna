@@ -42,7 +42,7 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-			throw new DbException("Can't insert user details");
+			throw new DbException("Mobile Number Already Register");
 
 		} finally {
 			ConnectionUtil.closeConnection(pst, connection);

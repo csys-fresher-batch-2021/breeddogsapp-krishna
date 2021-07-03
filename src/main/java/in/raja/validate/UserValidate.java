@@ -1,5 +1,7 @@
 package in.raja.validate;
 
+import java.sql.SQLException;
+
 import in.raja.model.UserDetails;
 import in.raja.service.UserService;
 import in.raja.util.NumberValidator;
@@ -44,13 +46,13 @@ public class UserValidate {
 		return valid;
 	}
 
-	public static boolean isValidUserDetail(UserDetails userDetails) {
+	public static boolean isValidUserDetail(UserDetails userDetails) throws SQLException {
 
 		boolean valid = false;
-		boolean userpassword1 = StringValidator.isValidUsername(userDetails.getpassword1());
-		boolean userphonenumber = NumberValidator.isValidNumber(userDetails.getphoneNumber(), "userPhoneNo is Empty");
-
-		if (userpassword1 && userphonenumber) {
+		boolean userPassword1 = StringValidator.isValidUsername(userDetails.getpassword1());
+		boolean userPhonenumber = NumberValidator.isValidNumber(userDetails.getphoneNumber(), "userPhoneNo is Empty");
+		boolean userPassword = PasswordValidation.isEqual(userDetails.getpassword1(), userDetails.getConfirmPassword());
+		if (userPassword1 && userPhonenumber && userPassword) {
 
 			valid = true;
 
