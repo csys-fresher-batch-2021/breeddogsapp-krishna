@@ -85,8 +85,8 @@ input[type=email]:focus, input[type=email]:focus {
 <title>Register Page</title>
 </head>
 <body>
+	<jsp:include page="Message.jsp"></jsp:include>
 
-	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form action="RegisterServlet" method="post">
 
@@ -124,7 +124,19 @@ input[type=email]:focus, input[type=email]:focus {
 
 				<hr>
 			</div>
-		</form>
+			</form>
+			<%
+		String email = (String) session.getAttribute("LOGGED_IN_USEREMAIL");
+		String role = (String) session.getAttribute("ROLE");
+		String adminrole = (String) session.getAttribute("ADMINROLE");
+		String message = request.getParameter("message");
+		if (message == null) {
+			out.print("");
+		} else {
+			out.print("<font color='red'><center>" + message + "</font>");
+		}
+		%>
+		
 	</main>
 </body>
 
