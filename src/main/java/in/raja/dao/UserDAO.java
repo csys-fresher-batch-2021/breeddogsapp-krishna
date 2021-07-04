@@ -178,7 +178,8 @@ public class UserDAO {
 		return user;
 	}
 
-	public static boolean findByUsernameAndPassword(String username, String password) throws DbException {
+	public static boolean findByUsernameAndPassword(String username, String password, boolean status)
+			throws DbException {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -189,10 +190,12 @@ public class UserDAO {
 		try {
 			connection = ConnectionUtil.createConnection();
 
-			String sql = "select username,password from userdetails where username = ? and password = ?";
+			String sql = "select username,password from userdetails where username = ? and password = ? and admin=?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, username);
 			pst.setString(2, password);
+			pst.setBoolean(3, status);
+
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				valid = true;

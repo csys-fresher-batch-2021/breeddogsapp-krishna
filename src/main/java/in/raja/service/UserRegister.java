@@ -13,12 +13,23 @@ public class UserRegister {
 	 * 
 	 * @param medicine
 	 * @return
-	 * @throws DbException 
+	 * @throws DbException
 	 */
 
 	public boolean checkUser(String username, String password) throws DbException {
 		boolean isChecked = false;
-		if (StringValidator.isValidString(username, password) && UserDAO.findByUsernameAndPassword(username, password)) {
+		if (StringValidator.isValidString(username, password)
+				&& UserDAO.findByUsernameAndPassword(username, password, false)) {
+			isChecked = true;
+		}
+		return isChecked;
+
+	}
+
+	public boolean checkAdmin(String username, String password) throws DbException {
+		boolean isChecked = false;
+		if (StringValidator.isValidString(username, password)
+				&& UserDAO.findByUsernameAndPassword(username, password, true)) {
 			isChecked = true;
 		}
 		return isChecked;

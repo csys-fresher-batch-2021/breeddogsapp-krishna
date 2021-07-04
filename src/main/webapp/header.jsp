@@ -87,9 +87,7 @@ String adminrole = (String) session.getAttribute("ADMINROLE");
 				class="nav-link dropdown-toggle" href="#" id="dropdownId"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
 				<div class="dropdown-menu" aria-labelledby="dropdownId">
-					<a class="dropdown-item" href="Register.jsp">User Registration</a> <a
-						class="dropdown-item" href="AdminRegistration.jsp">Admin Registration</a>
-				</div></li>
+					<a class="dropdown-item" href="Register.jsp">User Registration</a> 				</div></li>
 
 		</ul>
 
