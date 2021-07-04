@@ -54,7 +54,7 @@ img {
 <title>Admin</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="Message.jsp"></jsp:include>
 	<main class="container-fluid">
 		<%
 		String msg = request.getParameter("message");
@@ -78,6 +78,19 @@ img {
 			</table>
 			<button type="submit">SUBMIT</button>
 		</form>
+		<div>UserName : sivaram</div>
+		<div>Password : sivaram</div>
+	<%
+		String email = (String) session.getAttribute("LOGGED_IN_USEREMAIL");
+		String role = (String) session.getAttribute("ROLE");
+		String adminrole = (String) session.getAttribute("ADMINROLE");
+		String message = request.getParameter("message");
+		if (message == null) {
+			out.print("");
+		} else {
+			out.print("<font color='red'><center>" + message + "</font>");
+		}
+		%>
 
 		
 		<section id="home">
