@@ -43,7 +43,7 @@ public class DogsDetailsDAO {
 		try {
 
 			connection = ConnectionUtil.createConnection();
-			File dogImageFile = new File("D:\\images\\" + dogDetail.getDogImage());
+			File dogImageFile = new File("C:\\Users\\kris2643\\Downloads\\images\\" + dogDetail.getDogImage());
 
 			try (FileInputStream image1 = new FileInputStream(dogImageFile)) {
 

@@ -86,9 +86,11 @@ public class DogManager {
 
 			details = filterTypeOne(dogList);
 		} else if (breedType == 2) {
-			details = filterTypeOne(dogList);
+			details = filterTypeTwo(dogList);
 		} else if (breedType == 3) {
-			details = filterTypeOne(dogList);
+			details = filterTypeThree(dogList);
+		} else if (breedType == 4) {
+			details = filterTypeFour(dogList);
 		} else {
 			details = dogList;
 		}
