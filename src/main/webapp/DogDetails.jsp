@@ -50,7 +50,7 @@
 					<td><%=detail.getPrice()%></td>
 					<td><%=detail.getInsurance()%></td>
 					<td><a href="DeleteServlet?dogNo=<%=detail.getDogNo()%>"
-						class="btn btn-danger">Delete</a>
+						class="btn btn-danger">Delete</a></td>
 				</tr>
 				<%
 				}

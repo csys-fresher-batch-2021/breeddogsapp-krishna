@@ -17,7 +17,7 @@ hr {
 	margin-bottom: 15px;
 }
 
-input[type=number], input[type=number] {
+input[type=text], input[type=text] {
 	width: 100%;
 	padding: 15px;
 	margin: 5px 0 22px 0;
@@ -26,7 +26,7 @@ input[type=number], input[type=number] {
 	background: #f1f1f1;
 }
 
-input[type=number]:focus, input[type=number]:focus {
+input[type=text]:focus, input[type=text]:focus {
 	background-color: #ddd;
 	outline: none;
 }
@@ -62,14 +62,13 @@ img {
 			out.println("<font color='red'>" + msg + "</font>");
 		%>
 		<h3>Admin Login</h3>
-		<form action="AdminServlet" method="post">
+		<form action="AdminLoginServlet" method="post">
 			<table>
 				<caption>Admin</caption>
 				<tr>
-					<th scope="col">MOBILE NUMBER :</th>
-					<td><input type="number" name="userId" id="userId"
-						min=1000000000 max=9999999999
-						placeholder="Enter your phone number" required></td>
+					<th scope="col">USER NAME :</th>
+					<td><input type="text" name="userName" id="userName"
+						placeholder="Enter userName" required></td>
 				</tr>
 				<tr>
 					<th scope="col">PASSWORD :</th>

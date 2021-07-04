@@ -14,10 +14,8 @@ public class UserDetails {
 		this.userMail = userMail;
 		this.password = password;
 		this.confirmPassword = confirmPassword;
-
 		this.phoneNumber = phoneNumber;
 		this.city = city;
-
 	}
 
 	public String getConfirmPassword() {

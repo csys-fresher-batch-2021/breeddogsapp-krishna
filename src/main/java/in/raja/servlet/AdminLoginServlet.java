@@ -17,8 +17,8 @@ import in.raja.service.UserRegister;
  * Servlet implementation class UserLoginServlet
  */
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/AdminLoginServlet")
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -39,13 +39,11 @@ public class LoginServlet extends HttpServlet {
 
 			if (isValid) {
 				HttpSession session = request.getSession();
-				session.setAttribute("LOGGED_IN_USER", username);
-				session.setAttribute("LOGGED_IN_USEREMAIL", user.getUserMail());
-				session.setAttribute("ROLE", "user");
-
-				response.sendRedirect("ListDogByPriceUser.jsp");
+				session.setAttribute("LOGGED_IN_USER", "ADMIN");
+				session.setAttribute("ADMINROLE", "admin");
+				response.sendRedirect("AdminPage.jsp");
 			} else {
-				response.sendRedirect("Login.jsp?errorMessage=Invalid Login Credentials");
+				response.sendRedirect("Admin.jsp?errorMessage=Invalid Login Credentials");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

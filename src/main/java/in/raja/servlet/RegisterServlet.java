@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
 			if (success) {
 
 				String errorMessage = "User Added Successfully";
-				response.sendRedirect("ListDogByPrice.jsp?infoMessage=" + errorMessage);
+				response.sendRedirect("Login.jsp?infoMessage=" + errorMessage);
 			} else {
 
 				String errorMessage = "Invalid User";
