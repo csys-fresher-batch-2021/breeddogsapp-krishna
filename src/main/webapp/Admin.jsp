@@ -79,8 +79,7 @@ img {
 			<button type="submit">SUBMIT</button>
 		</form>
 
-		<br /> Note: Admin credentials are hard coded <br /> * User
-		Name:9626848802<br /> * Password: k1234 <br />
+		
 		<section id="home">
 
 			<img class="img-fluid"
