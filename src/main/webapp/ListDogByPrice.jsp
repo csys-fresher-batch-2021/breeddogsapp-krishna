@@ -49,6 +49,9 @@ let url = "SearchByCostServlet?cost="+cost;
 fetch(url).then(res=>res.json()).then(res=>{
 
 	 var tableData = '' ;
+
+		var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th><th>Purchase</th></thead>'
+			tableData+= '<tbody>'
 	    for(i = 0;i < res.length; i++){
 	    	tableData += '<tr>';
 	    	tableData+=	'<td><img '+
@@ -62,7 +65,8 @@ fetch(url).then(res=>res.json()).then(res=>{
 	    	tableData+= '<td>' + res[i].price + '</td>';
 	    	tableData+= '<td>' + res[i].insurance + '</td>';
 			tableData+='</tr>';
-			
+			tableData+= '</tbody>'
+
 
 	    }
 	     document.getElementById("dogList").innerHTML = tableData; 

@@ -39,7 +39,7 @@ public class DogDetailValidation {
 	public static boolean checkDogName(String value) {
 
 		boolean valid = false;
-		if (StringValidator.isValidString(value, "Dog name is empty")) {
+		if (StringValidator.isValidString(value, "Dog name should not be empty or null")) {
 
 			valid = true;
 		}

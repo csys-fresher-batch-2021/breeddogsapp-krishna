@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.raja.dao.UserDAO;
+import in.raja.exception.DbException;
+import in.raja.exception.ServiceException;
 import in.raja.model.UserDetails;
 import in.raja.service.UserRegister;
 
@@ -30,11 +32,10 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
-		UserRegister userRegister = new UserRegister();
 		UserDetails user = null;
 		boolean isValid = false;
 		try {
-			isValid = userRegister.checkUser(username, password);
+			isValid = UserRegister.checkUser(username, password);
 			user = UserDAO.findUserByUsername(username);
 
 			if (isValid) {
@@ -47,7 +48,9 @@ public class LoginServlet extends HttpServlet {
 			} else {
 				response.sendRedirect("Login.jsp?errorMessage=Invalid Login Credentials");
 			}
-		} catch (Exception e) {
+		} catch (ServiceException e) {
+			response.sendRedirect("Login.jsp?errorMessage=" + e.getMessage());
+		} catch (DbException e) {
 			e.printStackTrace();
 		}
 	}

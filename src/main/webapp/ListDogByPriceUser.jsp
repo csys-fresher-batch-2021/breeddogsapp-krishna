@@ -56,6 +56,8 @@ var cost = document.getElementById("sortDog").value;
 let url = "SearchByCostServlet?cost="+cost;
 fetch(url).then(res=>res.json()).then(res=>{
 	var tableData = '';
+	var tableData = '<thead class="thead-dark"><th>Dog No</th><th>Dog Name</th><th>Dog Age</th><th>Dog Gender</th><th>Place</th><th>Price</th><th>Insurance</th><th>Purchase</th></thead>'
+		tableData+= '<tbody>'
 	    for(i = 0;i < res.length; i++){
 	    	tableData+= '<tr>'+	    	
 	    	'<td>' + res[i].dogNo + '</td>'+
@@ -67,6 +69,8 @@ fetch(url).then(res=>res.json()).then(res=>{
 	    	'<td>' + res[i].insurance + '</td>'+
 	    	'<td><a href="PlaceOrder.jsp?DogNo='+ res[i].dogNo +'" class="btn  btn-success">Buy</a></td></tr>';
 	    }
+		tableData+= '</tbody>'
+
 
 	     document.getElementById("sortedDogs").innerHTML = tableData; 
 

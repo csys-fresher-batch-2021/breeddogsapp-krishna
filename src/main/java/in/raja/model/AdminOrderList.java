@@ -57,8 +57,8 @@ public class AdminOrderList {
 		return address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public String setAddress(String address) {
+		return this.address = address;
 	}
 
 	public String getStatus() {

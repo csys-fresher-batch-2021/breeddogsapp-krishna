@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import in.raja.dao.UserDAO;
 import in.raja.model.AdminOrderList;
 import in.raja.service.AdminOrderListService;
+import in.raja.util.StringValidator;
 
 /**
  * Servlet implementation class placeOrderServlet
@@ -41,6 +42,9 @@ public class PlaceOrderServlet extends HttpServlet {
 			obj.setAddress(request.getParameter("address"));
 			obj.setOrderDate(LocalDateTime.now());
 			obj.setDeliveryDate(LocalDateTime.now().plusDays(5));
+			StringValidator.isValidString(obj.setAddress(request.getParameter("address")),
+					"Delivery Address should not be empty or null");
+
 			boolean added = AdminOrderListService.addOrder(obj);
 
 			if (added) {
@@ -56,7 +60,9 @@ public class PlaceOrderServlet extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			String errorMessage = e.getMessage();
+			response.sendRedirect("PlaceOrder.jsp?errorMessage=" + errorMessage);
+
 		}
 
 	}
