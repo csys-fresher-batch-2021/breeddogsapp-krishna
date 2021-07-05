@@ -7,7 +7,7 @@
 <title>placeOrder</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="Message.jsp"></jsp:include>
 	<main class="container-fluid">
 		<%
 String dogNo = request.getParameter("DogNo");
@@ -26,6 +26,17 @@ String dogNo = request.getParameter("DogNo");
 				required autofocus /> <br />
 			<button type="submit">Confirm</button>
 		</form>
+			<%
+		String email = (String) session.getAttribute("LOGGED_IN_USEREMAIL");
+		String role = (String) session.getAttribute("ROLE");
+		String adminrole = (String) session.getAttribute("ADMINROLE");
+		String message = request.getParameter("message");
+		if (message == null) {
+			out.print("");
+		} else {
+			out.print("<font color='red'><center>" + message + "</font>");
+		}
+		%>
 	</main>
 </body>
 </html>

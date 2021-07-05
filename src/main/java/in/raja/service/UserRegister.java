@@ -2,6 +2,8 @@ package in.raja.service;
 
 import in.raja.dao.UserDAO;
 import in.raja.exception.DbException;
+import in.raja.exception.ServiceException;
+import in.raja.exception.UtilException;
 import in.raja.util.StringValidator;
 
 public class UserRegister {
@@ -16,11 +18,26 @@ public class UserRegister {
 	 * @throws DbException
 	 */
 
-	public boolean checkUser(String username, String password) throws DbException {
+//	public boolean checkUser(String username, String password) throws DbException {
+//		boolean isChecked = false;
+//		if (StringValidator.isValidString(username, password)
+//				&& UserDAO.findByUsernameAndPassword(username, password, false)) {
+//			isChecked = true;
+//		}
+//		return isChecked;
+//
+//	}
+
+	public static boolean checkUser(String username, String password) throws DbException {
 		boolean isChecked = false;
-		if (StringValidator.isValidString(username, password)
-				&& UserDAO.findByUsernameAndPassword(username, password, false)) {
-			isChecked = true;
+		try {
+			if (StringValidator.isValidString(username, "UserName should not be empty or null")
+					&& StringValidator.isValidString(password, "Password should not be empty or null")
+					&& UserDAO.findByUsernameAndPassword(username, password, false)) {
+				isChecked = true;
+			}
+		} catch (UtilException e) {
+			throw new ServiceException(e.getMessage());
 		}
 		return isChecked;
 
@@ -28,9 +45,14 @@ public class UserRegister {
 
 	public boolean checkAdmin(String username, String password) throws DbException {
 		boolean isChecked = false;
-		if (StringValidator.isValidString(username, password)
-				&& UserDAO.findByUsernameAndPassword(username, password, true)) {
-			isChecked = true;
+		try {
+			if (StringValidator.isValidString(username, "UserName should not be empty or null")
+					&& StringValidator.isValidString(password, "Password should not be empty or null")
+					&& UserDAO.findByUsernameAndPassword(username, password, true)) {
+				isChecked = true;
+			}
+		} catch (UtilException e) {
+			throw new ServiceException(e.getMessage());
 		}
 		return isChecked;
 

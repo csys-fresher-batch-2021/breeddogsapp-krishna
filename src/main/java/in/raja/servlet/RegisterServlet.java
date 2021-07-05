@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import in.raja.model.UserDetails;
 import in.raja.service.UserService;
+import in.raja.util.StringValidator;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -40,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 
 			UserDetails registerDetails = new UserDetails(userName, userMail, password, confirmPassword, phoneNumber,
 					city);
-
+			StringValidator.isValidString(userName, "Username should not be empty or null");
 			UserService adduserDetails = new UserService();
 
 			boolean success = adduserDetails.addUser(registerDetails);

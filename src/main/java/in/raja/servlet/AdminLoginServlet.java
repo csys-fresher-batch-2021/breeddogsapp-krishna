@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import in.raja.exception.DbException;
+import in.raja.exception.ServiceException;
 import in.raja.service.UserRegister;
 
 /**
@@ -41,7 +43,10 @@ public class AdminLoginServlet extends HttpServlet {
 			} else {
 				response.sendRedirect("Admin.jsp?errorMessage=Invalid Login Credentials");
 			}
-		} catch (Exception e) {
+		} catch (ServiceException e) {
+			response.sendRedirect("Admin.jsp?errorMessage=" + e.getMessage());
+
+		} catch (DbException e) {
 			e.printStackTrace();
 		}
 	}

@@ -6,7 +6,7 @@
 <title>AddDogs</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="Message.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Add Dogs</h3>
 		<form action="AddDogServlet">
@@ -29,6 +29,17 @@
 				:</label> <input type="text" name="insurance" id="insurance"
 				placeholder="Enter Dog insurance" required autofocus /> <br />
 			<button type="submit">Submit</button>
+				<%
+		String email = (String) session.getAttribute("LOGGED_IN_USEREMAIL");
+		String role = (String) session.getAttribute("ROLE");
+		String adminrole = (String) session.getAttribute("ADMINROLE");
+		String message = request.getParameter("message");
+		if (message == null) {
+			out.print("");
+		} else {
+			out.print("<font color='red'><center>" + message + "</font>");
+		}
+		%>
 		</form>
 
 	</main>
