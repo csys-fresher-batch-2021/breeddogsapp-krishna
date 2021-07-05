@@ -18,16 +18,6 @@ public class UserRegister {
 	 * @throws DbException
 	 */
 
-//	public boolean checkUser(String username, String password) throws DbException {
-//		boolean isChecked = false;
-//		if (StringValidator.isValidString(username, password)
-//				&& UserDAO.findByUsernameAndPassword(username, password, false)) {
-//			isChecked = true;
-//		}
-//		return isChecked;
-//
-//	}
-
 	public static boolean checkUser(String username, String password) throws DbException {
 		boolean isChecked = false;
 		try {

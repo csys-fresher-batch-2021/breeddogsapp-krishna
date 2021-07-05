@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
-		UserRegister userRegister = new UserRegister();
 		UserDetails user = null;
 		boolean isValid = false;
 		try {
